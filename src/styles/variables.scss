@@ -1,0 +1,23 @@
+// colors
+$black: #030304;
+$white: #fff;
+$grey-100: #d9d9d9;
+$grey-200: #a7b2c3;
+$grey-300: #898989;
+$grey-400: #474747;
+$grey-500: #121212;
+$green-transparent: #24794000;
+$green: #00ce2c;
+$green-yellow: #aedf23;
+$yellow: #a3dc00;
+$gradient-green-yellow: linear-gradient(
+  90deg,
+  $green 0.18%,
+  $green-yellow 49.3%,
+  $yellow 99.88%
+);
+$gradient-black-transparent: linear-gradient(
+  253deg,
+  $grey-500 11.77%,
+  $green-transparent 91.12%
+);

@@ -5,17 +5,19 @@ import styles from './Header.module.scss';
 
 function Header() {
   return (
-    <header className={`${styles.header} container`}>
-      <Logo />
-      <nav className={styles.nav}>
-        <ul className={styles.navList}>
-          <li className={styles.navItem}>Home</li>
-          <li className={styles.navItem}>Timeline</li>
-          <li className={styles.navItem}>Bank card</li>
-          <li className={styles.navItem}>Contacts</li>
-        </ul>
-      </nav>
-      <Switch />
+    <header className={styles.header}>
+      <div className={`${styles.headerContainer} container`}>
+        <Logo />
+        <nav className={styles.nav}>
+          <ul className={styles.navList}>
+            <li className={styles.navItem}>Home</li>
+            <li className={styles.navItem}>Timeline</li>
+            <li className={styles.navItem}>Bank card</li>
+            <li className={styles.navItem}>Contacts</li>
+          </ul>
+        </nav>
+        <Switch />
+      </div>
     </header>
   );
 }

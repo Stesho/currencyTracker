@@ -1,6 +1,4 @@
-@import '../../../styles/variables';
-
-.header {
+.headerContainer {
   width: 100%;
   display: flex;
   align-items: center;
@@ -9,7 +7,6 @@
   padding-bottom: 23px;
   font-size: 20px;
   font-weight: 300;
-  background-color: $black;
 }
 
 .nav {

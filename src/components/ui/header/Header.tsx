@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from '@/assets/icons/logo.svg';
+import Logo from '@/assets/icons/logo.png';
 import Switch from '@/components/ui/switch/Switch';
 import styles from './Header.module.scss';
 
@@ -7,7 +7,7 @@ function Header() {
   return (
     <header className={styles.header}>
       <div className={`${styles.headerContainer} container`}>
-        <Logo />
+        <img className={styles.logo} src={Logo} alt='logo' />
         <nav className={styles.nav}>
           <ul className={styles.navList}>
             <li className={styles.navItem}>Home</li>

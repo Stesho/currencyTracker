@@ -6,7 +6,8 @@ $grey-200: #a7b2c3;
 $grey-300: #898989;
 $grey-400: #474747;
 $grey-500: #121212;
-$green-transparent: #24794052;
+$green-transparent-100: #24794099;
+$green-transparent-200: #24794052;
 $green: #00ce2c;
 $green-yellow: #aedf23;
 $yellow: #a3dc00;
@@ -19,5 +20,5 @@ $gradient-green-yellow: linear-gradient(
 $gradient-black-transparent: linear-gradient(
   253deg,
   $grey-500 11.77%,
-  $green-transparent 91.12%
+  $green-transparent-200 91.12%
 );

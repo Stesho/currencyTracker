@@ -1,13 +1,8 @@
 import React from 'react';
+import ICurrencyCard from '@/constants/interfaces/ICurrencyCard';
 import styles from './CurrencyCard.module.scss';
 
-interface CurrencyCardProps {
-  iconUrl: string;
-  currencyName: string;
-  rate: number;
-}
-
-function CurrencyCard({ iconUrl, currencyName, rate }: CurrencyCardProps) {
+function CurrencyCard({ iconUrl, currencyName, rate }: ICurrencyCard) {
   return (
     <div className={styles.currencyCard}>
       <img className={styles.icon} src={iconUrl} alt='currency' />

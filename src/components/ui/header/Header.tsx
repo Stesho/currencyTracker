@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from '@/assets/icons/logo.png';
+import Logo from '@/assets/img/logo.png';
 import Switch from '@/components/ui/switch/Switch';
 import styles from './Header.module.scss';
 

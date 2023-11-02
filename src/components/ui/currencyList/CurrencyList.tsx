@@ -10,11 +10,12 @@ interface ICurrencyListProps {
 
 function CurrencyList({ title, currencies }: ICurrencyListProps) {
   return (
-    <div className="container">
+    <div className='container'>
       <h2 className={styles.title}>{title}</h2>
       <div className={styles.currencyList}>
         {currencies.map((currencyItem) => (
           <CurrencyCard
+            key={currencyItem.id}
             id={currencyItem.id}
             iconUrl={currencyItem.iconUrl}
             currencyName={currencyItem.currencyName}

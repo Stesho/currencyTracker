@@ -2,7 +2,8 @@
 
 html[color-theme='light'] {
   --primary-color: #{$black};
-  --secondary-color: #{$grey-500};
+  --secondary-color-100: #{$grey-500};
+  --secondary-color-200: #{$grey-600};
   --text-color-100: #{$white};
   --text-color-200: #{$grey-100};
   --text-color-300: #{$grey-200};

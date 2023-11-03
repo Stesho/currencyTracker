@@ -4,8 +4,10 @@ import Header from '@/components/ui/header/Header';
 import Info from '@/components/ui/info/Info';
 import TimeUpdate from '@/components/ui/timeUpdate/TimeUpdate';
 import CurrencyList from '@/components/ui/currencyList/CurrencyList';
+import Footer from '@/components/ui/footer/Footer';
 import currencies from '@/constants/currencies/currencies';
 import stocks from '@/constants/currencies/stocks';
+import DropDown from '@/components/ui/dropdown/DropDown';
 
 function App() {
   return (
@@ -13,8 +15,10 @@ function App() {
       <Header />
       <Info />
       <TimeUpdate />
+      <DropDown options={['Dollar', 'Euro', 'Bitcoin', 'Yen']} />
       <CurrencyList title='Stocks' currencies={stocks} />
       <CurrencyList title='Quotes' currencies={currencies} />
+      <Footer />
     </div>
   );
 }

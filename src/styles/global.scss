@@ -1,0 +1,13 @@
+body {
+  background-color: var(--primary-color);
+  color: var(--text-color-100);
+  font-family: Poppins, sans-serif;
+  font-weight: 400;
+}
+
+.container {
+  max-width: 1316px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 40px;
+}

@@ -1,0 +1,32 @@
+@import '@/styles/variables';
+
+.timeUpdate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 65px;
+  padding-bottom: 30px;
+}
+
+.marker {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 25px 0 0;
+  width: 34px;
+  height: 34px;
+  background-color: $green-transparent-100;
+  border-radius: 50%;
+  div {
+    width: 16px;
+    height: 16px;
+    background-color: $green;
+    border-radius: 50%;
+  }
+}
+
+.text {
+  color: var(--text-color-200);
+  font-size: 33px;
+  font-weight: 300;
+}

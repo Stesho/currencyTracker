@@ -1,0 +1,64 @@
+.content {
+  display: flex;
+  padding: 20px 0;
+}
+
+.about {
+  max-width: 485px;
+  width: 100%;
+  margin-right: 104px;
+}
+
+.aboutTitle {
+  display: flex;
+  margin-bottom: 30px;
+  h3 {
+    font-size: 26px;
+    font-weight: 600;
+    background-image: var(--text-color-grad-green);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.logo {
+  width: 41px;
+  height: 41px;
+  margin-right: 15px;
+}
+
+.aboutText {
+  color: var(--text-color-100);
+  font-size: 24px;
+  font-weight: 300;
+}
+
+.links {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.linksTitle {
+  margin-bottom: 40px;
+  font-size: 28px;
+  font-weight: 400;
+}
+
+.linksList {
+  color: var(--text-color-400);
+  font-size: 24px;
+  font-weight: 400;
+  li {
+    margin-bottom: 25px;
+  }
+}
+
+.rights {
+  padding: 40px 0;
+  color: var(--text-color-400);
+  font-size: 24px;
+  font-weight: 400;
+  text-align: center;
+}

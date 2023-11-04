@@ -1,0 +1,27 @@
+.headerContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 30px;
+  padding-bottom: 23px;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.logo {
+  width: 41px;
+  height: 41px;
+}
+
+.nav {
+  max-width: 717px;
+  width: 100%;
+  padding: 0 30px;
+}
+
+.navList {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}

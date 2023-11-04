@@ -20,7 +20,7 @@ function CurrencyList({ title, currencies }: ICurrencyListProps) {
   };
 
   return (
-    <div className='container'>
+    <div className={`${styles.currencyListWrapper} container`}>
       <h2 className={styles.title}>{title}</h2>
       <div className={styles.currencyList}>
         {currencies.map((currencyItem) => (
@@ -35,7 +35,7 @@ function CurrencyList({ title, currencies }: ICurrencyListProps) {
         ))}
       </div>
       {isModalActive && (
-        <Modal id="currency-modal" onClose={handleModalClose}>
+        <Modal id='currency-modal' onClose={handleModalClose}>
           Hello world
         </Modal>
       )}

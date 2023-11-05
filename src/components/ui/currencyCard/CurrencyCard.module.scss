@@ -22,7 +22,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  line-height: 1;
 }
 
 .name {
@@ -31,10 +30,12 @@
   text-overflow: ellipsis;
   color: var(--text-color-200);
   font-size: 35px;
+  line-height: 1.3;
 }
 
 .rate {
   color: var(--text-color-300);
   font-size: 32px;
   font-weight: 300;
+  line-height: 1;
 }

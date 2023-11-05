@@ -4,12 +4,12 @@ import DropDownList from '@/components/ui/dropdown/dropDownList/DropDownList';
 import DropDownProps from '@/constants/interfaces/dropDownProps';
 import styles from './DropDown.module.scss';
 
-interface IDropDownState {
+interface DropDownState {
   isOpen: boolean;
   selectedOption: string;
 }
 
-class DropDown extends Component<DropDownProps, IDropDownState> {
+class DropDown extends Component<DropDownProps, DropDownState> {
   private readonly dropDown: RefObject<HTMLDivElement>;
 
   constructor(props: DropDownProps) {

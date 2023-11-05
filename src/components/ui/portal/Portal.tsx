@@ -1,13 +1,13 @@
-import { ReactNode , useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
-type IPortalProps = {
+type PortalProps = {
   id: string;
   children: ReactNode;
   mountNode?: HTMLElement;
 };
 
-function Portal({ id, children, mountNode = document.body }: IPortalProps) {
+function Portal({ id, children, mountNode = document.body }: PortalProps) {
   const [container, setContainer] = useState<HTMLElement>();
 
   useEffect(() => {

@@ -4,12 +4,12 @@ import CurrencyCard from '@/components/ui/currencyCard/CurrencyCard';
 import Modal from '@/components/ui/modal/Modal';
 import styles from './CurrencyList.module.scss';
 
-interface ICurrencyListProps {
+interface CurrencyListProps {
   title: string;
   currencies: CurrencyCardProps[];
 }
 
-function CurrencyList({ title, currencies }: ICurrencyListProps) {
+function CurrencyList({ title, currencies }: CurrencyListProps) {
   const [isModalActive, setModalActive] = useState(false);
 
   const onModalOpen = () => {

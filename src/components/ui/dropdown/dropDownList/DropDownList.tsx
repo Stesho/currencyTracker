@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import styles from '@/components/ui/dropdown/DropDown.module.scss';
-import IDropDownProps from '@/constants/interfaces/IDropDownProps';
+import DropDownProps from '@/constants/interfaces/dropDownProps';
 
-interface IDropDownListProps extends IDropDownProps {
+interface IDropDownListProps extends DropDownProps {
   selectedOption: string;
   setSelectedOption: (option: string) => void;
 }

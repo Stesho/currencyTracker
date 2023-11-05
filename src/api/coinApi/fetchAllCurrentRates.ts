@@ -4,10 +4,12 @@ import {
   GET_ALL_CURRENT_RATES_URL,
 } from '@/constants/api/coinApi/endpoints';
 import { COIN_API_KEY } from '@/constants/environtment/environment';
-import { filteredCurrencies } from '@/constants/api/coinApi/currencies';
+import currencies from '@/constants/currencies/currencies';
 
-const getAllCurrentRates = async (baseCurrency: string = 'USD') => {
+const fetchAllCurrentRates = async (baseCurrency: string = 'USD') => {
   try {
+    const currencyCodes = currencies.map((currency) => currency.id).join(',');
+
     const currentRates = await axios.get(
       `${BASE_URL}${GET_ALL_CURRENT_RATES_URL}/${baseCurrency}`,
       {
@@ -16,7 +18,7 @@ const getAllCurrentRates = async (baseCurrency: string = 'USD') => {
           'X-CoinAPI-Key': COIN_API_KEY,
         },
         params: {
-          filter_asset_id: filteredCurrencies,
+          filter_asset_id: currencyCodes,
           invert: true,
         },
       },
@@ -40,4 +42,4 @@ const getAllCurrentRates = async (baseCurrency: string = 'USD') => {
   }
 };
 
-export default getAllCurrentRates;
+export default fetchAllCurrentRates;

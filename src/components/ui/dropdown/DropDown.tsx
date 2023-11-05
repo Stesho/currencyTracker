@@ -1,7 +1,7 @@
 import React, { Component, RefObject } from 'react';
 import Arrow from '@/assets/icons/arrow.svg';
 import DropDownList from '@/components/ui/dropdown/dropDownList/DropDownList';
-import IDropDownProps from '@/constants/interfaces/IDropDownProps';
+import DropDownProps from '@/constants/interfaces/dropDownProps';
 import styles from './DropDown.module.scss';
 
 interface IDropDownState {
@@ -9,10 +9,10 @@ interface IDropDownState {
   selectedOption: string;
 }
 
-class DropDown extends Component<IDropDownProps, IDropDownState> {
+class DropDown extends Component<DropDownProps, IDropDownState> {
   private readonly dropDown: RefObject<HTMLDivElement>;
 
-  constructor(props: IDropDownProps) {
+  constructor(props: DropDownProps) {
     super(props);
     this.dropDown = React.createRef();
     this.state = {

@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import CurrencyCardProps from '@/constants/interfaces/currencyCardProps';
 import CurrencyCard from '@/components/ui/currencyCard/CurrencyCard';
-import Modal from '@/components/ui/modal/Modal';
+import CurrencyModal from '@/components/currencyModal/currencyModal';
 import styles from './CurrencyList.module.scss';
 
 interface CurrencyListProps {
@@ -10,9 +10,15 @@ interface CurrencyListProps {
 }
 
 function CurrencyList({ title, currencies }: CurrencyListProps) {
-  const [isModalActive, setModalActive] = useState(false);
+  const [isModalActive, setModalActive] = useState<boolean>(false);
+  const [selectedCurrency, setSelectedCurrency] = useState<CurrencyCardProps>(
+    null!,
+  );
 
-  const onModalOpen = () => {
+  const onModalOpen = (currency?: CurrencyCardProps) => {
+    if (currency) {
+      setSelectedCurrency(currency);
+    }
     setModalActive(true);
   };
   const onModalClose = () => {
@@ -35,9 +41,7 @@ function CurrencyList({ title, currencies }: CurrencyListProps) {
         ))}
       </div>
       {isModalActive && (
-        <Modal id='currency-modal' onClose={onModalClose}>
-          Hello world
-        </Modal>
+        <CurrencyModal onClose={onModalClose} currency={selectedCurrency} />
       )}
     </div>
   );

@@ -33,7 +33,7 @@ const currencies: Currency[] = [
   {
     id: 'CNY',
     iconUrl: YuanIcon,
-    currencyName: 'Commercial Dollar',
+    currencyName: 'Yuan',
   },
   {
     id: 'EUR',

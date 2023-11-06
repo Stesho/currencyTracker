@@ -3,7 +3,7 @@ interface CurrencyCardProps {
   iconUrl: string;
   currencyName: string;
   rate: number;
-  onClick?: () => void;
+  onClick?: (currency?: CurrencyCardProps) => void;
 }
 
 export default CurrencyCardProps;

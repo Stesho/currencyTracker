@@ -33,6 +33,7 @@
   "rules": {
     "import/no-unresolved": "error",
     "no-console": "warn",
+    "no-param-reassign": "warn",
     "import/prefer-default-export": "warn",
     "@typescript-eslint/no-unused-vars": "warn",
     "react/require-default-props": "warn",

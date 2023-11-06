@@ -5,13 +5,17 @@ import CurrencyList from '@/components/ui/currencyList/CurrencyList';
 import stocks from '@/constants/currencies/stocks';
 import CurrencyCardProps from '@/constants/interfaces/currencyCardProps';
 import getCurrencies from '@/services/currency/getCurrencies';
+import { useDispatch } from 'react-redux';
+import { updateCurrencies } from '@/store/slices/currencySlice';
 
 function Home() {
   const [currencies, setCurrencies] = useState<CurrencyCardProps[]>([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     getCurrencies().then((data: CurrencyCardProps[]) => {
       setCurrencies(data);
+      dispatch(updateCurrencies(data));
     });
   }, []);
 

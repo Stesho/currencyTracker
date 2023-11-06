@@ -3,17 +3,17 @@ import Info from '@/components/ui/info/Info';
 import TimeUpdate from '@/components/ui/timeUpdate/TimeUpdate';
 import CurrencyList from '@/components/ui/currencyList/CurrencyList';
 import stocks from '@/constants/currencies/stocks';
-import CurrencyCardProps from '@/constants/interfaces/currencyCardProps';
 import getCurrencies from '@/services/currency/getCurrencies';
 import { useDispatch } from 'react-redux';
 import { updateCurrencies } from '@/store/slices/currencySlice';
+import { CurrencyRated } from '@/constants/interfaces/currency';
 
 function Home() {
-  const [currencies, setCurrencies] = useState<CurrencyCardProps[]>([]);
+  const [currencies, setCurrencies] = useState<CurrencyRated[]>([]);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    getCurrencies().then((data: CurrencyCardProps[]) => {
+    getCurrencies().then((data: CurrencyRated[]) => {
       setCurrencies(data);
       dispatch(updateCurrencies(data));
     });

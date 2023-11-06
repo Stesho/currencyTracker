@@ -4,4 +4,8 @@ interface Currency {
   currencyName: string;
 }
 
-export default Currency;
+interface CurrencyRated extends Currency {
+  rate: number;
+}
+
+export type { Currency, CurrencyRated };

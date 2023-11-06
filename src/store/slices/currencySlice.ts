@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import CurrencyCardProps from '@/constants/interfaces/currencyCardProps';
+import { CurrencyRated } from '@/constants/interfaces/currency';
 
 interface InitialState {
-  currencies: CurrencyCardProps[];
+  currencies: CurrencyRated[];
 }
 
 const initialState: InitialState = {

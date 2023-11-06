@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import Modal from '@/components/ui/modal/Modal';
-import CurrencyCardProps from '@/constants/interfaces/currencyCardProps';
 import CurrencyCard from '@/components/ui/currencyCard/CurrencyCard';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store/store';
+import { CurrencyRated } from '@/constants/interfaces/currency';
 import styles from './currencyModal.module.scss';
 
 interface CurrencyModalProps {
   id?: string;
-  currency: CurrencyCardProps;
+  currency: CurrencyRated;
   onClose: () => void;
 }
 
@@ -17,7 +17,7 @@ function CurrencyModal({
   onClose,
   id = 'currency-modal',
 }: CurrencyModalProps) {
-  const [selectedCurrency, setSelectedCurrency] = useState<CurrencyCardProps>(
+  const [selectedCurrency, setSelectedCurrency] = useState<CurrencyRated>(
     null!,
   );
   const [rate, setRate] = useState(currency.rate);
@@ -44,7 +44,6 @@ function CurrencyModal({
             currencyName={currency.currencyName}
             rate={currency.rate}
           />
-          {/* <DropDown options={currencyState.currencies.map((currency) => currency.currencyName)} /> */}
           <input
             value={quantity}
             type='number'
@@ -56,7 +55,7 @@ function CurrencyModal({
           <span>{quantity * rate}</span>
           <span> {selectedCurrency?.id || 'USD'}</span>
           <ul>
-            {currencyState.currencies.map((currencyItem: CurrencyCardProps) => (
+            {currencyState.currencies.map((currencyItem: CurrencyRated) => (
               <li
                 key={currencyItem.id}
                 value={currencyItem.id}

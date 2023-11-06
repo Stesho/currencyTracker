@@ -1,6 +1,10 @@
 import React from 'react';
-import CurrencyCardProps from '@/constants/interfaces/currencyCardProps';
+import { CurrencyRated } from '@/constants/interfaces/currency';
 import styles from './CurrencyCard.module.scss';
+
+interface CurrencyCardProps extends CurrencyRated {
+  onClick?: (currency?: CurrencyCardProps) => void;
+}
 
 function CurrencyCard({
   id,
@@ -9,6 +13,10 @@ function CurrencyCard({
   rate,
   onClick,
 }: CurrencyCardProps) {
+  const decimalPlaces = 3;
+  const fixedRate = Number(rate.toFixed(decimalPlaces));
+  const formattedRate = fixedRate.toString().replace(/\./g, ',');
+
   const onCardClick = () => {
     const currency = {
       id,
@@ -24,7 +32,7 @@ function CurrencyCard({
       <img className={styles.icon} src={iconUrl} alt='currency' />
       <div className={styles.text}>
         <span className={styles.name}>{currencyName}</span>
-        <span className={styles.rate}>R$ {rate}</span>
+        <span className={styles.rate}>R$ {formattedRate}</span>
       </div>
     </div>
   );

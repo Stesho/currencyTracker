@@ -1,8 +1,8 @@
 import BovespaIcon from '@/assets/img/Bovespa Icon.png';
 import IfixIcon from '@/assets/img/IFIX.png';
-import CurrencyCardProps from '@/constants/interfaces/currencyCardProps';
+import { CurrencyRated } from '@/constants/interfaces/currency';
 
-const stocks: CurrencyCardProps[] = [
+const stocks: CurrencyRated[] = [
   {
     id: 'Bovespa',
     iconUrl: BovespaIcon,

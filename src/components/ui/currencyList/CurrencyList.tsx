@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
-import CurrencyCardProps from '@/constants/interfaces/currencyCardProps';
+import { CurrencyRated } from '@/constants/interfaces/currency';
 import CurrencyCard from '@/components/ui/currencyCard/CurrencyCard';
 import CurrencyModal from '@/components/currencyModal/currencyModal';
 import styles from './CurrencyList.module.scss';
 
 interface CurrencyListProps {
   title: string;
-  currencies: CurrencyCardProps[];
+  currencies: CurrencyRated[];
 }
 
 function CurrencyList({ title, currencies }: CurrencyListProps) {
   const [isModalActive, setModalActive] = useState<boolean>(false);
-  const [selectedCurrency, setSelectedCurrency] = useState<CurrencyCardProps>(
+  const [selectedCurrency, setSelectedCurrency] = useState<CurrencyRated>(
     null!,
   );
 
-  const onModalOpen = (currency?: CurrencyCardProps) => {
+  const onModalOpen = (currency?: CurrencyRated) => {
     if (currency) {
       setSelectedCurrency(currency);
     }

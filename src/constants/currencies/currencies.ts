@@ -7,7 +7,7 @@ import YenIcon from '@/assets/img/Yen Icon.png';
 import CanadianDollarIcon from '@/assets/img/Canadian Dollar Icon.png';
 import YuanIcon from '@/assets/img/Won Icon.png';
 import PoundIcon from '@/assets/img/Pound Icon.png';
-import Currency from '@/constants/interfaces/currency';
+import { Currency } from '@/constants/interfaces/currency';
 
 const currencies: Currency[] = [
   {

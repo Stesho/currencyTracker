@@ -1,5 +1,6 @@
 import React from 'react';
 import { CurrencyRated } from '@/constants/interfaces/currency';
+import replaceDotToComma from '@/utils/replaceDotToComma';
 import styles from './CurrencyCard.module.scss';
 
 interface CurrencyCardProps extends CurrencyRated {
@@ -13,10 +14,7 @@ function CurrencyCard({
   rate,
   onClick,
 }: CurrencyCardProps) {
-  const decimalPlaces = 3;
-  const fixedRate = Number(rate.toFixed(decimalPlaces));
-  const formattedRate = fixedRate.toString().replace(/\./g, ',');
-
+  const formattedRate = replaceDotToComma(rate);
   const onCardClick = () => {
     const currency = {
       id,

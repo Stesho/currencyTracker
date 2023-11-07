@@ -32,7 +32,11 @@
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
     "import/no-unresolved": "error",
+    "no-console": "warn",
+    "no-param-reassign": "warn",
+    "import/prefer-default-export": "warn",
     "@typescript-eslint/no-unused-vars": "warn",
+    "react/require-default-props": "warn",
     "jsx-a11y/label-has-associated-control": "warn",
     "jsx-a11y/click-events-have-key-events": "warn",
     "jsx-a11y/no-static-element-interactions": "warn",

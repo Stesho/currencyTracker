@@ -1,14 +1,14 @@
-import React, { useRef , useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import Portal from '../portal/Portal';
 import styles from './Modal.module.scss';
 
-interface IModalProps {
+interface ModalProps {
   id: string;
   onClose: () => void;
   children: React.ReactNode;
 }
 
-function Modal({ id, onClose, children }: IModalProps) {
+function Modal({ id, onClose, children }: ModalProps) {
   const overlay = useRef(null);
 
   useEffect(() => {

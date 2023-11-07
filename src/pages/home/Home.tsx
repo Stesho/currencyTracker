@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Info from '@/components/ui/info/Info';
 import TimeUpdate from '@/components/ui/timeUpdate/TimeUpdate';
 import CurrencyList from '@/components/ui/currencyList/CurrencyList';
-import currencies from '@/constants/currencies/currencies';
 import stocks from '@/constants/currencies/stocks';
+import getCurrencies from '@/services/currency/getCurrencies';
+import { useDispatch } from 'react-redux';
+import { updateCurrencies } from '@/store/slices/currencySlice';
+import { CurrencyRated } from '@/constants/interfaces/currency';
 
 function Home() {
+  const [currencies, setCurrencies] = useState<CurrencyRated[]>([]);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    getCurrencies().then((data: CurrencyRated[]) => {
+      setCurrencies(data);
+      dispatch(updateCurrencies(data));
+    });
+  }, []);
+
   return (
     <main>
       <Info />

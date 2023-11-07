@@ -1,23 +1,24 @@
 import React, { Component, RefObject } from 'react';
 import Arrow from '@/assets/icons/arrow.svg';
 import DropDownList from '@/components/ui/dropdown/dropDownList/DropDownList';
-import IDropDownProps from '@/constants/interfaces/IDropDownProps';
+import DropDownProps from '@/constants/interfaces/dropDownProps';
+import { Currency, CurrencyRated } from '@/constants/interfaces/currency';
 import styles from './DropDown.module.scss';
 
-interface IDropDownState {
+interface DropDownState {
   isOpen: boolean;
-  selectedOption: string;
+  selectedOption: Currency;
 }
 
-class DropDown extends Component<IDropDownProps, IDropDownState> {
+class DropDown extends Component<DropDownProps, DropDownState> {
   private readonly dropDown: RefObject<HTMLDivElement>;
 
-  constructor(props: IDropDownProps) {
+  constructor(props: DropDownProps) {
     super(props);
     this.dropDown = React.createRef();
     this.state = {
       isOpen: false,
-      selectedOption: props.options[0] || 'select',
+      selectedOption: props.options[0],
     };
   }
 
@@ -42,7 +43,10 @@ class DropDown extends Component<IDropDownProps, IDropDownState> {
     }));
   };
 
-  setSelectedOption = (option: string) => {
+  onOptionClick = (option: CurrencyRated) => {
+    const { onSelectOption } = this.props;
+
+    onSelectOption(option);
     this.setState((prev) => ({
       isOpen: !prev.isOpen,
       selectedOption: option,
@@ -56,7 +60,7 @@ class DropDown extends Component<IDropDownProps, IDropDownState> {
 
   render() {
     const { selectedOption, isOpen } = this.state;
-    const { options } = this.props;
+    const { options, onSelectOption } = this.props;
 
     return (
       <div className={styles.dropDown} ref={this.dropDown}>
@@ -65,14 +69,14 @@ class DropDown extends Component<IDropDownProps, IDropDownState> {
           onClick={this.toggleDropDown}
           type='button'
         >
-          <div className={styles.option}>{selectedOption}</div>
+          <div className={styles.option}>{selectedOption.currencyName}</div>
           <Arrow className={this.arrowAnimation()} />
         </button>
         {isOpen && (
           <DropDownList
             options={options}
             selectedOption={selectedOption}
-            setSelectedOption={this.setSelectedOption}
+            onSelectOption={this.onOptionClick}
           />
         )}
       </div>

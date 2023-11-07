@@ -1,27 +1,27 @@
 import React, { PureComponent } from 'react';
 import styles from '@/components/ui/dropdown/DropDown.module.scss';
-import IDropDownProps from '@/constants/interfaces/IDropDownProps';
+import DropDownProps from '@/constants/interfaces/dropDownProps';
+import { Currency } from '@/constants/interfaces/currency';
 
-interface IDropDownListProps extends IDropDownProps {
-  selectedOption: string;
-  setSelectedOption: (option: string) => void;
+interface DropDownListProps extends DropDownProps {
+  selectedOption: Currency;
 }
 
-class DropDownList extends PureComponent<IDropDownListProps> {
+class DropDownList extends PureComponent<DropDownListProps> {
   render() {
-    const { options, selectedOption, setSelectedOption } = this.props;
+    const { options, selectedOption, onSelectOption } = this.props;
 
     return (
       <ul className={styles.dropDownList}>
         {options.map(
           (option) =>
-            option !== selectedOption && (
+            option.id !== selectedOption.id && (
               <li
-                key={option}
-                onClick={() => setSelectedOption(option)}
+                key={option.id}
+                onClick={() => onSelectOption(option)}
                 className={styles.option}
               >
-                {option}
+                {option.currencyName}
               </li>
             ),
         )}

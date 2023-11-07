@@ -1,13 +1,9 @@
 @import '@/styles/variables.scss';
 
 .currencyCard {
-  max-width: 520px;
+  max-width: 454px;
   width: 100%;
   display: flex;
-  padding: 34px 32px;
-  border: 1px solid $grey-400;
-  border-radius: 8px;
-  background: var(--secondary-color-200);
 }
 
 .icon {
@@ -22,7 +18,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  line-height: 1;
 }
 
 .name {
@@ -31,10 +26,5 @@
   text-overflow: ellipsis;
   color: var(--text-color-200);
   font-size: 35px;
-}
-
-.rate {
-  color: var(--text-color-300);
-  font-size: 32px;
-  font-weight: 300;
+  line-height: 1.3;
 }

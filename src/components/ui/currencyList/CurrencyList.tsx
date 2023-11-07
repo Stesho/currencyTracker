@@ -1,21 +1,27 @@
 import React, { useState } from 'react';
-import ICurrencyCard from '@/constants/interfaces/ICurrencyCard';
-import CurrencyCard from '@/components/ui/currencyCard/CurrencyCard';
-import Modal from '@/components/ui/modal/Modal';
+import { CurrencyRated } from '@/constants/interfaces/currency';
+import CurrencyCard from '@/components/ui/currencyRatedCard/CurrencyRatedCard';
+import CurrencyModal from '@/components/currencyModal/currencyModal';
 import styles from './CurrencyList.module.scss';
 
-interface ICurrencyListProps {
+interface CurrencyListProps {
   title: string;
-  currencies: ICurrencyCard[];
+  currencies: CurrencyRated[];
 }
 
-function CurrencyList({ title, currencies }: ICurrencyListProps) {
-  const [isModalActive, setModalActive] = useState(false);
+function CurrencyList({ title, currencies }: CurrencyListProps) {
+  const [isModalActive, setModalActive] = useState<boolean>(false);
+  const [selectedCurrency, setSelectedCurrency] = useState<CurrencyRated>(
+    null!,
+  );
 
-  const handleModalOpen = () => {
+  const onModalOpen = (currency?: CurrencyRated) => {
+    if (currency) {
+      setSelectedCurrency(currency);
+    }
     setModalActive(true);
   };
-  const handleModalClose = () => {
+  const onModalClose = () => {
     setModalActive(false);
   };
 
@@ -30,14 +36,12 @@ function CurrencyList({ title, currencies }: ICurrencyListProps) {
             iconUrl={currencyItem.iconUrl}
             currencyName={currencyItem.currencyName}
             rate={currencyItem.rate}
-            onClick={handleModalOpen}
+            onClick={onModalOpen}
           />
         ))}
       </div>
       {isModalActive && (
-        <Modal id='currency-modal' onClose={handleModalClose}>
-          Hello world
-        </Modal>
+        <CurrencyModal onClose={onModalClose} currency={selectedCurrency} />
       )}
     </div>
   );

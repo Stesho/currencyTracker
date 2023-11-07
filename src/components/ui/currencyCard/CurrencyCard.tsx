@@ -1,14 +1,22 @@
-import React from 'react';
-import ICurrencyCard from '@/constants/interfaces/ICurrencyCard';
+import React, { ReactNode } from 'react';
+import { Currency } from '@/constants/interfaces/currency';
 import styles from './CurrencyCard.module.scss';
 
-function CurrencyCard({ iconUrl, currencyName, rate, onClick }: ICurrencyCard) {
+interface CurrencyCardProps extends Currency {
+  children: ReactNode;
+}
+
+function CurrencyCard({
+  currencyName,
+  iconUrl,
+  children,
+}: CurrencyCardProps) {
   return (
-    <div className={styles.currencyCard} onClick={onClick}>
+    <div className={styles.currencyCard}>
       <img className={styles.icon} src={iconUrl} alt='currency' />
       <div className={styles.text}>
         <span className={styles.name}>{currencyName}</span>
-        <span className={styles.rate}>R$ {rate}</span>
+        {children}
       </div>
     </div>
   );

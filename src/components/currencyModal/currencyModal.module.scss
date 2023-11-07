@@ -1,0 +1,30 @@
+@import '@/styles/variables.scss';
+
+.currencyModal {
+  width: 600px;
+  position: relative;
+  padding: 45px;
+  background-color: var(--secondary-color-100);
+  border: 1px solid $grey-400;
+  border-radius: 8px;
+}
+
+.closeButton {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  font-size: 35px;
+  top: 7px;
+  left: calc(100% - 30px - 7px);
+  cursor: pointer;
+}
+
+.convert {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+  font-size: 22px;
+}

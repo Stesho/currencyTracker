@@ -5,6 +5,7 @@ import { RootState } from '@/store/store';
 import { CurrencyRated } from '@/constants/interfaces/currency';
 import DropDown from '@/components/ui/dropdown/DropDown';
 import CurrencyCodeCard from '@/components/ui/currencyCodeCard/CurrencyCodeCard';
+import NumberInput from '@/components/ui/numberInput/NumberInput';
 import styles from './currencyModal.module.scss';
 
 interface CurrencyModalProps {
@@ -25,6 +26,10 @@ function CurrencyModal({
   const [quantity, setQuantity] = useState(1);
   const currencyState = useSelector((state: RootState) => state.currency);
 
+  const onInputQuantity = (value: string) => {
+    setQuantity(Number(value));
+  };
+
   useEffect(() => {
     if (selectedCurrency) {
       const newRate = currency.rate / selectedCurrency.rate;
@@ -44,16 +49,15 @@ function CurrencyModal({
             iconUrl={currency.iconUrl}
             currencyName={currency.currencyName}
           />
-          <input
-            value={quantity}
-            type='number'
-            min={1}
-            onChange={(e) => setQuantity(Number(e.target.value))}
-          />
-          <span>{currency.id}</span>
-          <span> = </span>
-          <span>{quantity * rate}</span>
-          <span> {selectedCurrency?.id || 'USD'}</span>
+          <div className={styles.convert}>
+            <NumberInput
+              value={quantity.toString()}
+              setValue={onInputQuantity}
+            />
+            <span>
+              {currency.id} = {quantity * rate} {selectedCurrency?.id || 'USD'}
+            </span>
+          </div>
           <DropDown
             options={currencyState.currencies}
             onSelectOption={setSelectedCurrency}

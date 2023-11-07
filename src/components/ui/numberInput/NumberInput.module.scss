@@ -1,0 +1,16 @@
+@import '@/styles/variables.scss';
+
+.input {
+  width: 100px;
+  padding: 5px;
+  background-color: var(--secondary-color-100);
+  border: 1px solid $grey-400;
+  border-radius: 5px;
+  outline: none;
+  color: var(--text-color-200);
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}

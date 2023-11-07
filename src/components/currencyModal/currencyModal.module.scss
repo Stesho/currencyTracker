@@ -20,3 +20,10 @@
   left: calc(100% - 30px - 7px);
   cursor: pointer;
 }
+
+.convert {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+  font-size: 22px;
+}

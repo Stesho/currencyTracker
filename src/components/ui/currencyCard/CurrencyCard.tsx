@@ -1,36 +1,22 @@
-import React from 'react';
-import { CurrencyRated } from '@/constants/interfaces/currency';
-import replaceDotToComma from '@/utils/replaceDotToComma';
+import React, { ReactNode } from 'react';
+import { Currency } from '@/constants/interfaces/currency';
 import styles from './CurrencyCard.module.scss';
 
-interface CurrencyCardProps extends CurrencyRated {
-  onClick?: (currency?: CurrencyCardProps) => void;
+interface CurrencyCardProps extends Currency {
+  children: ReactNode;
 }
 
 function CurrencyCard({
-  id,
-  iconUrl,
   currencyName,
-  rate,
-  onClick,
+  iconUrl,
+  children,
 }: CurrencyCardProps) {
-  const formattedRate = replaceDotToComma(rate);
-  const onCardClick = () => {
-    const currency = {
-      id,
-      iconUrl,
-      currencyName,
-      rate,
-    };
-    onClick?.(currency);
-  };
-
   return (
-    <div className={styles.currencyCard} onClick={onCardClick}>
+    <div className={styles.currencyCard}>
       <img className={styles.icon} src={iconUrl} alt='currency' />
       <div className={styles.text}>
         <span className={styles.name}>{currencyName}</span>
-        <span className={styles.rate}>R$ {formattedRate}</span>
+        {children}
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Modal from '@/components/ui/modal/Modal';
-import CurrencyCard from '@/components/ui/currencyCard/CurrencyCard';
+import CurrencyCard from '@/components/ui/currencyRatedCard/CurrencyRatedCard';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store/store';
 import { CurrencyRated } from '@/constants/interfaces/currency';
@@ -15,7 +15,7 @@ interface CurrencyModalProps {
 function CurrencyModal({
   currency,
   onClose,
-  id = 'currency-modal',
+  id = 'currencyCodeCard-modal',
 }: CurrencyModalProps) {
   const [selectedCurrency, setSelectedCurrency] = useState<CurrencyRated>(
     null!,

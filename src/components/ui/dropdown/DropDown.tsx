@@ -2,11 +2,12 @@ import React, { Component, RefObject } from 'react';
 import Arrow from '@/assets/icons/arrow.svg';
 import DropDownList from '@/components/ui/dropdown/dropDownList/DropDownList';
 import DropDownProps from '@/constants/interfaces/dropDownProps';
+import { Currency, CurrencyRated } from '@/constants/interfaces/currency';
 import styles from './DropDown.module.scss';
 
 interface DropDownState {
   isOpen: boolean;
-  selectedOption: string;
+  selectedOption: Currency;
 }
 
 class DropDown extends Component<DropDownProps, DropDownState> {
@@ -17,7 +18,7 @@ class DropDown extends Component<DropDownProps, DropDownState> {
     this.dropDown = React.createRef();
     this.state = {
       isOpen: false,
-      selectedOption: props.options[0] || 'select',
+      selectedOption: props.options[0],
     };
   }
 
@@ -42,7 +43,10 @@ class DropDown extends Component<DropDownProps, DropDownState> {
     }));
   };
 
-  setSelectedOption = (option: string) => {
+  onOptionClick = (option: CurrencyRated) => {
+    const { onSelectOption } = this.props;
+
+    onSelectOption(option);
     this.setState((prev) => ({
       isOpen: !prev.isOpen,
       selectedOption: option,
@@ -56,7 +60,7 @@ class DropDown extends Component<DropDownProps, DropDownState> {
 
   render() {
     const { selectedOption, isOpen } = this.state;
-    const { options } = this.props;
+    const { options, onSelectOption } = this.props;
 
     return (
       <div className={styles.dropDown} ref={this.dropDown}>
@@ -65,14 +69,14 @@ class DropDown extends Component<DropDownProps, DropDownState> {
           onClick={this.toggleDropDown}
           type='button'
         >
-          <div className={styles.option}>{selectedOption}</div>
+          <div className={styles.option}>{selectedOption.currencyName}</div>
           <Arrow className={this.arrowAnimation()} />
         </button>
         {isOpen && (
           <DropDownList
             options={options}
             selectedOption={selectedOption}
-            setSelectedOption={this.setSelectedOption}
+            onSelectOption={this.onOptionClick}
           />
         )}
       </div>

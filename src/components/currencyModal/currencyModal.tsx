@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Modal from '@/components/ui/modal/Modal';
-import CurrencyCard from '@/components/ui/currencyRatedCard/CurrencyRatedCard';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store/store';
 import { CurrencyRated } from '@/constants/interfaces/currency';
+import DropDown from '@/components/ui/dropdown/DropDown';
+import CurrencyCodeCard from '@/components/ui/currencyCodeCard/CurrencyCodeCard';
 import styles from './currencyModal.module.scss';
 
 interface CurrencyModalProps {
@@ -38,11 +39,10 @@ function CurrencyModal({
           ✖
         </button>
         <div className={styles.content}>
-          <CurrencyCard
+          <CurrencyCodeCard
             id={currency.id}
             iconUrl={currency.iconUrl}
             currencyName={currency.currencyName}
-            rate={currency.rate}
           />
           <input
             value={quantity}
@@ -54,17 +54,10 @@ function CurrencyModal({
           <span> = </span>
           <span>{quantity * rate}</span>
           <span> {selectedCurrency?.id || 'USD'}</span>
-          <ul>
-            {currencyState.currencies.map((currencyItem: CurrencyRated) => (
-              <li
-                key={currencyItem.id}
-                value={currencyItem.id}
-                onClick={() => setSelectedCurrency(currencyItem)}
-              >
-                {currencyItem.currencyName}
-              </li>
-            ))}
-          </ul>
+          <DropDown
+            options={currencyState.currencies}
+            onSelectOption={setSelectedCurrency}
+          />
         </div>
       </div>
     </Modal>

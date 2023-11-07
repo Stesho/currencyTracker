@@ -13,9 +13,7 @@ class Timeline extends PureComponent<TimelineProps, TimelineState> {
 
     return (
       <div className='container'>
-        {currencies.length && (
-          <DropDown options={currencies} onSelectOption={() => {}} />
-        )}
+        <DropDown options={currencies} onSelectOption={() => {}} />
       </div>
     );
   }

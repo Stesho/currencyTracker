@@ -3,6 +3,7 @@ import { CurrencyRated } from '@/constants/interfaces/currency';
 import DropDown from '@/components/ui/dropdown/DropDown';
 import CurrencyCodeCard from '@/components/ui/currencyCodeCard/CurrencyCodeCard';
 import PriceChart from '@/components/priceChart/PriceChart';
+import styles from './Timeline.module.scss';
 
 interface TimelineProps {
   currencies: CurrencyRated[];
@@ -19,13 +20,23 @@ class Timeline extends PureComponent<TimelineProps, TimelineState> {
     };
   }
 
+  onSelectCurrency = (currency: CurrencyRated) => {
+    this.setState({
+      selectedCurrency: currency,
+    });
+  };
+
   render() {
     const { selectedCurrency } = this.state;
     const { currencies } = this.props;
 
     return (
       <div className='container'>
-        <DropDown options={currencies} onSelectOption={() => {}} />
+        <DropDown
+          options={currencies}
+          onSelectOption={this.onSelectCurrency}
+          className={styles.dropDown}
+        />
         <CurrencyCodeCard
           id={selectedCurrency.id}
           iconUrl={selectedCurrency.iconUrl}

@@ -12,8 +12,8 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
-      <TimeUpdate />
       <Info />
+      <TimeUpdate />
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='timeline' element={<TimelinePage />} />

@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { CurrencyRated } from '@/constants/interfaces/currency';
 import DropDown from '@/components/ui/dropdown/DropDown';
 import CurrencyCodeCard from '@/components/ui/currencyCodeCard/CurrencyCodeCard';
-import PriceChart from '@/components/priceChart/PriceChart';
+import ChartForm from '@/components/ui/chartForm/ChartForm';
 import styles from './Timeline.module.scss';
 
 interface TimelineProps {
@@ -42,7 +42,7 @@ class Timeline extends PureComponent<TimelineProps, TimelineState> {
           iconUrl={selectedCurrency.iconUrl}
           currencyName={selectedCurrency.currencyName}
         />
-        <PriceChart />
+        <ChartForm />
       </div>
     );
   }

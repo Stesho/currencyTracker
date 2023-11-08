@@ -10,6 +10,9 @@ interface ChartFormProps {
 
 function ChartForm({ onSubmit }: ChartFormProps) {
   const rowsCount = 5;
+  const tableHead = [...new Array(rowsCount)].map((head, index) =>
+    index === 1 ? 'Day' : '',
+  );
   const [values, setValues] = useState<number[][]>(() => {
     const cellsCountInRow = 4;
     const rowsArr = [...new Array(rowsCount)];
@@ -27,9 +30,19 @@ function ChartForm({ onSubmit }: ChartFormProps) {
       const day = (index + 1).toString();
       return [day, ...row];
     });
-    chartData.unshift(['Day', '', '', '', '']);
+    chartData.unshift(tableHead);
 
     onSubmit(chartData);
+  };
+
+  const setStaticValues = () => {
+    setValues([
+      [20, 28, 38, 45],
+      [31, 38, 55, 66],
+      [50, 55, 77, 80],
+      [77, 77, 66, 50],
+      [68, 66, 22, 15],
+    ]);
   };
 
   return (
@@ -58,6 +71,9 @@ function ChartForm({ onSubmit }: ChartFormProps) {
       </table>
       <button type='button' onClick={onSubmitForm}>
         Build chart
+      </button>
+      <button type='button' onClick={setStaticValues}>
+        Set static values
       </button>
     </div>
   );

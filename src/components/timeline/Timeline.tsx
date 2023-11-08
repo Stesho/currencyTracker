@@ -3,6 +3,8 @@ import { CurrencyRated } from '@/constants/interfaces/currency';
 import DropDown from '@/components/ui/dropdown/DropDown';
 import CurrencyCodeCard from '@/components/ui/currencyCodeCard/CurrencyCodeCard';
 import ChartForm from '@/components/ui/chartForm/ChartForm';
+import PriceChart from '@/components/priceChart/PriceChart';
+import { ChartData } from '@/constants/chart/chartData';
 import styles from './Timeline.module.scss';
 
 interface TimelineProps {
@@ -10,6 +12,8 @@ interface TimelineProps {
 }
 interface TimelineState {
   selectedCurrency: CurrencyRated;
+  chartData: ChartData;
+  chartBuilt: boolean;
 }
 
 class Timeline extends PureComponent<TimelineProps, TimelineState> {
@@ -17,6 +21,8 @@ class Timeline extends PureComponent<TimelineProps, TimelineState> {
     super(props);
     this.state = {
       selectedCurrency: props.currencies[0],
+      chartData: [],
+      chartBuilt: false,
     };
   }
 
@@ -26,8 +32,15 @@ class Timeline extends PureComponent<TimelineProps, TimelineState> {
     });
   };
 
+  onSubmitForm = (data: ChartData) => {
+    this.setState({
+      chartData: data,
+      chartBuilt: true,
+    });
+  };
+
   render() {
-    const { selectedCurrency } = this.state;
+    const { selectedCurrency, chartData, chartBuilt } = this.state;
     const { currencies } = this.props;
 
     return (
@@ -42,7 +55,11 @@ class Timeline extends PureComponent<TimelineProps, TimelineState> {
           iconUrl={selectedCurrency.iconUrl}
           currencyName={selectedCurrency.currencyName}
         />
-        <ChartForm />
+        {chartBuilt ? (
+          <PriceChart data={chartData} />
+        ) : (
+          <ChartForm onSubmit={this.onSubmitForm} />
+        )}
       </div>
     );
   }

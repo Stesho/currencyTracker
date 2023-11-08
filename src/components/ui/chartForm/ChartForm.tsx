@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 import ChartFormRow from '@/components/ui/chartForm/chartFormRow/ChartFormRow';
+import { ChartData } from '@/constants/chart/chartData';
+import { Chart } from 'react-google-charts';
 import styles from './ChartForm.module.scss';
 
-function ChartForm() {
+interface ChartFormProps {
+  onSubmit: (data: ChartData) => void;
+}
+
+function ChartForm({ onSubmit }: ChartFormProps) {
   const rowsCount = 5;
-  const [values, setValues] = useState(() => {
+  const [values, setValues] = useState<number[][]>(() => {
     const cellsCountInRow = 4;
     const rowsArr = [...new Array(rowsCount)];
     return rowsArr.map(() => new Array(cellsCountInRow).fill(0));
@@ -16,8 +22,14 @@ function ChartForm() {
     setValues(newValues);
   };
 
-  const onSubmit = () => {
-    console.log(values);
+  const onSubmitForm = () => {
+    const chartData: ChartData = values.map((row, index) => {
+      const day = (index + 1).toString();
+      return [day, ...row];
+    });
+    chartData.unshift(['Day', '', '', '', '']);
+
+    onSubmit(chartData);
   };
 
   return (
@@ -44,7 +56,7 @@ function ChartForm() {
           ))}
         </tbody>
       </table>
-      <button type='button' onClick={onSubmit}>
+      <button type='button' onClick={onSubmitForm}>
         Build chart
       </button>
     </div>

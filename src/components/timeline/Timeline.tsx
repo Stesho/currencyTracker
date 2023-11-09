@@ -5,6 +5,7 @@ import CurrencyCodeCard from '@/components/ui/currencyCodeCard/CurrencyCodeCard'
 import ChartForm from '@/components/ui/chartForm/ChartForm';
 import PriceChart from '@/components/priceChart/PriceChart';
 import { ChartData } from '@/constants/chart/chartData';
+import Notification from '@/components/ui/notification/Notification';
 import styles from './Timeline.module.scss';
 
 interface TimelineProps {
@@ -14,6 +15,7 @@ interface TimelineState {
   selectedCurrency: CurrencyRated;
   chartData: ChartData;
   chartBuilt: boolean;
+  isNotificationShow: boolean;
 }
 
 class Timeline extends PureComponent<TimelineProps, TimelineState> {
@@ -23,6 +25,7 @@ class Timeline extends PureComponent<TimelineProps, TimelineState> {
       selectedCurrency: props.currencies[0],
       chartData: [],
       chartBuilt: false,
+      isNotificationShow: false,
     };
   }
 
@@ -41,7 +44,8 @@ class Timeline extends PureComponent<TimelineProps, TimelineState> {
   };
 
   render() {
-    const { selectedCurrency, chartData, chartBuilt } = this.state;
+    const { selectedCurrency, chartData, chartBuilt, isNotificationShow } =
+      this.state;
     const { currencies } = this.props;
 
     return (
@@ -61,6 +65,7 @@ class Timeline extends PureComponent<TimelineProps, TimelineState> {
         ) : (
           <ChartForm onSubmit={this.onSubmitForm} />
         )}
+        {isNotificationShow && <Notification />}
       </div>
     );
   }

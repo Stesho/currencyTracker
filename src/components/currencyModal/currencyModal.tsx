@@ -26,8 +26,8 @@ function CurrencyModal({
   const [quantity, setQuantity] = useState(1);
   const currencyState = useSelector((state: RootState) => state.currency);
 
-  const onInputQuantity = (value: string) => {
-    setQuantity(Number(value));
+  const onInputQuantity = (value: number) => {
+    setQuantity(value);
   };
 
   useEffect(() => {
@@ -50,10 +50,7 @@ function CurrencyModal({
             currencyName={currency.currencyName}
           />
           <div className={styles.convert}>
-            <NumberInput
-              value={quantity.toString()}
-              setValue={onInputQuantity}
-            />
+            <NumberInput value={quantity} setValue={onInputQuantity} />
             <span>
               {currency.id} = {quantity * rate} {selectedCurrency?.id || 'USD'}
             </span>

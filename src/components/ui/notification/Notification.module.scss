@@ -1,22 +1,4 @@
 @import '@/styles/variables.scss';
-$offset: 20px;
-
-//.notification {
-//  position: fixed;
-//  width: 500px;
-//  height: 200px;
-//  background-color: red;
-//  top: calc(100% - (200px + $offset));
-//  left: $offset;
-//}
-
-.open {
-  animation: open 300ms linear;
-}
-
-.close {
-  animation: close 300ms linear;
-}
 
 .notification {
   display: flex;
@@ -24,19 +6,17 @@ $offset: 20px;
   position: fixed;
   width: 300px;
   padding: 24px;
-  top: calc(100% - $offset);
-  left: calc(100% - $offset);
+  top: calc(100% - 20px);
+  left: calc(100% - 20px);
   transform: translate(-100%, -100%);
 
-  box-shadow: 0px 7px 20px rgba(51, 63, 82, 0.25);
+  box-shadow: 0 7px 20px rgba(51, 63, 82, 0.25);
   border-radius: 4px;
   background-color: var(--secondary-color-100);
   border-bottom: 5px solid $green;
 
   font-size: 20px;
   font-family: sans-serif;
-
-  //animation: open 300ms linear;
 }
 
 .img {
@@ -64,17 +44,26 @@ $offset: 20px;
   font-size: 14px;
 }
 
-//.closeBtn {
-//  position: absolute;
-//  background: none;
-//  border: none;
-//  width: 14px;
-//  height: 14px;
-//  top: 0;
-//  left: 100%;
-//  transform: translate(calc(-100% - 14px), 14px);
-//  cursor: pointer;
-//}
+.closeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 5px;
+  left: calc(100% - (14px + 10px));
+  line-height: 1;
+  cursor: pointer;
+}
+
+.open {
+  animation: open 300ms linear;
+}
+
+.close {
+  animation: close 300ms linear;
+}
 
 @keyframes open {
   0% {

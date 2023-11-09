@@ -6,6 +6,7 @@ import ChartForm from '@/components/ui/chartForm/ChartForm';
 import PriceChart from '@/components/priceChart/PriceChart';
 import { ChartData } from '@/constants/chart/chartData';
 import Notification from '@/components/ui/notification/Notification';
+import observer from '@/services/observer/observer';
 import styles from './Timeline.module.scss';
 
 interface TimelineProps {
@@ -15,7 +16,7 @@ interface TimelineState {
   selectedCurrency: CurrencyRated;
   chartData: ChartData;
   chartBuilt: boolean;
-  isNotificationShow: boolean;
+  isNotificationActive: boolean;
 }
 
 class Timeline extends PureComponent<TimelineProps, TimelineState> {
@@ -25,8 +26,16 @@ class Timeline extends PureComponent<TimelineProps, TimelineState> {
       selectedCurrency: props.currencies[0],
       chartData: [],
       chartBuilt: false,
-      isNotificationShow: false,
+      isNotificationActive: false,
     };
+  }
+
+  componentDidMount() {
+    observer.subscribe(this.showNotification);
+  }
+
+  componentWillUnmount() {
+    observer.unsubscribe(this.showNotification);
   }
 
   onSelectCurrency = (currency: CurrencyRated) => {
@@ -41,12 +50,25 @@ class Timeline extends PureComponent<TimelineProps, TimelineState> {
       chartData: data,
       chartBuilt: true,
     });
+    observer.notify();
+  };
+
+  showNotification = () => {
+    this.setState({
+      isNotificationActive: true,
+    });
+  };
+
+  closeNotification = () => {
+    this.setState({
+      isNotificationActive: false,
+    });
   };
 
   render() {
-    const { selectedCurrency, chartData, chartBuilt, isNotificationShow } =
-      this.state;
     const { currencies } = this.props;
+    const { selectedCurrency, chartData, chartBuilt, isNotificationActive } =
+      this.state;
 
     return (
       <div className='container'>
@@ -65,7 +87,9 @@ class Timeline extends PureComponent<TimelineProps, TimelineState> {
         ) : (
           <ChartForm onSubmit={this.onSubmitForm} />
         )}
-        {isNotificationShow && <Notification />}
+        {isNotificationActive && (
+          <Notification onClose={this.closeNotification} />
+        )}
       </div>
     );
   }

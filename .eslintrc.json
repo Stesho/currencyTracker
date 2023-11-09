@@ -32,6 +32,7 @@
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
     "import/no-unresolved": "error",
+    "no-plusplus": "warn",
     "no-console": "warn",
     "no-param-reassign": "warn",
     "import/prefer-default-export": "warn",

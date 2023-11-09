@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import ChartFormRow from '@/components/ui/chartForm/chartFormRow/ChartFormRow';
 import { ChartData } from '@/constants/chart/chartData';
-import { Chart } from 'react-google-charts';
+import recalculateChartData from '@/utils/recalculateChartData';
+import calculateInitialChartData from '@/utils/calculateInitialChartData';
+import addDayColumnToChartData from '@/utils/addDayColumnToChartData';
+import generateTableHead from '@/utils/generateTableHead';
 import styles from './ChartForm.module.scss';
 
 interface ChartFormProps {
@@ -9,33 +12,29 @@ interface ChartFormProps {
 }
 
 function ChartForm({ onSubmit }: ChartFormProps) {
-  const rowsCount = 5;
-  const tableHead = [...new Array(rowsCount)].map((head, index) =>
-    index === 1 ? 'Day' : '',
-  );
-  const [values, setValues] = useState<number[][]>(() => {
-    const cellsCountInRow = 4;
-    const rowsArr = [...new Array(rowsCount)];
-    return rowsArr.map(() => new Array(cellsCountInRow).fill(0));
-  });
+  const cellsCountInRow = 4;
+  const tableHead = generateTableHead(cellsCountInRow + 1);
 
-  const onChange = (value: number, row: number, column: number) => {
+  const [rowsCount, setRowsCount] = useState(5);
+  const [values, setValues] = useState<number[][]>(() => calculateInitialChartData(rowsCount, cellsCountInRow));
+
+  const onChangeValue = (value: number, row: number, column: number) => {
     const newValues = [...values];
     newValues[row][column] = Number(value);
     setValues(newValues);
   };
 
-  const onSubmitForm = () => {
-    const chartData: ChartData = values.map((row, index) => {
-      const day = (index + 1).toString();
-      return [day, ...row];
-    });
-    chartData.unshift(tableHead);
+  const onChangeRowsCount = (event: ChangeEvent<HTMLInputElement>) => {
+    setRowsCount(Number(event.target.value));
+  };
 
+  const onSubmitForm = () => {
+    const chartData = addDayColumnToChartData(values, tableHead);
     onSubmit(chartData);
   };
 
   const setStaticValues = () => {
+    setRowsCount(5);
     setValues([
       [20, 28, 38, 45],
       [31, 38, 55, 66],
@@ -45,8 +44,23 @@ function ChartForm({ onSubmit }: ChartFormProps) {
     ]);
   };
 
+  useEffect(() => {
+    const newValues = recalculateChartData(values, rowsCount, cellsCountInRow);
+    setValues(newValues);
+  }, [rowsCount]);
+
   return (
     <div>
+      <div>
+        <span>Days count:</span>
+        <input
+          type='number'
+          min={0}
+          max={31}
+          value={rowsCount}
+          onChange={onChangeRowsCount}
+        />
+      </div>
       <table className={styles.table}>
         <thead>
           <tr className={styles.row}>
@@ -64,15 +78,15 @@ function ChartForm({ onSubmit }: ChartFormProps) {
               day={index + 1}
               rowIndex={index}
               values={values[index]}
-              onChangeValue={onChange}
+              onChangeValue={onChangeValue}
             />
           ))}
         </tbody>
       </table>
-      <button type='button' onClick={onSubmitForm}>
+      <button className={styles.button} type='button' onClick={onSubmitForm}>
         Build chart
       </button>
-      <button type='button' onClick={setStaticValues}>
+      <button className={styles.button} type='button' onClick={setStaticValues}>
         Set static values
       </button>
     </div>

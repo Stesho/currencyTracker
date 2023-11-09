@@ -29,6 +29,7 @@ class Timeline extends PureComponent<TimelineProps, TimelineState> {
   onSelectCurrency = (currency: CurrencyRated) => {
     this.setState({
       selectedCurrency: currency,
+      chartBuilt: false,
     });
   };
 

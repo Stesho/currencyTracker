@@ -5,6 +5,7 @@ import recalculateChartData from '@/utils/recalculateChartData';
 import calculateInitialChartData from '@/utils/calculateInitialChartData';
 import addDayColumnToChartData from '@/utils/addDayColumnToChartData';
 import generateTableHead from '@/utils/generateTableHead';
+import NumberInput from '@/components/ui/numberInput/NumberInput';
 import styles from './ChartForm.module.scss';
 
 interface ChartFormProps {
@@ -16,7 +17,9 @@ function ChartForm({ onSubmit }: ChartFormProps) {
   const tableHead = generateTableHead(cellsCountInRow + 1);
 
   const [rowsCount, setRowsCount] = useState(5);
-  const [values, setValues] = useState<number[][]>(() => calculateInitialChartData(rowsCount, cellsCountInRow));
+  const [values, setValues] = useState<number[][]>(() =>
+    calculateInitialChartData(rowsCount, cellsCountInRow),
+  );
 
   const onChangeValue = (value: number, row: number, column: number) => {
     const newValues = [...values];
@@ -24,8 +27,8 @@ function ChartForm({ onSubmit }: ChartFormProps) {
     setValues(newValues);
   };
 
-  const onChangeRowsCount = (event: ChangeEvent<HTMLInputElement>) => {
-    setRowsCount(Number(event.target.value));
+  const onChangeRowsCount = (value: number) => {
+    setRowsCount(value);
   };
 
   const onSubmitForm = () => {
@@ -53,12 +56,12 @@ function ChartForm({ onSubmit }: ChartFormProps) {
     <div>
       <div>
         <span>Days count:</span>
-        <input
-          type='number'
-          min={0}
-          max={31}
+        <NumberInput
           value={rowsCount}
-          onChange={onChangeRowsCount}
+          setValue={onChangeRowsCount}
+          min={1}
+          max={31}
+          isIntegersOnly
         />
       </div>
       <table className={styles.table}>

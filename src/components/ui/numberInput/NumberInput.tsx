@@ -2,20 +2,46 @@ import React, { ChangeEvent } from 'react';
 import styles from './NumberInput.module.scss';
 
 interface NumberInputProps {
-  value: string;
-  setValue: (value: string) => void;
+  value: number;
+  setValue: (value: number) => void;
+  isIntegersOnly?: boolean;
+  min?: number;
+  max?: number;
 }
 
-function NumberInput({ value, setValue }: NumberInputProps) {
+function NumberInput({
+  value,
+  setValue,
+  isIntegersOnly,
+  min,
+  max,
+}: NumberInputProps) {
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setValue(Number(event.target.value).toString());
+    let newValue = event.target.value;
+
+    if (isIntegersOnly) {
+      newValue = newValue.replace(/\./g, '');
+    }
+
+    let newValueNum = Number(newValue);
+
+    if (max && newValueNum > max) {
+      newValueNum = max;
+    }
+
+    if (min && newValueNum < min) {
+      newValueNum = min;
+    }
+
+    setValue(newValueNum);
   };
 
   return (
     <input
-      value={value}
+      value={value.toString()}
       type='number'
       min={1}
+      max={max}
       onChange={onChange}
       className={styles.input}
     />

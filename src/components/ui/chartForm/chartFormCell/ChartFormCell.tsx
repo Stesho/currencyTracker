@@ -1,5 +1,6 @@
 import React, { ChangeEvent } from 'react';
 import styles from '@/components/ui/chartForm/ChartForm.module.scss';
+import NumberInput from '@/components/ui/numberInput/NumberInput';
 
 interface ChartFormCellProps {
   value: number;
@@ -11,13 +12,13 @@ interface ChartFormCellProps {
 }
 
 function ChartFormCell({ value, onChange, position }: ChartFormCellProps) {
-  const onChangeValue = (event: ChangeEvent<HTMLInputElement>) => {
-    onChange(Number(event.target.value), position.row, position.column);
+  const onChangeValue = (newValue: number) => {
+    onChange(newValue, position.row, position.column);
   };
 
   return (
     <td className={styles.cell}>
-      <input type='number' value={value} onChange={onChangeValue} />
+      <NumberInput value={value} setValue={onChangeValue} />
     </td>
   );
 }

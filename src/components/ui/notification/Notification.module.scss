@@ -1,0 +1,84 @@
+@import '@/styles/variables.scss';
+
+.notification {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  width: 300px;
+  padding: 24px;
+  top: calc(100% - 20px);
+  left: calc(100% - 20px);
+  transform: translate(-100%, -100%);
+
+  box-shadow: 0 7px 20px rgba(51, 63, 82, 0.25);
+  border-radius: 4px;
+  background-color: var(--secondary-color-100);
+  border-bottom: 5px solid $green;
+
+  font-size: 20px;
+  font-family: sans-serif;
+}
+
+.img {
+  margin: 0 22px 0 0;
+  width: 32px;
+  height: 32px;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  margin: 0 0 4px 0;
+  color: var(--text-color-200);
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.message {
+  white-space: nowrap;
+  color: var(--text-color-400);
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.closeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 5px;
+  left: calc(100% - (14px + 10px));
+  line-height: 1;
+  cursor: pointer;
+}
+
+.open {
+  animation: open 300ms linear;
+}
+
+.close {
+  animation: close 300ms linear;
+}
+
+@keyframes open {
+  0% {
+    transform: translate(0, -100%);
+  }
+  100% {
+    transform: translate(-100%, -100%);
+  }
+}
+
+@keyframes close {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

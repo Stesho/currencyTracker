@@ -60,10 +60,10 @@ class DropDown extends Component<DropDownProps, DropDownState> {
 
   render() {
     const { selectedOption, isOpen } = this.state;
-    const { options, onSelectOption } = this.props;
+    const { options, className } = this.props;
 
     return (
-      <div className={styles.dropDown} ref={this.dropDown}>
+      <div className={`${styles.dropDown} ${className}`} ref={this.dropDown}>
         <button
           className={styles.button}
           onClick={this.toggleDropDown}

@@ -1,5 +1,9 @@
-import React, { useRef, useEffect } from 'react';
-import Portal from '../portal/Portal';
+import React from 'react';
+
+import { useOutsideClick } from '@/hooks/useOutsideClick';
+import { usePortal } from '@/hooks/usePortal';
+
+// import { Portal } from '@/components/ui/portal/Portal';
 import styles from './Modal.module.scss';
 
 interface ModalProps {
@@ -8,32 +12,17 @@ interface ModalProps {
   children: React.ReactNode;
 }
 
-function Modal({ id, onClose, children }: ModalProps) {
-  const overlay = useRef(null);
-
-  useEffect(() => {
-    const onOverlayClick = (event: MouseEvent) => {
-      const { target } = event;
-
-      if (target instanceof Node && overlay.current === target) {
-        onClose?.();
-      }
-    };
-
-    window.addEventListener('click', onOverlayClick);
-
-    return () => {
-      window.removeEventListener('click', onOverlayClick);
-    };
-  }, [onClose]);
+export function Modal({ id, onClose, children }: ModalProps) {
+  const Portal = usePortal(id);
+  const overlay = useOutsideClick(() => onClose());
 
   return (
-    <Portal id={id}>
-      <div className={styles.overlay} ref={overlay}>
-        <div className={styles.content}>{children}</div>
+    <Portal>
+      <div className={styles.overlay}>
+        <div className={styles.content} ref={overlay}>
+          {children}
+        </div>
       </div>
     </Portal>
   );
 }
-
-export default Modal;

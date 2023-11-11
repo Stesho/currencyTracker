@@ -1,4 +1,4 @@
-const generateTableHead = (
+export const generateTableHead = (
   columnsCount: number,
   candleStickCaption?: string,
 ) => {
@@ -7,5 +7,3 @@ const generateTableHead = (
     index === 1 ? caption : '',
   );
 };
-
-export default generateTableHead;

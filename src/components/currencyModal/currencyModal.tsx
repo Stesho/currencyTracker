@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import Modal from '@/components/ui/modal/Modal';
 import { useSelector } from 'react-redux';
+
+import { CurrencyCodeCard } from '@/components/ui/currencyCodeCard/CurrencyCodeCard';
+import { DropDown } from '@/components/ui/dropdown/DropDown';
+import { Modal } from '@/components/ui/modal/Modal';
+import { NumberInput } from '@/components/ui/numberInput/NumberInput';
 import { RootState } from '@/store/store';
-import { CurrencyRated } from '@/constants/interfaces/currency';
-import DropDown from '@/components/ui/dropdown/DropDown';
-import CurrencyCodeCard from '@/components/ui/currencyCodeCard/CurrencyCodeCard';
-import NumberInput from '@/components/ui/numberInput/NumberInput';
+import { CurrencyRated } from '@/types/currency';
+
 import styles from './currencyModal.module.scss';
 
 interface CurrencyModalProps {
@@ -14,7 +16,7 @@ interface CurrencyModalProps {
   onClose: () => void;
 }
 
-function CurrencyModal({
+export function CurrencyModal({
   currency,
   onClose,
   id = 'currencyCodeCard-modal',
@@ -64,5 +66,3 @@ function CurrencyModal({
     </Modal>
   );
 }
-
-export default CurrencyModal;

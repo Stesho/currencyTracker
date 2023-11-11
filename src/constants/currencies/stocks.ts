@@ -1,8 +1,8 @@
 import BovespaIcon from '@/assets/img/Bovespa Icon.png';
 import IfixIcon from '@/assets/img/IFIX.png';
-import { CurrencyRated } from '@/constants/interfaces/currency';
+import { CurrencyRated } from '@/types/currency';
 
-const stocks: CurrencyRated[] = [
+export const stocks: CurrencyRated[] = [
   {
     id: 'Bovespa',
     iconUrl: BovespaIcon,
@@ -16,5 +16,3 @@ const stocks: CurrencyRated[] = [
     rate: 0.15,
   },
 ];
-
-export default stocks;

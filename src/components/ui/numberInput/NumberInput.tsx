@@ -1,5 +1,7 @@
 import React, { ChangeEvent, FocusEvent, useEffect, useState } from 'react';
-import removeLeadingZeros from '@/utils/removeLeadingZeros';
+
+import { removeLeadingZeros } from '@/utils/removeLeadingZeros';
+
 import styles from './NumberInput.module.scss';
 
 interface NumberInputProps {
@@ -10,7 +12,7 @@ interface NumberInputProps {
   max?: number;
 }
 
-function NumberInput({
+export function NumberInput({
   value,
   setValue,
   min,
@@ -68,5 +70,3 @@ function NumberInput({
     />
   );
 }
-
-export default NumberInput;

@@ -1,8 +1,8 @@
-import fetchAllCurrentRates from '@/api/coinApi/fetchAllCurrentRates';
-import CurrencyResponse from '@/constants/api/coinApi/response';
-import currencies from '@/constants/currencies/currencies';
+import { fetchAllCurrentRates } from '@/api/coinApi/fetchAllCurrentRates';
+import { CurrencyResponse } from '@/constants/api/coinApi/response';
+import { currencies } from '@/constants/currencies/currencies';
 
-const getCurrencies = async () => {
+export const getCurrencies = async () => {
   const response = await fetchAllCurrentRates();
 
   return response.rates.map((currencyWithRate: CurrencyResponse) => {
@@ -16,5 +16,3 @@ const getCurrencies = async () => {
     };
   });
 };
-
-export default getCurrencies;

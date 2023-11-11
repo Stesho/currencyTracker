@@ -1,8 +1,10 @@
 import React, { PureComponent } from 'react';
+
 import SearchIcon from '@/assets/icons/search.svg';
+
 import styles from './Input.module.scss';
 
-class Input extends PureComponent {
+export class Input extends PureComponent {
   render() {
     return (
       <div className={styles.inputWrapper}>
@@ -12,5 +14,3 @@ class Input extends PureComponent {
     );
   }
 }
-
-export default Input;

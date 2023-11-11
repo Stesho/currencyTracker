@@ -1,12 +1,13 @@
 import axios, { AxiosError } from 'axios';
+
 import {
   BASE_URL,
   GET_ALL_CURRENT_RATES_URL,
 } from '@/constants/api/coinApi/endpoints';
+import { currencies } from '@/constants/currencies/currencies';
 import { COIN_API_KEY } from '@/constants/environtment/environment';
-import currencies from '@/constants/currencies/currencies';
 
-const fetchAllCurrentRates = async (baseCurrency: string = 'USD') => {
+export const fetchAllCurrentRates = async (baseCurrency: string = 'USD') => {
   try {
     const currencyCodes = currencies.map((currency) => currency.id).join(',');
 
@@ -41,5 +42,3 @@ const fetchAllCurrentRates = async (baseCurrency: string = 'USD') => {
     return null;
   }
 };
-
-export default fetchAllCurrentRates;

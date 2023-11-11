@@ -1,4 +1,4 @@
-const recalculateChartData = (
+export const recalculateChartData = (
   values: number[][],
   rowsCount: number,
   cellsCountInRow: number,
@@ -12,5 +12,3 @@ const recalculateChartData = (
 
   return rows;
 };
-
-export default recalculateChartData;

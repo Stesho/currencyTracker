@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
-import { CurrencyRated } from '@/constants/interfaces/currency';
-import getCurrencies from '@/services/currency/getCurrencies';
-import Timeline from '@/components/timeline/Timeline';
+
+import { Timeline } from '@/components/timeline/Timeline';
+import { getCurrencies } from '@/services/currency/getCurrencies';
+import { CurrencyRated } from '@/types/currency';
 
 interface TimelinePageProps {}
 interface TimelinePageState {
   currencies: CurrencyRated[];
 }
 
-class TimelinePage extends Component<TimelinePageProps, TimelinePageState> {
+export class TimelinePage extends Component<
+  TimelinePageProps,
+  TimelinePageState
+> {
   constructor(props: TimelinePageProps) {
     super(props);
     this.state = {
@@ -34,5 +38,3 @@ class TimelinePage extends Component<TimelinePageProps, TimelinePageState> {
     );
   }
 }
-
-export default TimelinePage;

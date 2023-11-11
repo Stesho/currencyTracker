@@ -1,18 +1,20 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
-import ChartFormRow from '@/components/ui/chartForm/chartFormRow/ChartFormRow';
+import React, { useEffect, useState } from 'react';
+
+import { ChartFormRow } from '@/components/ui/chartForm/chartFormRow/ChartFormRow';
+import { NumberInput } from '@/components/ui/numberInput/NumberInput';
 import { ChartData } from '@/constants/chart/chartData';
-import recalculateChartData from '@/utils/recalculateChartData';
-import calculateInitialChartData from '@/utils/calculateInitialChartData';
-import addDayColumnToChartData from '@/utils/addDayColumnToChartData';
-import generateTableHead from '@/utils/generateTableHead';
-import NumberInput from '@/components/ui/numberInput/NumberInput';
+import { addDayColumnToChartData } from '@/utils/addDayColumnToChartData';
+import { calculateInitialChartData } from '@/utils/calculateInitialChartData';
+import { generateTableHead } from '@/utils/generateTableHead';
+import { recalculateChartData } from '@/utils/recalculateChartData';
+
 import styles from './ChartForm.module.scss';
 
 interface ChartFormProps {
   onSubmit: (data: ChartData) => void;
 }
 
-function ChartForm({ onSubmit }: ChartFormProps) {
+export function ChartForm({ onSubmit }: ChartFormProps) {
   const cellsCountInRow = 4;
   const tableHead = generateTableHead(cellsCountInRow + 1);
 
@@ -95,5 +97,3 @@ function ChartForm({ onSubmit }: ChartFormProps) {
     </div>
   );
 }
-
-export default ChartForm;

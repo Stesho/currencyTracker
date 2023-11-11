@@ -5,14 +5,10 @@ import { Currency } from '@/types/currency';
 
 import styles from './CurrencyCodeCard.module.scss';
 
-interface CurrencyCodeCardProps extends Currency {}
-
-export function CurrencyCodeCard({
-  id,
-  iconUrl,
-  currencyName,
-}: CurrencyCodeCardProps) {
-  return <CurrencyCard id={id} iconUrl={iconUrl} currencyName={currencyName}>
-    <span className={styles.code}>{id}</span>
-  </CurrencyCard>
+export function CurrencyCodeCard({ id, iconUrl, currencyName }: Currency) {
+  return (
+    <CurrencyCard id={id} iconUrl={iconUrl} currencyName={currencyName}>
+      <span className={styles.code}>{id}</span>
+    </CurrencyCard>
+  );
 }

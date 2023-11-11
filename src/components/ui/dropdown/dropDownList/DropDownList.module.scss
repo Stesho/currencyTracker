@@ -1,0 +1,28 @@
+.dropDownList {
+  position: absolute;
+  max-height: 168px;
+  width: 100%;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background: var(--text-color-100);
+    border-radius: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--text-color-400);
+    border-radius: 4px;
+  }
+}
+
+.option {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding: 5px;
+  color: var(--text-color-100);
+  font-size: 30px;
+  font-weight: 500;
+  cursor: pointer;
+}

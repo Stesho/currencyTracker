@@ -1,15 +1,15 @@
-import DollarIcon from '@/assets/img/Dollar Icon.png';
-import ArgentinePesoIcon from '@/assets/img/Peso Argentino Icon.png';
 import AustralianDollarIcon from '@/assets/img/Australian Dollar Icon.png';
-import EuroIcon from '@/assets/img/Euro Icon.png';
 import BitcoinIcon from '@/assets/img/Bitcoin Icon.png';
-import YenIcon from '@/assets/img/Yen Icon.png';
 import CanadianDollarIcon from '@/assets/img/Canadian Dollar Icon.png';
-import YuanIcon from '@/assets/img/Won Icon.png';
+import DollarIcon from '@/assets/img/Dollar Icon.png';
+import EuroIcon from '@/assets/img/Euro Icon.png';
+import ArgentinePesoIcon from '@/assets/img/Peso Argentino Icon.png';
 import PoundIcon from '@/assets/img/Pound Icon.png';
-import { Currency } from '@/constants/interfaces/currency';
+import YuanIcon from '@/assets/img/Won Icon.png';
+import YenIcon from '@/assets/img/Yen Icon.png';
+import { Currency } from '@/types/currency';
 
-const currencies: Currency[] = [
+export const currencies: Currency[] = [
   {
     id: 'ARS',
     iconUrl: ArgentinePesoIcon,
@@ -56,5 +56,3 @@ const currencies: Currency[] = [
     currencyName: 'Commercial Dollar',
   },
 ];
-
-export default currencies;

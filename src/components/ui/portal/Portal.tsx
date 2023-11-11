@@ -7,7 +7,11 @@ type PortalProps = {
   mountNode?: HTMLElement;
 };
 
-function Portal({ id, children, mountNode = document.body }: PortalProps) {
+export function Portal({
+  id,
+  children,
+  mountNode = document.body,
+}: PortalProps) {
   const [container, setContainer] = useState<HTMLElement>();
 
   useEffect(() => {
@@ -21,9 +25,3 @@ function Portal({ id, children, mountNode = document.body }: PortalProps) {
 
   return container ? createPortal(children, container) : null;
 }
-
-Portal.defaultProps = {
-  mountNode: document.body,
-};
-
-export default Portal;

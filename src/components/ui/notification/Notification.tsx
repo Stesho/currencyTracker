@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import Portal from '@/components/ui/portal/Portal';
+
 import SuccessIcon from '@/assets/icons/success.svg';
+import { Portal } from '@/components/ui/portal/Portal';
+
 import styles from './Notification.module.scss';
 
 interface NotificationProps {
@@ -11,7 +13,10 @@ interface NotificationState {
   animation: string;
 }
 
-class Notification extends Component<NotificationProps, NotificationState> {
+export class Notification extends Component<
+  NotificationProps,
+  NotificationState
+> {
   constructor(props: NotificationProps) {
     super(props);
     this.state = {
@@ -61,5 +66,3 @@ class Notification extends Component<NotificationProps, NotificationState> {
     );
   }
 }
-
-export default Notification;

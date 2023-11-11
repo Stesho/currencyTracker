@@ -1,13 +1,15 @@
 import React, { PureComponent } from 'react';
-import styles from '@/components/ui/dropdown/DropDown.module.scss';
-import DropDownProps from '@/constants/interfaces/dropDownProps';
-import { Currency } from '@/constants/interfaces/currency';
+
+import { DropDownProps } from '@/components/ui/dropdown/interfaces';
+import { Currency } from '@/types/currency';
+
+import styles from './DropDownList.module.scss';
 
 interface DropDownListProps extends DropDownProps {
   selectedOption: Currency;
 }
 
-class DropDownList extends PureComponent<DropDownListProps> {
+export class DropDownList extends PureComponent<DropDownListProps> {
   render() {
     const { options, selectedOption, onSelectOption } = this.props;
 
@@ -29,5 +31,3 @@ class DropDownList extends PureComponent<DropDownListProps> {
     );
   }
 }
-
-export default DropDownList;

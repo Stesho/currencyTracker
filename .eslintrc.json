@@ -29,13 +29,15 @@
     "sourceType": "module",
     "project": "./tsconfig.json"
   },
-  "plugins": ["react", "@typescript-eslint"],
+  "plugins": ["react", "@typescript-eslint", "simple-import-sort", "import"],
   "rules": {
     "import/no-unresolved": "error",
+    "import/prefer-default-export": "off",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
     "no-plusplus": "warn",
     "no-console": "warn",
     "no-param-reassign": "warn",
-    "import/prefer-default-export": "warn",
     "@typescript-eslint/no-unused-vars": "warn",
     "react/no-array-index-key": "warn",
     "react/require-default-props": "warn",

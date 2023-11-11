@@ -1,12 +1,14 @@
 import React, { PureComponent } from 'react';
-import { CurrencyRated } from '@/constants/interfaces/currency';
-import DropDown from '@/components/ui/dropdown/DropDown';
-import CurrencyCodeCard from '@/components/ui/currencyCodeCard/CurrencyCodeCard';
-import ChartForm from '@/components/ui/chartForm/ChartForm';
-import PriceChart from '@/components/priceChart/PriceChart';
+
+import { PriceChart } from '@/components/priceChart/PriceChart';
+import { ChartForm } from '@/components/ui/chartForm/ChartForm';
+import { CurrencyCodeCard } from '@/components/ui/currencyCodeCard/CurrencyCodeCard';
+import { DropDown } from '@/components/ui/dropdown/DropDown';
+import { Notification } from '@/components/ui/notification/Notification';
 import { ChartData } from '@/constants/chart/chartData';
-import Notification from '@/components/ui/notification/Notification';
-import observer from '@/services/observer/observer';
+import { observer } from '@/services/observer/observer';
+import { CurrencyRated } from '@/types/currency';
+
 import styles from './Timeline.module.scss';
 
 interface TimelineProps {
@@ -19,7 +21,7 @@ interface TimelineState {
   isNotificationActive: boolean;
 }
 
-class Timeline extends PureComponent<TimelineProps, TimelineState> {
+export class Timeline extends PureComponent<TimelineProps, TimelineState> {
   constructor(props: TimelineProps) {
     super(props);
     this.state = {
@@ -71,7 +73,7 @@ class Timeline extends PureComponent<TimelineProps, TimelineState> {
       this.state;
 
     return (
-      <div className='container'>
+      <section className='container'>
         <DropDown
           options={currencies}
           onSelectOption={this.onSelectCurrency}
@@ -90,9 +92,7 @@ class Timeline extends PureComponent<TimelineProps, TimelineState> {
         {isNotificationActive && (
           <Notification onClose={this.closeNotification} />
         )}
-      </div>
+      </section>
     );
   }
 }
-
-export default Timeline;

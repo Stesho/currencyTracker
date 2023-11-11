@@ -1,16 +1,18 @@
 import React, { Component, RefObject } from 'react';
+
 import Arrow from '@/assets/icons/arrow.svg';
-import DropDownList from '@/components/ui/dropdown/dropDownList/DropDownList';
-import DropDownProps from '@/constants/interfaces/dropDownProps';
-import { Currency, CurrencyRated } from '@/constants/interfaces/currency';
+import { DropDownList } from '@/components/ui/dropdown/dropDownList/DropDownList';
+import { Currency, CurrencyRated } from '@/types/currency';
+
 import styles from './DropDown.module.scss';
+import { DropDownProps } from './interfaces';
 
 interface DropDownState {
   isOpen: boolean;
   selectedOption: Currency;
 }
 
-class DropDown extends Component<DropDownProps, DropDownState> {
+export class DropDown extends Component<DropDownProps, DropDownState> {
   private readonly dropDown: RefObject<HTMLDivElement>;
 
   constructor(props: DropDownProps) {
@@ -83,5 +85,3 @@ class DropDown extends Component<DropDownProps, DropDownState> {
     );
   }
 }
-
-export default DropDown;

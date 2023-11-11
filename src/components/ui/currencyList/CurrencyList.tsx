@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { CurrencyRated } from '@/constants/interfaces/currency';
-import CurrencyCard from '@/components/ui/currencyRatedCard/CurrencyRatedCard';
-import CurrencyModal from '@/components/currencyModal/currencyModal';
+
+import { CurrencyModal } from '@/components/currencyModal/currencyModal';
+import { CurrencyRatedCard } from '@/components/ui/currencyRatedCard/CurrencyRatedCard';
+import { CurrencyRated } from '@/types/currency';
+
 import styles from './CurrencyList.module.scss';
 
 interface CurrencyListProps {
@@ -9,7 +11,7 @@ interface CurrencyListProps {
   currencies: CurrencyRated[];
 }
 
-function CurrencyList({ title, currencies }: CurrencyListProps) {
+export function CurrencyList({ title, currencies }: CurrencyListProps) {
   const [isModalActive, setModalActive] = useState<boolean>(false);
   const [selectedCurrency, setSelectedCurrency] = useState<CurrencyRated>(
     null!,
@@ -26,11 +28,11 @@ function CurrencyList({ title, currencies }: CurrencyListProps) {
   };
 
   return (
-    <div className={`${styles.currencyListWrapper} container`}>
+    <section className={`${styles.currencyListWrapper} container`}>
       <h2 className={styles.title}>{title}</h2>
       <div className={styles.currencyList}>
         {currencies.map((currencyItem) => (
-          <CurrencyCard
+          <CurrencyRatedCard
             key={currencyItem.id}
             id={currencyItem.id}
             iconUrl={currencyItem.iconUrl}
@@ -43,8 +45,6 @@ function CurrencyList({ title, currencies }: CurrencyListProps) {
       {isModalActive && (
         <CurrencyModal onClose={onModalClose} currency={selectedCurrency} />
       )}
-    </div>
+    </section>
   );
 }
-
-export default CurrencyList;

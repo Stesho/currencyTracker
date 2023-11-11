@@ -25,4 +25,4 @@ class Observer implements Observer {
   }
 }
 
-export default new Observer();
+export const observer = new Observer();

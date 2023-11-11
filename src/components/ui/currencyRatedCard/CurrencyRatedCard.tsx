@@ -1,14 +1,16 @@
 import React from 'react';
-import { CurrencyRated } from '@/constants/interfaces/currency';
-import replaceDotToComma from '@/utils/replaceDotToComma';
-import CurrencyCard from '@/components/ui/currencyCard/CurrencyCard';
+
+import { CurrencyCard } from '@/components/ui/currencyCard/CurrencyCard';
+import { CurrencyRated } from '@/types/currency';
+import { replaceDotToComma } from '@/utils/replaceDotToComma';
+
 import styles from './CurrencyRatedCard.module.scss';
 
 interface CurrencyRatedCardProps extends CurrencyRated {
   onClick?: (currency?: CurrencyRated) => void;
 }
 
-function CurrencyRatedCard({
+export function CurrencyRatedCard({
   id,
   iconUrl,
   currencyName,
@@ -34,5 +36,3 @@ function CurrencyRatedCard({
     </div>
   );
 }
-
-export default CurrencyRatedCard;

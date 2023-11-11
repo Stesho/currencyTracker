@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { CurrencyRated } from '@/constants/interfaces/currency';
+
+import { CurrencyRated } from '@/types/currency';
 
 interface InitialState {
   currencies: CurrencyRated[];

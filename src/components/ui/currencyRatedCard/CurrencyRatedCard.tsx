@@ -17,15 +17,15 @@ export function CurrencyRatedCard({
   rate,
   onClick,
 }: CurrencyRatedCardProps) {
-  const formattedRate = replaceDotToComma(rate);
+  const decimalPlaces = 3;
+  const formattedRate = replaceDotToComma(rate, decimalPlaces);
   const onCardClick = () => {
-    const currency = {
+    onClick?.({
       id,
       iconUrl,
       currencyName,
       rate,
-    };
-    onClick?.(currency);
+    });
   };
 
   return (

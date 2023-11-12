@@ -4,8 +4,9 @@ import Arrow from '@/assets/icons/arrow.svg';
 import { DropDownList } from '@/components/ui/dropdown/dropDownList/DropDownList';
 import { Currency, CurrencyRated } from '@/types/currency';
 
-import styles from './DropDown.module.scss';
 import { DropDownProps } from './interfaces';
+
+import styles from './DropDown.module.scss';
 
 interface DropDownState {
   isOpen: boolean;

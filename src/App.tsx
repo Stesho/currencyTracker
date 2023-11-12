@@ -1,5 +1,3 @@
-import '@/styles/index.scss';
-
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
@@ -10,6 +8,8 @@ import { TimeUpdate } from '@/components/ui/timeUpdate/TimeUpdate';
 import { BankCardPage } from '@/pages/bankCard/BankCardPage';
 import { HomePage } from '@/pages/home/HomePage';
 import { TimelinePage } from '@/pages/timeline/TimelinePage';
+
+import '@/styles/index.scss';
 
 export function App() {
   return (

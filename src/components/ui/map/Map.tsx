@@ -1,12 +1,12 @@
-import 'mapbox-gl/dist/mapbox-gl.css';
-
-import mapboxgl from 'mapbox-gl';
 import React, { PureComponent, RefObject } from 'react';
+import mapboxgl from 'mapbox-gl';
 
 import { MAPBOX_API_KEY } from '@/constants/environment/environment';
 import { CurrencyRated } from '@/types/currency';
 
 import banksData from './banksData.json';
+
+import 'mapbox-gl/dist/mapbox-gl.css';
 import styles from './Map.module.scss';
 
 mapboxgl.accessToken = MAPBOX_API_KEY;

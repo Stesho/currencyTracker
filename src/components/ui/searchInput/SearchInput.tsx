@@ -7,6 +7,7 @@ import styles from './SearchInput.module.scss';
 
 interface SearchInputProps {
   currencies: CurrencyRated[];
+  onSelectCurrency: (currency: CurrencyRated | null) => void;
 }
 
 interface SearchInputState {
@@ -33,10 +34,24 @@ export class SearchInput extends PureComponent<
   };
 
   onCurrencyClick = (currency: CurrencyRated) => {
+    const { onSelectCurrency } = this.props;
+
     this.setState({
       selectedCurrency: currency.currencyName,
     });
     this.toggleList();
+    onSelectCurrency(currency);
+  };
+
+  onSearchClick = () => {
+    const { currencies, onSelectCurrency } = this.props;
+    const { selectedCurrency } = this.state;
+
+    const currency = currencies.find(
+      (currencyItem) => currencyItem.currencyName === selectedCurrency,
+    );
+
+    onSelectCurrency(currency || null);
   };
 
   toggleList = () => {
@@ -64,7 +79,10 @@ export class SearchInput extends PureComponent<
             onFocus={this.toggleList}
             placeholder='Currency search...'
           />
-          <SearchIcon className={styles.searchIcon} />
+          <SearchIcon
+            className={styles.searchIcon}
+            onClick={this.onSearchClick}
+          />
         </div>
         {isOpenList && (
           <ul className={styles.searchList}>

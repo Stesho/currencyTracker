@@ -1,14 +1,21 @@
 import React, { PureComponent } from 'react';
 
-import { Input } from '@/components/ui/input/Input';
 import { Map } from '@/components/ui/map/Map';
+import { SearchInput } from '@/components/ui/searchInput/SearchInput';
+import { CurrencyRated } from '@/types/currency';
 
-export class CurrencySearch extends PureComponent {
+interface CurrencySearchProps {
+  currencies: CurrencyRated[];
+}
+
+export class CurrencySearch extends PureComponent<CurrencySearchProps> {
   render() {
+    const { currencies } = this.props;
+
     return (
       <section className='container'>
         <h2>Search currency in the bank</h2>
-        <Input />
+        <SearchInput currencies={currencies} />
         <Map />
       </section>
     );

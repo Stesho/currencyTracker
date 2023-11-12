@@ -1,15 +1,13 @@
 import React, { PureComponent } from 'react';
 
-import { Input } from '@/components/ui/input/Input';
+import { CurrencySearch } from '@/components/ui/currencySearch/CurrencySearch';
 
-class BankCardPage extends PureComponent {
+export class BankCardPage extends PureComponent {
   render() {
     return (
       <main>
-        <Input />
+        <CurrencySearch />
       </main>
     );
   }
 }
-
-export default BankCardPage;

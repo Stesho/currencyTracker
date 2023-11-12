@@ -1,6 +1,7 @@
-import React, { ChangeEvent, PureComponent } from 'react';
+import React, { ChangeEvent, createRef, PureComponent, RefObject } from 'react';
 
 import SearchIcon from '@/assets/icons/search.svg';
+import SearchInputList from '@/components/ui/searchInput/searchInputList/SearchInputList';
 import { CurrencyRated } from '@/types/currency';
 
 import styles from './SearchInput.module.scss';
@@ -19,13 +20,33 @@ export class SearchInput extends PureComponent<
   SearchInputProps,
   SearchInputState
 > {
+  private readonly searchInput: RefObject<HTMLDivElement>;
+
   constructor(props: SearchInputProps) {
     super(props);
+    this.searchInput = createRef();
     this.state = {
       selectedCurrency: '',
       isOpenList: false,
     };
   }
+
+  componentDidMount() {
+    document.addEventListener('click', this.onClickOutside);
+    return () => document.removeEventListener('click', this.onClickOutside);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('click', this.onClickOutside);
+  }
+
+  onClickOutside = (event: Event) => {
+    if (!this.searchInput.current?.contains(event.target as Node)) {
+      this.setState({
+        isOpenList: false,
+      });
+    }
+  };
 
   onInputCurrency = (event: ChangeEvent<HTMLInputElement>) => {
     this.setState({
@@ -39,6 +60,7 @@ export class SearchInput extends PureComponent<
     this.setState({
       selectedCurrency: currency.currencyName,
     });
+
     this.toggleList();
     onSelectCurrency(currency);
   };
@@ -51,6 +73,7 @@ export class SearchInput extends PureComponent<
       (currencyItem) => currencyItem.currencyName === selectedCurrency,
     );
 
+    this.toggleList();
     onSelectCurrency(currency || null);
   };
 
@@ -71,7 +94,7 @@ export class SearchInput extends PureComponent<
     );
 
     return (
-      <div className={styles.searchInput}>
+      <div className={styles.searchInput} ref={this.searchInput}>
         <div className={styles.input}>
           <input
             value={selectedCurrency}
@@ -85,17 +108,10 @@ export class SearchInput extends PureComponent<
           />
         </div>
         {isOpenList && (
-          <ul className={styles.searchList}>
-            {filteredCurrencies.map((currency) => (
-              <li
-                key={currency.id}
-                className={styles.listItem}
-                onClick={() => this.onCurrencyClick(currency)}
-              >
-                {currency.currencyName}
-              </li>
-            ))}
-          </ul>
+          <SearchInputList
+            currencies={filteredCurrencies}
+            onCurrencyClick={this.onCurrencyClick}
+          />
         )}
       </div>
     );

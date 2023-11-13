@@ -10,13 +10,13 @@ interface CurrencyRatedCardProps extends CurrencyRated {
   onClick?: (currency?: CurrencyRated) => void;
 }
 
-export function CurrencyRatedCard({
+export const CurrencyRatedCard = ({
   id,
   iconUrl,
   currencyName,
   rate,
   onClick,
-}: CurrencyRatedCardProps) {
+}: CurrencyRatedCardProps) => {
   const decimalPlaces = 3;
   const formattedRate = replaceDotToComma(rate, decimalPlaces);
   const onCardClick = () => {
@@ -35,4 +35,4 @@ export function CurrencyRatedCard({
       </CurrencyCard>
     </div>
   );
-}
+};

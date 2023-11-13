@@ -5,8 +5,8 @@ import { Switch } from '@/components/ui/switch/Switch';
 
 import styles from './Header.module.scss';
 
-export function Header() {
-  return <header className={styles.header}>
+export const Header = () => (
+  <header className={styles.header}>
     <div className={`${styles.headerContainer} container`}>
       <img className={styles.logo} src={Logo} alt='logo' />
       <nav className={styles.nav}>
@@ -20,4 +20,4 @@ export function Header() {
       <Switch />
     </div>
   </header>
-}
+);

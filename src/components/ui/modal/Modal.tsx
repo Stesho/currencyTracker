@@ -12,7 +12,7 @@ interface ModalProps {
   children: React.ReactNode;
 }
 
-export function Modal({ id, onClose, children }: ModalProps) {
+export const Modal = ({ id, onClose, children }: ModalProps) => {
   const Portal = usePortal(id);
   const overlay = useOutsideClick(() => onClose());
 
@@ -25,4 +25,4 @@ export function Modal({ id, onClose, children }: ModalProps) {
       </div>
     </Portal>
   );
-}
+};

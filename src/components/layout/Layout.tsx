@@ -7,14 +7,12 @@ import { Header } from '@/components/ui/header/Header';
 import { Info } from '@/components/ui/info/Info';
 import { Router } from '@/rounting/Router';
 
-export function Layout() {
-  return (
-    <BrowserRouter>
-      <Header />
-      <Info />
-      <TimeUpdate />
-      <Router />
-      <Footer />
-    </BrowserRouter>
-  );
-}
+export const Layout = () => (
+  <BrowserRouter>
+    <Header />
+    <Info />
+    <TimeUpdate />
+    <Router />
+    <Footer />
+  </BrowserRouter>
+);

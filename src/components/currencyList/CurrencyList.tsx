@@ -11,7 +11,7 @@ interface CurrencyListProps {
   currencies: CurrencyRated[];
 }
 
-export function CurrencyList({ title, currencies }: CurrencyListProps) {
+export const CurrencyList = ({ title, currencies }: CurrencyListProps) => {
   const [isModalActive, setModalActive] = useState<boolean>(false);
   const [selectedCurrency, setSelectedCurrency] = useState<CurrencyRated>(
     null!,
@@ -47,4 +47,4 @@ export function CurrencyList({ title, currencies }: CurrencyListProps) {
       )}
     </section>
   );
-}
+};

@@ -10,13 +10,13 @@ interface ChartFormRowProps {
   onChangeValue: (value: number, row: number, column: number) => void;
 }
 
-export function ChartFormRow({
+export const ChartFormRow = ({
   day,
   values,
   rowIndex,
   onChangeValue,
-}: ChartFormRowProps) {
-  return <tr className={styles.row}>
+}: ChartFormRowProps) => (
+  <tr className={styles.row}>
     <td className={styles.cell}>{day}</td>
     {values.map((value, index) => (
       <ChartFormCell
@@ -30,4 +30,4 @@ export function ChartFormRow({
       />
     ))}
   </tr>
-}
+);

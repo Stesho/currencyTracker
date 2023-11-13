@@ -7,7 +7,7 @@ import { getCurrencies } from '@/services/currency/getCurrencies';
 import { updateCurrencies } from '@/store/slices/currencySlice';
 import { CurrencyRated } from '@/types/currency';
 
-export function HomePage() {
+export const HomePage = () => {
   const [currencies, setCurrencies] = useState<CurrencyRated[]>([]);
   const dispatch = useDispatch();
 
@@ -24,4 +24,4 @@ export function HomePage() {
       <CurrencyList title='Quotes' currencies={currencies} />
     </main>
   );
-}
+};

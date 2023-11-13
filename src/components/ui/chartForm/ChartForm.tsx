@@ -14,7 +14,7 @@ interface ChartFormProps {
   onSubmit: (data: ChartData) => void;
 }
 
-export function ChartForm({ onSubmit }: ChartFormProps) {
+export const ChartForm = ({ onSubmit }: ChartFormProps) => {
   const cellsCountInRow = 4;
   const tableHead = generateTableHead(cellsCountInRow + 1);
 
@@ -96,4 +96,4 @@ export function ChartForm({ onSubmit }: ChartFormProps) {
       </button>
     </div>
   );
-}
+};

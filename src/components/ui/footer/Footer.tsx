@@ -4,8 +4,8 @@ import Logo from '@/assets/img/logo.png';
 
 import styles from './Footer.module.scss';
 
-export function Footer() {
-  return <footer className='container'>
+export const Footer = () => (
+  <footer className='container'>
     <div className={styles.content}>
       <div className={styles.about}>
         <div className={styles.aboutTitle}>
@@ -47,4 +47,4 @@ export function Footer() {
       Startsup © 2023-2024, All Rights Reserved
     </div>
   </footer>
-}
+);

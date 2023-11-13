@@ -16,11 +16,11 @@ interface CurrencyModalProps {
   onClose: () => void;
 }
 
-export function CurrencyModal({
+export const CurrencyModal = ({
   currency,
   onClose,
   id = 'currencyCodeCard-modal',
-}: CurrencyModalProps) {
+}: CurrencyModalProps) => {
   const [selectedCurrency, setSelectedCurrency] = useState<CurrencyRated>(
     null!,
   );
@@ -65,4 +65,4 @@ export function CurrencyModal({
       </div>
     </Modal>
   );
-}
+};

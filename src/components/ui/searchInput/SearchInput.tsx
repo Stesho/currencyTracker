@@ -9,6 +9,7 @@ import styles from './SearchInput.module.scss';
 interface SearchInputProps {
   currencies: CurrencyRated[];
   onSelectCurrency: (currency: CurrencyRated | null) => void;
+  className?: string;
 }
 
 interface SearchInputState {
@@ -86,7 +87,7 @@ export class SearchInput extends PureComponent<
 
   render() {
     const { selectedCurrency, isOpenList } = this.state;
-    const { currencies } = this.props;
+    const { currencies, className } = this.props;
     const filteredCurrencies = currencies.filter((currency) =>
       currency.currencyName
         .toLowerCase()
@@ -94,7 +95,10 @@ export class SearchInput extends PureComponent<
     );
 
     return (
-      <div className={styles.searchInput} ref={this.searchInput}>
+      <div
+        className={`${styles.searchInput} ${className}`}
+        ref={this.searchInput}
+      >
         <div className={styles.input}>
           <input
             value={selectedCurrency}

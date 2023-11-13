@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 
-import { CurrencySearch } from '@/components/currencySearch/CurrencySearch';
+import { BankSearch } from '@/components/bankSearch/BankSearch';
 import Main from '@/components/main/Main';
 import { getCurrencies } from '@/services/currency/getCurrencies';
 import { CurrencyRated } from '@/types/currency';
@@ -34,7 +34,7 @@ export class BankCardPage extends PureComponent<
 
     return (
       <Main>
-        {currencies.length > 0 && <CurrencySearch currencies={currencies} />}
+        {currencies.length > 0 && <BankSearch currencies={currencies} />}
       </Main>
     );
   }

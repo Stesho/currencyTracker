@@ -2,7 +2,7 @@ import React, { Component, RefObject } from 'react';
 
 import Arrow from '@/assets/icons/arrow.svg';
 import { DropDownList } from '@/components/ui/dropdown/dropDownList/DropDownList';
-import { Currency, CurrencyRated } from '@/types/currency';
+import { CurrencyRated } from '@/types/currency';
 
 import { DropDownProps } from './interfaces';
 
@@ -10,7 +10,7 @@ import styles from './DropDown.module.scss';
 
 interface DropDownState {
   isOpen: boolean;
-  selectedOption: Currency;
+  selectedOption: CurrencyRated;
 }
 
 export class DropDown extends Component<DropDownProps, DropDownState> {
@@ -49,11 +49,12 @@ export class DropDown extends Component<DropDownProps, DropDownState> {
   onOptionClick = (option: CurrencyRated) => {
     const { onSelectOption } = this.props;
 
-    onSelectOption(option);
     this.setState((prev) => ({
       isOpen: !prev.isOpen,
       selectedOption: option,
     }));
+
+    onSelectOption(option);
   };
 
   arrowAnimation = () => {

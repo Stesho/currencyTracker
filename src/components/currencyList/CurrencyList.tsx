@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { CurrencyModal } from '@/components/currencyModal/currencyModal';
+import { CurrencyModal } from '@/components/currencyModal/CurrencyModal';
 import { CurrencyRatedCard } from '@/components/ui/currencyRatedCard/CurrencyRatedCard';
 import { CurrencyRated } from '@/types/currency';
 

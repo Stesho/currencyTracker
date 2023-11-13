@@ -7,8 +7,9 @@ import { Modal } from '@/components/ui/modal/Modal';
 import { NumberInput } from '@/components/ui/numberInput/NumberInput';
 import { RootState } from '@/store/store';
 import { CurrencyRated } from '@/types/currency';
+import { cutLargeNumber } from '@/utils/cutLargeNumber';
 
-import styles from './currencyModal.module.scss';
+import styles from './CurrencyModal.module.scss';
 
 interface CurrencyModalProps {
   id?: string;
@@ -27,10 +28,6 @@ export const CurrencyModal = ({
   const [rate, setRate] = useState(currency.rate);
   const [quantity, setQuantity] = useState(1);
   const currencyState = useSelector((state: RootState) => state.currency);
-
-  const onInputQuantity = (value: number) => {
-    setQuantity(value);
-  };
 
   useEffect(() => {
     if (selectedCurrency) {
@@ -52,9 +49,10 @@ export const CurrencyModal = ({
             currencyName={currency.currencyName}
           />
           <div className={styles.convert}>
-            <NumberInput value={quantity} setValue={onInputQuantity} />
+            <NumberInput value={quantity} setValue={setQuantity} />
             <span>
-              {currency.id} = {quantity * rate} {selectedCurrency?.id || 'USD'}
+              {currency.id} = {cutLargeNumber(quantity * rate)}{' '}
+              {selectedCurrency?.id || 'USD'}
             </span>
           </div>
           <DropDown

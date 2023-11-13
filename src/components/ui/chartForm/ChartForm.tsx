@@ -55,7 +55,7 @@ export const ChartForm = ({ onSubmit }: ChartFormProps) => {
   }, [rowsCount]);
 
   return (
-    <div>
+    <div className={styles.chartForm}>
       <div>
         <span>Days count:</span>
         <NumberInput
@@ -88,12 +88,18 @@ export const ChartForm = ({ onSubmit }: ChartFormProps) => {
           ))}
         </tbody>
       </table>
-      <button className={styles.button} type='button' onClick={onSubmitForm}>
-        Build chart
-      </button>
-      <button className={styles.button} type='button' onClick={setStaticValues}>
-        Set static values
-      </button>
+      <div className={styles.buttons}>
+        <button className={styles.button} type='button' onClick={onSubmitForm}>
+          Build chart
+        </button>
+        <button
+          className={styles.button}
+          type='button'
+          onClick={setStaticValues}
+        >
+          Set static values
+        </button>
+      </div>
     </div>
   );
 };

@@ -1,5 +1,10 @@
+.chartForm {
+  margin: 40px 0;
+}
+
 .table {
   width: 100%;
+  margin: 10px 0 30px 0;
 }
 
 .row {
@@ -15,7 +20,18 @@
   }
 }
 
+.buttons {
+  display: flex;
+  justify-content: center;
+}
+
 .button {
-  padding: 10px;
-  border: 1px solid;
+  margin-right: 10px;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--secondary-color-100);
+  background-color: var(--text-color-300);
+  cursor: pointer;
 }

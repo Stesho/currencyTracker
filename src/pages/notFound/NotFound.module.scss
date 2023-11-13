@@ -1,0 +1,24 @@
+.notFound {
+  padding-top: 200px;
+  padding-bottom: 200px;
+}
+
+.header {
+  font-size: 60px;
+}
+
+.text {
+  margin: 0 0 40px 0;
+  font-size: 30px;
+}
+
+.backButton {
+  width: fit-content;
+  display: block;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--secondary-color-100);
+  background-color: var(--text-color-300);
+}

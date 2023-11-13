@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import Main from '@/components/main/Main';
 import { Timeline } from '@/components/timeline/Timeline';
 import { getCurrencies } from '@/services/currency/getCurrencies';
 import { CurrencyRated } from '@/types/currency';
@@ -32,9 +33,9 @@ export class TimelinePage extends Component<
     const { currencies } = this.state;
 
     return (
-      <main>
+      <Main>
         {currencies.length > 0 && <Timeline currencies={currencies} />}
-      </main>
+      </Main>
     );
   }
 }

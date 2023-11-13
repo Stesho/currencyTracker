@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 
-import { CurrencySearch } from '@/components/ui/currencySearch/CurrencySearch';
+import { CurrencySearch } from '@/components/currencySearch/CurrencySearch';
 import { getCurrencies } from '@/services/currency/getCurrencies';
 import { CurrencyRated } from '@/types/currency';
 

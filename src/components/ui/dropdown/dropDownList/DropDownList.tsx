@@ -6,7 +6,7 @@ import { Currency, CurrencyRated } from '@/types/currency';
 import styles from './DropDownList.module.scss';
 
 interface DropDownListProps extends DropDownProps {
-  selectedOption: Currency;
+  selectedOption: Currency | null;
 }
 
 export class DropDownList extends PureComponent<DropDownListProps> {
@@ -22,7 +22,7 @@ export class DropDownList extends PureComponent<DropDownListProps> {
       <ul className={styles.dropDownList}>
         {options.map(
           (option) =>
-            option.id !== selectedOption.id && (
+            option.id !== (selectedOption && selectedOption.id) && (
               <li
                 key={option.id}
                 onClick={this.onSelectOption(option)}

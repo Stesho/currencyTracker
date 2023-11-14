@@ -15,9 +15,9 @@ interface TimelineProps {
   currencies: CurrencyRated[];
 }
 interface TimelineState {
-  selectedCurrency: CurrencyRated;
+  selectedCurrency: CurrencyRated | null;
   chartData: ChartData;
-  chartBuilt: boolean;
+  isActiveModal: boolean;
   isNotificationActive: boolean;
 }
 
@@ -25,9 +25,9 @@ export class Timeline extends PureComponent<TimelineProps, TimelineState> {
   constructor(props: TimelineProps) {
     super(props);
     this.state = {
-      selectedCurrency: props.currencies[0],
+      selectedCurrency: null,
       chartData: [],
-      chartBuilt: false,
+      isActiveModal: false,
       isNotificationActive: false,
     };
   }
@@ -40,17 +40,23 @@ export class Timeline extends PureComponent<TimelineProps, TimelineState> {
     observer.unsubscribe(this.showNotification);
   }
 
+  onCloseModal = () => {
+    this.setState({
+      isActiveModal: false,
+    });
+  };
+
   onSelectCurrency = (currency: CurrencyRated) => {
     this.setState({
       selectedCurrency: currency,
-      chartBuilt: false,
+      isActiveModal: true,
     });
   };
 
   onSubmitForm = (data: ChartData) => {
     this.setState({
       chartData: data,
-      chartBuilt: true,
+      isActiveModal: false,
     });
     observer.notify();
   };
@@ -69,7 +75,7 @@ export class Timeline extends PureComponent<TimelineProps, TimelineState> {
 
   render() {
     const { currencies } = this.props;
-    const { selectedCurrency, chartData, chartBuilt, isNotificationActive } =
+    const { selectedCurrency, chartData, isActiveModal, isNotificationActive } =
       this.state;
 
     return (
@@ -77,15 +83,27 @@ export class Timeline extends PureComponent<TimelineProps, TimelineState> {
         <DropDown
           options={currencies}
           onSelectOption={this.onSelectCurrency}
+          initialOption='Choose Currency'
           className={styles.dropDown}
         />
-        <CurrencyCodeCard
-          id={selectedCurrency.id}
-          iconUrl={selectedCurrency.iconUrl}
-          currencyName={selectedCurrency.currencyName}
-        />
-        <PriceChart data={chartData} />
-        {!chartBuilt && <ChartFormModal onSubmitForm={this.onSubmitForm} />}
+        {selectedCurrency && (
+          <CurrencyCodeCard
+            id={selectedCurrency.id}
+            iconUrl={selectedCurrency.iconUrl}
+            currencyName={selectedCurrency.currencyName}
+          />
+        )}
+        {chartData.length > 0 ? (
+          <PriceChart data={chartData} />
+        ) : (
+          <div className={styles.noData}>No data</div>
+        )}
+        {isActiveModal && (
+          <ChartFormModal
+            onSubmitForm={this.onSubmitForm}
+            onClose={this.onCloseModal}
+          />
+        )}
         {isNotificationActive && (
           <Notification onClose={this.closeNotification} />
         )}

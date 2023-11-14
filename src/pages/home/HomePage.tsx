@@ -1,28 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 import { CurrencyList } from '@/components/currencyList/CurrencyList';
 import { Main } from '@/components/main/Main';
 import { stocks } from '@/constants/currencies/stocks';
-import { getCurrencies } from '@/services/currency/getCurrencies';
-import { updateCurrencies } from '@/store/slices/currencySlice';
-import { CurrencyRated } from '@/types/currency';
+import { RootState } from '@/store/store';
 
 export const HomePage = () => {
-  const [currencies, setCurrencies] = useState<CurrencyRated[]>([]);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    getCurrencies().then((data: CurrencyRated[]) => {
-      setCurrencies(data);
-      dispatch(updateCurrencies(data));
-    });
-  }, []);
+  const currencyState = useSelector((state: RootState) => state.currency);
 
   return (
     <Main>
       <CurrencyList title='Stocks' currencies={stocks} />
-      <CurrencyList title='Quotes' currencies={currencies} />
+      <CurrencyList title='Quotes' currencies={currencyState.currencies} />
     </Main>
   );
 };

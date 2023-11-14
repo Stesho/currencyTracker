@@ -1,36 +1,14 @@
 import React, { PureComponent } from 'react';
+import { connect, ConnectedProps } from 'react-redux';
 
 import { BankSearch } from '@/components/bankSearch/BankSearch';
 import { Main } from '@/components/main/Main';
-import { getCurrencies } from '@/services/currency/getCurrencies';
-import { CurrencyRated } from '@/types/currency';
+import { RootState } from '@/store/store';
 
-interface BankCardPageProps {}
-interface BankCardPageState {
-  currencies: CurrencyRated[];
-}
-
-export class BankCardPage extends PureComponent<
-  BankCardPageProps,
-  BankCardPageState
-> {
-  constructor(props: BankCardPageProps) {
-    super(props);
-    this.state = {
-      currencies: [],
-    };
-  }
-
-  componentDidMount() {
-    getCurrencies().then((data: CurrencyRated[]) => {
-      this.setState({
-        currencies: data,
-      });
-    });
-  }
-
+export class BankCardPageConnected extends PureComponent<PropsFromRedux> {
   render() {
-    const { currencies } = this.state;
+    const { currencyState } = this.props;
+    const { currencies } = currencyState;
 
     return (
       <Main>
@@ -39,3 +17,12 @@ export class BankCardPage extends PureComponent<
     );
   }
 }
+
+const mapStateToProps = (state: RootState) => ({
+  currencyState: state.currency,
+});
+
+const connector = connect(mapStateToProps);
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+export const BankCardPage = connector(BankCardPageConnected);

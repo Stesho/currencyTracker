@@ -19,7 +19,7 @@ export class DropDownList extends PureComponent<DropDownListProps> {
     const { options, selectedOption } = this.props;
 
     return (
-      <ul className={styles.dropDownList}>
+      <ul className={`${styles.dropDownList} scrollBar`}>
         {options.map(
           (option) =>
             option.id !== (selectedOption && selectedOption.id) && (

@@ -3,17 +3,6 @@
   max-height: 168px;
   width: 100%;
   overflow: auto;
-  &::-webkit-scrollbar {
-    width: 8px;
-  }
-  &::-webkit-scrollbar-track {
-    background: var(--text-color-100);
-    border-radius: 5px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: var(--text-color-400);
-    border-radius: 4px;
-  }
 }
 
 .option {

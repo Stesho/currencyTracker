@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { CurrencyList } from '@/components/currencyList/CurrencyList';
-import Main from '@/components/main/Main';
+import { Main } from '@/components/main/Main';
 import { stocks } from '@/constants/currencies/stocks';
 import { getCurrencies } from '@/services/currency/getCurrencies';
 import { updateCurrencies } from '@/store/slices/currencySlice';

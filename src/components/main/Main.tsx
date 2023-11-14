@@ -7,12 +7,10 @@ interface MainProps {
   children: ReactNode;
 }
 
-const Main = ({ children }: MainProps) => (
-    <main>
-      <Info />
-      <TimeUpdate />
-      {children}
-    </main>
-  );
-
-export default Main;
+export const Main = ({ children }: MainProps) => (
+  <main>
+    <Info />
+    <TimeUpdate />
+    {children}
+  </main>
+);

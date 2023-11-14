@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Main from '@/components/main/Main';
+import { Main } from '@/components/main/Main';
 import { Timeline } from '@/components/timeline/Timeline';
 import { getCurrencies } from '@/services/currency/getCurrencies';
 import { CurrencyRated } from '@/types/currency';

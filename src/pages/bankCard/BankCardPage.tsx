@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 
 import { BankSearch } from '@/components/bankSearch/BankSearch';
-import Main from '@/components/main/Main';
+import { Main } from '@/components/main/Main';
 import { getCurrencies } from '@/services/currency/getCurrencies';
 import { CurrencyRated } from '@/types/currency';
 

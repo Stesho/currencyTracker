@@ -5,7 +5,8 @@ export const cutLargeNumber = (
   const stringNum = num.toString();
   const dotIndex = stringNum.indexOf('.');
   const eIndex = stringNum.indexOf('e');
-  let firstNumAfterZeroesIndex = dotIndex + 1;
+  let firstNumAfterZeroesIndex =
+    dotIndex !== -1 ? dotIndex + 1 : stringNum.length - 1;
 
   while (stringNum[firstNumAfterZeroesIndex] === '0') {
     firstNumAfterZeroesIndex++;
@@ -17,12 +18,11 @@ export const cutLargeNumber = (
   );
 
   if (eIndex !== -1) {
-    const n = eIndex - (firstNumAfterZeroesIndex + numbersAfterZerosCount);
-    const numberOfDegrees = Number(
-      stringNum.slice(eIndex + 2, stringNum.length),
-    );
+    const additionalDegrees =
+      eIndex - (firstNumAfterZeroesIndex + numbersAfterZerosCount);
+    const degrees = Number(stringNum.slice(eIndex + 2, stringNum.length));
     const sign = stringNum[eIndex + 1];
-    trimmedNumber += `e${sign}${numberOfDegrees + n}`;
+    trimmedNumber += `e${sign}${degrees + additionalDegrees}`;
   }
 
   return trimmedNumber;

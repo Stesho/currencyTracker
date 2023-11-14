@@ -69,7 +69,7 @@ export const ChartForm = ({ onSubmit }: ChartFormProps) => {
       <table className={styles.table}>
         <thead>
           <tr className={styles.row}>
-            <td className={styles.cell}>day</td>
+            <td className={`${styles.cell} ${styles.dayCell}`}>day</td>
             <td className={styles.cell}>low</td>
             <td className={styles.cell}>opening</td>
             <td className={styles.cell}>closing</td>

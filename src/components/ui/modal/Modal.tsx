@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { useOutsideClick } from '@/hooks/useOutsideClick';
 import { usePortal } from '@/hooks/usePortal';
@@ -14,6 +14,13 @@ interface ModalProps {
 export const Modal = ({ id, onClose, children }: ModalProps) => {
   const Portal = usePortal(id);
   const content = useOutsideClick(() => onClose());
+
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, []);
 
   return (
     <Portal>

@@ -17,7 +17,7 @@ export const ChartFormRow = ({
   onChangeValue,
 }: ChartFormRowProps) => (
   <tr className={styles.row}>
-    <td className={styles.cell}>{day}</td>
+    <td className={`${styles.cell} ${styles.dayCell}`}>{day}</td>
     {values.map((value, index) => (
       <ChartFormCell
         key={index}

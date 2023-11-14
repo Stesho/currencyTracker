@@ -5,6 +5,7 @@ import { NumberInput } from '@/components/ui/numberInput/NumberInput';
 import { ChartData } from '@/constants/chart/chartData';
 import { addDayColumnToChartData } from '@/utils/addDayColumnToChartData';
 import { calculateInitialChartData } from '@/utils/calculateInitialChartData';
+import { cutFirstRowFirstColumn } from '@/utils/cutFirstRowFirstColumn';
 import { generateTableHead } from '@/utils/generateTableHead';
 import { recalculateChartData } from '@/utils/recalculateChartData';
 
@@ -12,15 +13,18 @@ import styles from './ChartForm.module.scss';
 
 interface ChartFormProps {
   onSubmit: (data: ChartData) => void;
+  initialChartData?: ChartData;
 }
 
-export const ChartForm = ({ onSubmit }: ChartFormProps) => {
+export const ChartForm = ({ onSubmit, initialChartData }: ChartFormProps) => {
   const cellsCountInRow = 4;
   const tableHead = generateTableHead(cellsCountInRow + 1);
 
   const [rowsCount, setRowsCount] = useState(5);
   const [values, setValues] = useState<number[][]>(() =>
-    calculateInitialChartData(rowsCount, cellsCountInRow),
+    initialChartData
+      ? cutFirstRowFirstColumn(initialChartData)
+      : calculateInitialChartData(rowsCount, cellsCountInRow),
   );
 
   const onChangeValue = (value: number, row: number, column: number) => {

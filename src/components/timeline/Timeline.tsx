@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 
 import { ChartFormModal } from '@/components/chartFormModal/ChartFormModal';
 import { PriceChart } from '@/components/priceChart/PriceChart';
+import NoData from '@/components/timeline/noData/NoData';
 import { CurrencyCodeCard } from '@/components/ui/currencyCodeCard/CurrencyCodeCard';
 import { DropDown } from '@/components/ui/dropdown/DropDown';
 import { Notification } from '@/components/ui/notification/Notification';
@@ -40,6 +41,12 @@ export class Timeline extends PureComponent<TimelineProps, TimelineState> {
     observer.unsubscribe(this.showNotification);
   }
 
+  onBackToDataClick = () => {
+    this.setState({
+      isActiveModal: true,
+    });
+  };
+
   onCloseModal = () => {
     this.setState({
       isActiveModal: false,
@@ -50,6 +57,7 @@ export class Timeline extends PureComponent<TimelineProps, TimelineState> {
     this.setState({
       selectedCurrency: currency,
       isActiveModal: true,
+      chartData: [],
     });
   };
 
@@ -79,7 +87,7 @@ export class Timeline extends PureComponent<TimelineProps, TimelineState> {
       this.state;
 
     return (
-      <section className='container'>
+      <section className={`${styles.timeline} container`}>
         <DropDown
           options={currencies}
           onSelectOption={this.onSelectCurrency}
@@ -94,14 +102,27 @@ export class Timeline extends PureComponent<TimelineProps, TimelineState> {
           />
         )}
         {chartData.length > 0 ? (
-          <PriceChart data={chartData} />
+          <>
+            <PriceChart data={chartData} />
+            <button
+              type='button'
+              className={styles.backButton}
+              onClick={this.onBackToDataClick}
+            >
+              Back to data
+            </button>
+          </>
         ) : (
-          <div className={styles.noData}>No data</div>
+          <NoData
+            isButtonActive={Boolean(selectedCurrency)}
+            onBackToDataClick={this.onBackToDataClick}
+          />
         )}
         {isActiveModal && (
           <ChartFormModal
             onSubmitForm={this.onSubmitForm}
             onClose={this.onCloseModal}
+            initialChartData={chartData.length > 0 ? chartData : undefined}
           />
         )}
         {isNotificationActive && (

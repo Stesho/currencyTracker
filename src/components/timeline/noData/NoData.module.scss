@@ -1,9 +1,13 @@
-.timeline {
-  margin-bottom: 100px;
-}
+.noData {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 0;
 
-.dropDown {
-  margin: 0 0 170px 0;
+  h3 {
+    font-size: 40px;
+  }
 }
 
 .backButton {

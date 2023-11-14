@@ -39,9 +39,6 @@ export const CurrencyModal = ({
   return (
     <Modal id={id} onClose={onClose}>
       <div className={styles.currencyModal}>
-        <button className={styles.closeButton} onClick={onClose} type='button'>
-          ✖
-        </button>
         <div className={styles.content}>
           <CurrencyCodeCard
             id={currency.id}

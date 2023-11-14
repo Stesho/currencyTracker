@@ -1,10 +1,9 @@
 import React, { PureComponent } from 'react';
 
+import { ChartFormModal } from '@/components/chartFormModal/ChartFormModal';
 import { PriceChart } from '@/components/priceChart/PriceChart';
-import { ChartForm } from '@/components/ui/chartForm/ChartForm';
 import { CurrencyCodeCard } from '@/components/ui/currencyCodeCard/CurrencyCodeCard';
 import { DropDown } from '@/components/ui/dropdown/DropDown';
-import { Modal } from '@/components/ui/modal/Modal';
 import { Notification } from '@/components/ui/notification/Notification';
 import { ChartData } from '@/constants/chart/chartData';
 import { observer } from '@/services/observer/observer';
@@ -86,11 +85,7 @@ export class Timeline extends PureComponent<TimelineProps, TimelineState> {
           currencyName={selectedCurrency.currencyName}
         />
         <PriceChart data={chartData} />
-        {!chartBuilt && (
-          <Modal id='chartForm-modal' onClose={() => {}}>
-            <ChartForm onSubmit={this.onSubmitForm} />
-          </Modal>
-        )}
+        {!chartBuilt && <ChartFormModal onSubmitForm={this.onSubmitForm} />}
         {isNotificationActive && (
           <Notification onClose={this.closeNotification} />
         )}

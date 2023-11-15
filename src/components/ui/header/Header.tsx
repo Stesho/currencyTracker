@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import Logo from '@/assets/img/logo.png';
 import { Switch } from '@/components/ui/switch/Switch';
@@ -17,16 +17,44 @@ export const Header = () => {
         <nav className={styles.nav}>
           <ul className={styles.navList}>
             <li className={styles.navItem}>
-              <Link to='/'>Home</Link>
+              <NavLink
+                to='/'
+                className={(active) =>
+                  `${styles.navItem} ${active.isActive && styles.activeLink}`
+                }
+              >
+                Home
+              </NavLink>
             </li>
             <li className={styles.navItem}>
-              <Link to='/timeline'>Timeline</Link>
+              <NavLink
+                to='/timeline'
+                className={(active) =>
+                  `${styles.navItem} ${active.isActive && styles.activeLink}`
+                }
+              >
+                Timeline
+              </NavLink>
             </li>
             <li className={styles.navItem}>
-              <Link to='/bank-card'>Bank card</Link>
+              <NavLink
+                to='/bank-card'
+                className={(active) =>
+                  `${styles.navItem} ${active.isActive && styles.activeLink}`
+                }
+              >
+                Bank card
+              </NavLink>
             </li>
             <li className={styles.navItem}>
-              <Link to='/contacts'>Contacts</Link>
+              <NavLink
+                to='/contacts'
+                className={(active) =>
+                  `${styles.navItem} ${active.isActive && styles.activeLink}`
+                }
+              >
+                Contacts
+              </NavLink>
             </li>
           </ul>
         </nav>

@@ -7,6 +7,12 @@
   border: 1px solid $grey-400;
   border-radius: 8px;
   background: var(--secondary-color-200);
+  transition: all 100ms linear;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px var(--text-color-200);
+  }
 }
 
 .rate {

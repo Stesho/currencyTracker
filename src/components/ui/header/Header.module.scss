@@ -25,3 +25,14 @@
   display: flex;
   justify-content: space-between;
 }
+
+.navItem {
+  &:hover {
+    color: var(--text-color-200);
+  }
+}
+
+.activeLink {
+  color: var(--text-color-300);
+  font-weight: 600;
+}

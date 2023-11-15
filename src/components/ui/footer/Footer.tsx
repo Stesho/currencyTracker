@@ -23,22 +23,22 @@ export const Footer = () => (
         <div className={styles.general}>
           <h3 className={styles.linksTitle}>General</h3>
           <ul className={styles.linksList}>
-            <li>Market</li>
-            <li>Service</li>
+            <li className={styles.link}>Market</li>
+            <li className={styles.link}>Service</li>
           </ul>
         </div>
         <div className={styles.product}>
           <h3 className={styles.linksTitle}>Product</h3>
           <ul className={styles.linksList}>
-            <li>Sparks</li>
-            <li>Snaps</li>
+            <li className={styles.link}>Sparks</li>
+            <li className={styles.link}>Snaps</li>
           </ul>
         </div>
         <div className={styles.community}>
           <h3 className={styles.linksTitle}>Community</h3>
           <ul className={styles.linksList}>
-            <li>Ideas</li>
-            <li>Streams</li>
+            <li className={styles.link}>Ideas</li>
+            <li className={styles.link}>Streams</li>
           </ul>
         </div>
       </div>

@@ -3,6 +3,7 @@ import React, { PureComponent } from 'react';
 import { ChartFormModal } from '@/components/chartFormModal/ChartFormModal';
 import { PriceChart } from '@/components/priceChart/PriceChart';
 import NoData from '@/components/timeline/noData/NoData';
+import { Button } from '@/components/ui/button/Button';
 import { CurrencyCodeCard } from '@/components/ui/currencyCodeCard/CurrencyCodeCard';
 import { DropDown } from '@/components/ui/dropdown/DropDown';
 import { Notification } from '@/components/ui/notification/Notification';
@@ -104,13 +105,12 @@ export class Timeline extends PureComponent<TimelineProps, TimelineState> {
         {chartData.length > 0 ? (
           <>
             <PriceChart data={chartData} />
-            <button
-              type='button'
+            <Button
               className={styles.backButton}
               onClick={this.onBackToDataClick}
             >
               Back to data
-            </button>
+            </Button>
           </>
         ) : (
           <NoData

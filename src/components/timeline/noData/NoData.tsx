@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Button } from '@/components/ui/button/Button';
+
 import styles from './NoData.module.scss';
 
 interface NoDataProps {
@@ -8,18 +10,14 @@ interface NoDataProps {
 }
 
 const NoData = ({ isButtonActive, onBackToDataClick }: NoDataProps) => (
-    <div className={styles.noData}>
-      <h3>No data</h3>
-      {isButtonActive && (
-        <button
-          type='button'
-          className={styles.backButton}
-          onClick={onBackToDataClick}
-        >
-          Back to data
-        </button>
-      )}
-    </div>
-  );
+  <div className={styles.noData}>
+    <h3>No data</h3>
+    {isButtonActive && (
+      <Button onClick={onBackToDataClick} className={styles.backButton}>
+        Back to data
+      </Button>
+    )}
+  </div>
+);
 
 export default NoData;

@@ -4,6 +4,10 @@ export const options = {
   bar: {
     groupWidth: '100%',
   },
+  chartArea: {
+    width: '90%',
+    height: '90%',
+  },
   candlestick: {
     fallingColor: {
       strokeWidth: 0,
@@ -18,8 +22,5 @@ export const options = {
   hAxis: {
     title: 'Day',
     colors: ['orange'],
-  },
-  vAxis: {
-    title: 'Value',
   },
 };

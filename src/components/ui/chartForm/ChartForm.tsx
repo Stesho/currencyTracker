@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+import { Button } from '@/components/ui/button/Button';
 import { ChartFormRow } from '@/components/ui/chartForm/chartFormRow/ChartFormRow';
 import { NumberInput } from '@/components/ui/numberInput/NumberInput';
 import { ChartData } from '@/constants/chart/chartData';
@@ -90,16 +91,10 @@ export const ChartForm = ({ onSubmit, initialChartData }: ChartFormProps) => {
         </tbody>
       </table>
       <div className={styles.buttons}>
-        <button className={styles.button} type='button' onClick={onSubmitForm}>
+        <Button onClick={onSubmitForm} className={styles.button}>
           Build chart
-        </button>
-        <button
-          className={styles.button}
-          type='button'
-          onClick={setStaticValues}
-        >
-          Set random values
-        </button>
+        </Button>
+        <Button onClick={setStaticValues}>Set random values</Button>
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 @import '@/styles/variables.scss';
+@import '@/styles/global.scss';
 
 .currencyCard {
   max-width: 454px;
@@ -26,5 +27,23 @@
   text-overflow: ellipsis;
   color: var(--text-color-200);
   font-size: 35px;
+  @include adaptive-font($pcSize: 35, $mobSize: 22);
   line-height: 1.3;
+}
+
+@media (max-width: 1024px) {
+  .icon {
+    width: 65px;
+    height: 65px;
+    margin: 0 10px 0 0;
+  }
+}
+@media (max-width: 425px) {
+  .icon {
+    width: 55px;
+    height: 55px;
+  }
+  .name {
+    max-width: 190px;
+  }
 }

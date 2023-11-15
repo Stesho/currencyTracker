@@ -36,3 +36,15 @@
   left: calc(100% - 30px - 7px);
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  .content {
+    padding: 25px;
+  }
+  .closeButton {
+    width: 23px;
+    height: 23px;
+    font-size: 30px;
+    left: calc(100% - 23px - 7px);
+  }
+}

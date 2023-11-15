@@ -46,11 +46,21 @@ export const CurrencyModal = ({
             currencyName={currency.currencyName}
           />
           <div className={styles.convert}>
-            <NumberInput value={quantity} setValue={setQuantity} />
-            <span>
-              {currency.id} = {cutLargeNumber(quantity * rate)}{' '}
-              {selectedCurrency?.id || 'USD'}
-            </span>
+            <div>
+              <NumberInput
+                value={quantity}
+                setValue={setQuantity}
+                className={styles.input}
+              />
+              <span>{currency.id}</span>
+            </div>
+            <div>
+              <span className={styles.equal}> = </span>
+              <span className={styles.convertArrows}>⬇⬆</span>
+            </div>
+            <div>
+              {cutLargeNumber(quantity * rate)} {selectedCurrency?.id || 'USD'}
+            </div>
           </div>
           <DropDown
             options={currencyState.currencies}

@@ -5,7 +5,7 @@ import Logo from '@/assets/img/logo.png';
 import styles from './Footer.module.scss';
 
 export const Footer = () => (
-  <footer className='container'>
+  <footer className={`${styles.footer} container`}>
     <div className={styles.content}>
       <div className={styles.about}>
         <div className={styles.aboutTitle}>

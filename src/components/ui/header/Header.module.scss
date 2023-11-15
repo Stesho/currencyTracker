@@ -15,9 +15,9 @@
 }
 
 .nav {
-  max-width: 717px;
+  max-width: 727px;
   width: 100%;
-  padding: 0 30px;
+  padding: 0 35px;
 }
 
 .navList {
@@ -35,4 +35,10 @@
 .activeLink {
   color: var(--text-color-300);
   font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+  }
 }

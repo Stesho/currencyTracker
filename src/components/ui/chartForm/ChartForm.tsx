@@ -7,6 +7,7 @@ import { addDayColumnToChartData } from '@/utils/addDayColumnToChartData';
 import { calculateInitialChartData } from '@/utils/calculateInitialChartData';
 import { cutFirstRowFirstColumn } from '@/utils/cutFirstRowFirstColumn';
 import { generateTableHead } from '@/utils/generateTableHead';
+import { randomizeChartData } from '@/utils/randomizeChartData';
 import { recalculateChartData } from '@/utils/recalculateChartData';
 
 import styles from './ChartForm.module.scss';
@@ -18,9 +19,12 @@ interface ChartFormProps {
 
 export const ChartForm = ({ onSubmit, initialChartData }: ChartFormProps) => {
   const cellsCountInRow = 4;
+  const maxDays = 31;
   const tableHead = generateTableHead(cellsCountInRow + 1);
 
-  const [rowsCount, setRowsCount] = useState(5);
+  const [rowsCount, setRowsCount] = useState(() =>
+    initialChartData ? initialChartData.length - 1 : maxDays,
+  );
   const [values, setValues] = useState<number[][]>(() =>
     initialChartData
       ? cutFirstRowFirstColumn(initialChartData)
@@ -43,14 +47,7 @@ export const ChartForm = ({ onSubmit, initialChartData }: ChartFormProps) => {
   };
 
   const setStaticValues = () => {
-    setRowsCount(5);
-    setValues([
-      [20, 28, 38, 45],
-      [31, 38, 55, 66],
-      [50, 55, 77, 80],
-      [77, 77, 66, 50],
-      [68, 66, 22, 15],
-    ]);
+    setValues(randomizeChartData(rowsCount));
   };
 
   useEffect(() => {
@@ -101,7 +98,7 @@ export const ChartForm = ({ onSubmit, initialChartData }: ChartFormProps) => {
           type='button'
           onClick={setStaticValues}
         >
-          Set static values
+          Set random values
         </button>
       </div>
     </div>

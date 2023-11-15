@@ -36,7 +36,7 @@ export class BankSearch extends PureComponent<
 
     return (
       <section className={styles.bankSearch}>
-        <div className={styles.searchInput}>
+        <div className={`${styles.searchInput} container`}>
           <h2 className={styles.header}>Search currency in the bank</h2>
           <SearchInput
             currencies={currencies}

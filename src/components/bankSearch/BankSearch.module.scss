@@ -1,3 +1,5 @@
+@import '@/styles/global.scss';
+
 .bankSearch {
   padding: 80px 0 150px 0;
 }
@@ -10,7 +12,8 @@
 
 .header {
   margin-bottom: 25px;
-  font-size: 38px;
+  @include adaptive-font($pcSize: 38, $mobSize: 26);
+  text-align: center;
   font-weight: normal;
 }
 

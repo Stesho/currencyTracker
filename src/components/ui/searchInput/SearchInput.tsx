@@ -99,7 +99,7 @@ export class SearchInput extends PureComponent<
         className={`${styles.searchInput} ${className}`}
         ref={this.searchInput}
       >
-        <div className={styles.input}>
+        <div className={styles.inputWrapper}>
           <input
             value={selectedCurrency}
             onChange={this.onInputCurrency}

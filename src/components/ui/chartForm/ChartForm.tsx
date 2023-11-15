@@ -19,11 +19,11 @@ interface ChartFormProps {
 
 export const ChartForm = ({ onSubmit, initialChartData }: ChartFormProps) => {
   const cellsCountInRow = 4;
-  const maxDays = 31;
+  const initialDaysCount = 5;
   const tableHead = generateTableHead(cellsCountInRow + 1);
 
   const [rowsCount, setRowsCount] = useState(() =>
-    initialChartData ? initialChartData.length - 1 : maxDays,
+    initialChartData ? initialChartData.length - 1 : initialDaysCount,
   );
   const [values, setValues] = useState<number[][]>(() =>
     initialChartData

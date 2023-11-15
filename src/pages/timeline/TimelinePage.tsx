@@ -1,40 +1,28 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
+import { connect, ConnectedProps } from 'react-redux';
 
+import { Main } from '@/components/main/Main';
 import { Timeline } from '@/components/timeline/Timeline';
-import { getCurrencies } from '@/services/currency/getCurrencies';
-import { CurrencyRated } from '@/types/currency';
+import { RootState } from '@/store/store';
 
-interface TimelinePageProps {}
-interface TimelinePageState {
-  currencies: CurrencyRated[];
-}
-
-export class TimelinePage extends Component<
-  TimelinePageProps,
-  TimelinePageState
-> {
-  constructor(props: TimelinePageProps) {
-    super(props);
-    this.state = {
-      currencies: [],
-    };
-  }
-
-  componentDidMount() {
-    getCurrencies().then((data: CurrencyRated[]) => {
-      this.setState({
-        currencies: data,
-      });
-    });
-  }
-
+class TimelinePageConnected extends PureComponent<PropsFromRedux> {
   render() {
-    const { currencies } = this.state;
+    const { currencyState } = this.props;
+    const { currencies } = currencyState;
 
     return (
-      <main>
+      <Main>
         {currencies.length > 0 && <Timeline currencies={currencies} />}
-      </main>
+      </Main>
     );
   }
 }
+
+const mapStateToProps = (state: RootState) => ({
+  currencyState: state.currency,
+});
+
+const connector = connect(mapStateToProps);
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+export const TimeLinePage = connector(TimelinePageConnected);

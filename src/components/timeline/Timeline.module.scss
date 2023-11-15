@@ -1,3 +1,19 @@
+.timeline {
+  margin-bottom: 100px;
+}
+
 .dropDown {
   margin: 0 0 170px 0;
+}
+
+.backButton {
+  display: block;
+  margin: 20px auto 0 auto;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--secondary-color-100);
+  background-color: var(--text-color-300);
+  cursor: pointer;
 }

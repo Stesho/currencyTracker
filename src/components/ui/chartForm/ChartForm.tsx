@@ -5,22 +5,30 @@ import { NumberInput } from '@/components/ui/numberInput/NumberInput';
 import { ChartData } from '@/constants/chart/chartData';
 import { addDayColumnToChartData } from '@/utils/addDayColumnToChartData';
 import { calculateInitialChartData } from '@/utils/calculateInitialChartData';
+import { cutFirstRowFirstColumn } from '@/utils/cutFirstRowFirstColumn';
 import { generateTableHead } from '@/utils/generateTableHead';
+import { randomizeChartData } from '@/utils/randomizeChartData';
 import { recalculateChartData } from '@/utils/recalculateChartData';
 
 import styles from './ChartForm.module.scss';
 
 interface ChartFormProps {
   onSubmit: (data: ChartData) => void;
+  initialChartData?: ChartData;
 }
 
-export function ChartForm({ onSubmit }: ChartFormProps) {
+export const ChartForm = ({ onSubmit, initialChartData }: ChartFormProps) => {
   const cellsCountInRow = 4;
+  const initialDaysCount = 5;
   const tableHead = generateTableHead(cellsCountInRow + 1);
 
-  const [rowsCount, setRowsCount] = useState(5);
+  const [rowsCount, setRowsCount] = useState(() =>
+    initialChartData ? initialChartData.length - 1 : initialDaysCount,
+  );
   const [values, setValues] = useState<number[][]>(() =>
-    calculateInitialChartData(rowsCount, cellsCountInRow),
+    initialChartData
+      ? cutFirstRowFirstColumn(initialChartData)
+      : calculateInitialChartData(rowsCount, cellsCountInRow),
   );
 
   const onChangeValue = (value: number, row: number, column: number) => {
@@ -39,14 +47,7 @@ export function ChartForm({ onSubmit }: ChartFormProps) {
   };
 
   const setStaticValues = () => {
-    setRowsCount(5);
-    setValues([
-      [20, 28, 38, 45],
-      [31, 38, 55, 66],
-      [50, 55, 77, 80],
-      [77, 77, 66, 50],
-      [68, 66, 22, 15],
-    ]);
+    setValues(randomizeChartData(rowsCount));
   };
 
   useEffect(() => {
@@ -55,7 +56,7 @@ export function ChartForm({ onSubmit }: ChartFormProps) {
   }, [rowsCount]);
 
   return (
-    <div>
+    <div className={styles.chartForm}>
       <div>
         <span>Days count:</span>
         <NumberInput
@@ -69,7 +70,7 @@ export function ChartForm({ onSubmit }: ChartFormProps) {
       <table className={styles.table}>
         <thead>
           <tr className={styles.row}>
-            <td className={styles.cell}>day</td>
+            <td className={`${styles.cell} ${styles.dayCell}`}>day</td>
             <td className={styles.cell}>low</td>
             <td className={styles.cell}>opening</td>
             <td className={styles.cell}>closing</td>
@@ -88,12 +89,18 @@ export function ChartForm({ onSubmit }: ChartFormProps) {
           ))}
         </tbody>
       </table>
-      <button className={styles.button} type='button' onClick={onSubmitForm}>
-        Build chart
-      </button>
-      <button className={styles.button} type='button' onClick={setStaticValues}>
-        Set static values
-      </button>
+      <div className={styles.buttons}>
+        <button className={styles.button} type='button' onClick={onSubmitForm}>
+          Build chart
+        </button>
+        <button
+          className={styles.button}
+          type='button'
+          onClick={setStaticValues}
+        >
+          Set random values
+        </button>
+      </div>
     </div>
   );
-}
+};

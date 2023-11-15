@@ -12,11 +12,11 @@ interface ChartFormCellProps {
   onChange: (value: number, row: number, column: number) => void;
 }
 
-export function ChartFormCell({
+export const ChartFormCell = ({
   value,
   onChange,
   position,
-}: ChartFormCellProps) {
+}: ChartFormCellProps) => {
   const onChangeValue = (newValue: number) => {
     onChange(newValue, position.row, position.column);
   };
@@ -26,4 +26,4 @@ export function ChartFormCell({
       <NumberInput value={value} setValue={onChangeValue} />
     </td>
   );
-}
+};

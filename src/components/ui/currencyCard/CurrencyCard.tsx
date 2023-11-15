@@ -8,16 +8,16 @@ interface CurrencyCardProps extends Currency {
   children: ReactNode;
 }
 
-export function CurrencyCard({
+export const CurrencyCard = ({
   currencyName,
   iconUrl,
   children,
-}: CurrencyCardProps) {
-  return <div className={styles.currencyCard}>
+}: CurrencyCardProps) => (
+  <div className={styles.currencyCard}>
     <img className={styles.icon} src={iconUrl} alt='currency' />
     <div className={styles.text}>
       <span className={styles.name}>{currencyName}</span>
       {children}
     </div>
   </div>
-}
+);

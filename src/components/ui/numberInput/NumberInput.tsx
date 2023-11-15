@@ -12,13 +12,13 @@ interface NumberInputProps {
   max?: number;
 }
 
-export function NumberInput({
+export const NumberInput = ({
   value,
   setValue,
   min,
   max,
   isIntegersOnly = false,
-}: NumberInputProps) {
+}: NumberInputProps) => {
   const positiveIntegers = /^\d*$/;
   const positiveFloat = /^\d*\.?\d*$/;
   const pattern = isIntegersOnly ? positiveIntegers : positiveFloat;
@@ -69,4 +69,4 @@ export function NumberInput({
       className={styles.input}
     />
   );
-}
+};

@@ -1,0 +1,23 @@
+.noData {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 0;
+
+  h3 {
+    font-size: 40px;
+  }
+}
+
+.backButton {
+  display: block;
+  margin: 20px auto 0 auto;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--secondary-color-100);
+  background-color: var(--text-color-300);
+  cursor: pointer;
+}

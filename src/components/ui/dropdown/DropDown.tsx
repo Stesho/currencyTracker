@@ -2,7 +2,7 @@ import React, { Component, RefObject } from 'react';
 
 import Arrow from '@/assets/icons/arrow.svg';
 import { DropDownList } from '@/components/ui/dropdown/dropDownList/DropDownList';
-import { Currency, CurrencyRated } from '@/types/currency';
+import { CurrencyRated } from '@/types/currency';
 
 import { DropDownProps } from './interfaces';
 
@@ -10,7 +10,7 @@ import styles from './DropDown.module.scss';
 
 interface DropDownState {
   isOpen: boolean;
-  selectedOption: Currency;
+  selectedOption: CurrencyRated | null;
 }
 
 export class DropDown extends Component<DropDownProps, DropDownState> {
@@ -21,7 +21,7 @@ export class DropDown extends Component<DropDownProps, DropDownState> {
     this.dropDown = React.createRef();
     this.state = {
       isOpen: false,
-      selectedOption: props.options[0],
+      selectedOption: props.initialOption ? null : props.options[0],
     };
   }
 
@@ -49,11 +49,12 @@ export class DropDown extends Component<DropDownProps, DropDownState> {
   onOptionClick = (option: CurrencyRated) => {
     const { onSelectOption } = this.props;
 
-    onSelectOption(option);
     this.setState((prev) => ({
       isOpen: !prev.isOpen,
       selectedOption: option,
     }));
+
+    onSelectOption(option);
   };
 
   arrowAnimation = () => {
@@ -63,7 +64,7 @@ export class DropDown extends Component<DropDownProps, DropDownState> {
 
   render() {
     const { selectedOption, isOpen } = this.state;
-    const { options, className } = this.props;
+    const { options, className, initialOption } = this.props;
 
     return (
       <div className={`${styles.dropDown} ${className}`} ref={this.dropDown}>
@@ -72,7 +73,9 @@ export class DropDown extends Component<DropDownProps, DropDownState> {
           onClick={this.toggleDropDown}
           type='button'
         >
-          <div className={styles.option}>{selectedOption.currencyName}</div>
+          <div className={styles.option}>
+            {selectedOption?.currencyName || initialOption}
+          </div>
           <Arrow className={this.arrowAnimation()} />
         </button>
         {isOpen && (

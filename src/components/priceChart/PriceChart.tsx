@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import { Chart } from 'react-google-charts';
 
-import { ChartData } from '@/constants/chart/chartData';
 import { options } from '@/constants/chart/options';
+import { ChartData } from '@/types/chartData';
 
 import styles from './PriceChart.module.scss';
 

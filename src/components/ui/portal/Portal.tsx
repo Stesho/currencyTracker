@@ -12,15 +12,18 @@ export const Portal = ({
   children,
   mountNode = document.body,
 }: PortalProps) => {
-  const [container, setContainer] = useState<HTMLElement>();
-
-  useEffect(() => {
-    const oldContainer = document.getElementById(id);
+  const [container] = useState<HTMLElement>(() => {
     const newContainer = document.createElement('div');
     newContainer.setAttribute('id', id);
 
-    mountNode.appendChild(oldContainer || newContainer);
-    setContainer(oldContainer || newContainer);
+    return newContainer;
+  });
+
+  useEffect(() => {
+    mountNode.appendChild(container);
+    return () => {
+      mountNode.removeChild(container);
+    };
   }, [id]);
 
   return container ? createPortal(children, container) : null;

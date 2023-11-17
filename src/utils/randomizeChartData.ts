@@ -6,7 +6,8 @@ const getNextOpening = (
   minValue: number,
   maxValue: number,
   minCandlestickSize: number,
-) => lastOpening > preLastOpening
+) =>
+  lastOpening > preLastOpening
     ? getRandomIntegerInRange(lastOpening + minCandlestickSize, maxValue)
     : getRandomIntegerInRange(minValue, lastOpening - minCandlestickSize);
 
@@ -16,14 +17,9 @@ const randomizeOpenings = (
   maxValue: number,
 ) => {
   const openings: number[] = [];
-  const minCandlestickSize = 20;
+  const minCandlestickSize = 5;
   const minOpeningSeries = 2;
   let currentOpeningSeries = 1;
-
-  for (let i = 0; i < 2; i++) {
-    const newOpening = getRandomIntegerInRange(minValue, maxValue);
-    openings.push(newOpening);
-  }
 
   for (let i = 0; i < rowsCount; i++) {
     let newOpening;
@@ -57,7 +53,8 @@ const randomizeOpenings = (
 export const randomizeChartData = (rowsCount: number) => {
   const minValue = 50;
   const maxValue = 100;
-  const valuesSpread = 10;
+  const lowHighValuesSpread = 10;
+  const minLowHighValuesSpread = 1;
 
   const openings = randomizeOpenings(rowsCount, minValue, maxValue);
 
@@ -70,24 +67,24 @@ export const randomizeChartData = (rowsCount: number) => {
   const lows = openings.map((opening, index) =>
     openings[index] < closings[index]
       ? getRandomIntegerInRange(
-          openings[index] - valuesSpread,
-          openings[index] - 1,
+          openings[index] - lowHighValuesSpread,
+          openings[index] - minLowHighValuesSpread,
         )
       : getRandomIntegerInRange(
-          openings[index] + 1,
-          openings[index] + valuesSpread,
+          openings[index] + minLowHighValuesSpread,
+          openings[index] + lowHighValuesSpread,
         ),
   );
 
   const highs = openings.map((opening, index) =>
     openings[index] < closings[index]
       ? getRandomIntegerInRange(
-          closings[index] + 1,
-          closings[index] + valuesSpread,
+          closings[index] + minLowHighValuesSpread,
+          closings[index] + lowHighValuesSpread,
         )
       : getRandomIntegerInRange(
-          closings[index] - valuesSpread,
-          closings[index] - 1,
+          closings[index] - lowHighValuesSpread,
+          closings[index] - minLowHighValuesSpread,
         ),
   );
 

@@ -4,7 +4,7 @@ import mapboxgl from 'mapbox-gl';
 import { MAPBOX_API_KEY } from '@/constants/environment/environment';
 import { CurrencyRated } from '@/types/currency';
 
-import banksData from './banksData.json';
+import banksData from '../../../constants/chart/banksData.json';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 import styles from './Map.module.scss';

@@ -18,14 +18,14 @@ export const App = ({ children }: AppProps) => {
     const currencies = localStorage.getItem('persist:root');
     if (!currencies) {
       getCurrencies().then((data: CurrencyRated[]) => {
-        dispatch(updateCurrencies(data));
+        dispatch(updateCurrencies(data || []));
       });
     }
 
     const intervalTimeMs = 20 * 60 * 1000;
     const intervalId = setInterval(() => {
       getCurrencies().then((data: CurrencyRated[]) => {
-        dispatch(updateCurrencies(data));
+        dispatch(updateCurrencies(data || []));
       });
     }, intervalTimeMs);
 
@@ -33,4 +33,4 @@ export const App = ({ children }: AppProps) => {
   }, []);
 
   return <div className='app'>{children}</div>;
-}
+};

@@ -1,13 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import { CurrencyRated } from '@/types/currency';
+import { getCurrentTimeIn12HoursFormat } from '@/utils/getCurrentTimeIn12HoursFormat';
 
 interface InitialState {
   currencies: CurrencyRated[];
+  lastUpdate: string;
 }
 
 const initialState: InitialState = {
   currencies: [],
+  lastUpdate: '',
 };
 
 export const counterSlice = createSlice({
@@ -16,6 +19,7 @@ export const counterSlice = createSlice({
   reducers: {
     updateCurrencies: (state, action) => {
       state.currencies = action.payload;
+      state.lastUpdate = getCurrentTimeIn12HoursFormat();
     },
   },
 });

@@ -13,7 +13,7 @@ class SearchInputList extends PureComponent<SearchInputListProps> {
     const { currencies, onCurrencyClick } = this.props;
 
     return (
-      <ul className={styles.searchList}>
+      <ul className={`${styles.searchList} scrollBar`}>
         {currencies.map((currency) => (
           <li
             key={currency.id}

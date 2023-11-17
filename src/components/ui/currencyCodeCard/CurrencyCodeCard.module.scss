@@ -1,6 +1,9 @@
+@import '@/styles/global.scss';
+
 .code {
   color: var(--text-color-300);
   font-size: 16px;
+  @include adaptive-font($pcSize: 16, $mobSize: 14);
   font-weight: 500;
   line-height: 1;
 }

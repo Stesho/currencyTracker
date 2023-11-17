@@ -10,6 +10,7 @@ interface NumberInputProps {
   isIntegersOnly?: boolean;
   min?: number;
   max?: number;
+  className?: string;
 }
 
 export const NumberInput = ({
@@ -17,6 +18,7 @@ export const NumberInput = ({
   setValue,
   min,
   max,
+  className,
   isIntegersOnly = false,
 }: NumberInputProps) => {
   const positiveIntegers = /^\d*$/;
@@ -66,7 +68,7 @@ export const NumberInput = ({
       type='text'
       onChange={onChange}
       onBlur={setMinOrMax}
-      className={styles.input}
+      className={`${styles.input} ${className}`}
     />
   );
 };

@@ -1,6 +1,13 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background-color: var(--primary-color);
+}
+
 .headerContainer {
-  width: 100%;
   display: flex;
+  width: 100%;
   align-items: center;
   justify-content: space-between;
   padding-top: 30px;
@@ -14,25 +21,24 @@
   height: 41px;
 }
 
-.nav {
-  max-width: 717px;
+.navigation {
+  max-width: 727px;
   width: 100%;
-  padding: 0 30px;
+  display: block;
 }
 
-.navList {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
+.burgerMenu {
+  display: none;
 }
 
-.navItem {
-  &:hover {
-    color: var(--text-color-200);
+@media (max-width: 768px) {
+  .navigation {
+    display: none;
   }
-}
-
-.activeLink {
-  color: var(--text-color-300);
-  font-weight: 600;
+  .switch {
+    display: none;
+  }
+  .burgerMenu {
+    display: block;
+  }
 }

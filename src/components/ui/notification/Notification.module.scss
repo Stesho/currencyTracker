@@ -1,4 +1,5 @@
 @import '@/styles/variables.scss';
+@import '@/styles/global.scss';
 
 .notification {
   display: flex;
@@ -15,7 +16,6 @@
   background-color: var(--secondary-color-100);
   border-bottom: 5px solid $green;
 
-  font-size: 20px;
   font-family: sans-serif;
 }
 
@@ -33,7 +33,7 @@
 .title {
   margin: 0 0 4px 0;
   color: var(--text-color-200);
-  font-size: 18px;
+  @include adaptive-font($pcSize: 18, $mobSize: 14);
   font-weight: 500;
 }
 
@@ -41,7 +41,7 @@
   white-space: nowrap;
   color: var(--text-color-400);
   font-weight: 400;
-  font-size: 14px;
+  @include adaptive-font($pcSize: 14, $mobSize: 12);
 }
 
 .closeBtn {
@@ -80,5 +80,17 @@
   }
   100% {
     opacity: 0;
+  }
+}
+
+@media (max-width: 425px) {
+  .notification {
+    width: 250px;
+    padding: 12px;
+  }
+  .img {
+    width: 20px;
+    height: 20px;
+    margin: 0 5px 0 0;
   }
 }

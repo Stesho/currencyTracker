@@ -1,3 +1,9 @@
+@import '@/styles/global.scss';
+
+.footer {
+  @include adaptive-font($pcSize: 24, $mobSize: 14);
+}
+
 .content {
   display: flex;
   padding: 20px 0;
@@ -13,7 +19,7 @@
   display: flex;
   margin-bottom: 30px;
   h3 {
-    font-size: 26px;
+    @include adaptive-font($pcSize: 26, $mobSize: 16);
     font-weight: 600;
     background-image: var(--text-color-grad-green);
     background-size: 100%;
@@ -30,7 +36,6 @@
 
 .aboutText {
   color: var(--text-color-100);
-  font-size: 24px;
   font-weight: 300;
 }
 
@@ -42,13 +47,12 @@
 
 .linksTitle {
   margin-bottom: 40px;
-  font-size: 28px;
+  @include adaptive-font($pcSize: 28, $mobSize: 16);
   font-weight: 400;
 }
 
 .linksList {
   color: var(--text-color-400);
-  font-size: 24px;
   font-weight: 400;
 }
 
@@ -63,7 +67,17 @@
 .rights {
   padding: 40px 0;
   color: var(--text-color-400);
-  font-size: 24px;
   font-weight: 400;
   text-align: center;
+}
+
+@media (max-width: 1024px) {
+  .content {
+    flex-direction: column;
+    align-items: center;
+  }
+  .about {
+    max-width: 100%;
+    margin: 0 0 40px 0;
+  }
 }

@@ -1,4 +1,5 @@
 @import '@/styles/variables.scss';
+@import '@/styles/global.scss';
 
 .currencyCard {
   max-width: 520px;
@@ -17,7 +18,14 @@
 
 .rate {
   color: var(--text-color-300);
-  font-size: 32px;
+  @include adaptive-font($pcSize: 32, $mobSize: 18);
   font-weight: 300;
   line-height: 1;
+}
+
+@media (max-width: 1024px) {
+  .currencyCard {
+    max-width: 100%;
+    padding: 17px 16px;
+  }
 }

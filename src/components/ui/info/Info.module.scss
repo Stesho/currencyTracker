@@ -33,7 +33,7 @@
 
 .text {
   max-width: 400px;
-  color: var(--text-color-200);
+  color: $grey-100;
   @include adaptive-font($pcSize: 25, $mobSize: 15);
   text-align: center;
   font-weight: 300;

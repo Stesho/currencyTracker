@@ -1,7 +1,9 @@
 import { useLayoutEffect, useState } from 'react';
 
 export const useTheme = () => {
-  const [theme, setTheme] = useState(localStorage.getItem('color-theme'));
+  const [theme, setTheme] = useState(
+    localStorage.getItem('color-theme') || 'dark',
+  );
 
   const toggleTheme = (isChecked: boolean) => {
     const newTheme = isChecked ? 'dark' : 'light';

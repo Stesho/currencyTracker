@@ -50,10 +50,6 @@ export const NumberInput = ({
   };
 
   useEffect(() => {
-    console.log('render');
-  });
-
-  useEffect(() => {
     setDisplayedValues(initialValue?.toString() || value.toString());
   }, [initialValue]);
 

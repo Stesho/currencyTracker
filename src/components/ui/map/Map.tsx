@@ -4,15 +4,29 @@ import mapboxgl from 'mapbox-gl';
 import { MAPBOX_API_KEY } from '@/constants/environment/environment';
 import { CurrencyRated } from '@/types/currency';
 
-import banksData from '../../../constants/chart/banksData.json';
+import banksData from '../../../constants/map/banksData.json';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 import styles from './Map.module.scss';
 
 mapboxgl.accessToken = MAPBOX_API_KEY;
 
+interface BankProperties {
+  type: string;
+  properties: {
+    title: string;
+    description: string;
+  };
+  currencies: string[];
+  geometry: {
+    coordinates: number[];
+    type: string;
+  };
+}
+
 interface MapProps {
   selectedCurrency: CurrencyRated | null;
+  isNotFound: boolean;
 }
 
 interface MapState {
@@ -48,43 +62,59 @@ export class Map extends PureComponent<MapProps, MapState> {
       center: [lng, lat],
       zoom,
     });
+
+    const nav = new mapboxgl.NavigationControl({
+      visualizePitch: true,
+    });
+    this.map.addControl(nav, 'bottom-right');
+
+    this.setMarkers(banksData.features);
   }
 
-  componentDidUpdate(
-    prevProps: Readonly<MapProps>,
-    prevState: Readonly<MapState>,
-  ) {
-    const { selectedCurrency } = this.props;
-    const { map } = this;
+  componentDidUpdate() {
+    const { selectedCurrency, isNotFound } = this.props;
 
     this.markers.forEach((marker) => marker.remove());
 
-    if (!selectedCurrency || !map) {
-      return;
+    if (!isNotFound) {
+      const banks = selectedCurrency
+        ? banksData.features.filter(
+            (feature: BankProperties) =>
+              feature.currencies.indexOf(selectedCurrency.id) !== -1,
+          )
+        : banksData.features;
+
+      this.setMarkers(banks);
     }
-
-    const filteredBanks = banksData.features.filter(
-      (feature) => feature.currencies.indexOf(selectedCurrency.id) !== -1,
-    );
-
-    const newMarkers = filteredBanks.map((feature) => {
-      const [longitude, latitude] = feature.geometry.coordinates;
-      return new mapboxgl.Marker().setLngLat([longitude, latitude]).addTo(map);
-    });
-
-    this.markers = [...newMarkers];
   }
 
   componentWillUnmount() {
     this.map?.remove();
   }
 
+  setMarkers = (banks: BankProperties[]) => {
+    const { map } = this;
+
+    if (!map) {
+      return;
+    }
+
+    const newMarkers = banks.map((feature) => {
+      const [longitude, latitude] = feature.geometry.coordinates;
+      return new mapboxgl.Marker().setLngLat([longitude, latitude]).addTo(map);
+    });
+
+    this.markers = [...newMarkers];
+  };
+
   render() {
-    const { selectedCurrency } = this.props;
+    const { isNotFound } = this.props;
 
     return (
       <div className={styles.mapContainer}>
-        {!selectedCurrency && <div className={styles.sidebar}>Not found</div>}
+        {isNotFound && (
+          <div className={styles.notFound}>Selected banks not found</div>
+        )}
         <div ref={this.mapContainer} className={styles.map} />
       </div>
     );

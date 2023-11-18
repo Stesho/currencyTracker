@@ -28,7 +28,7 @@ export class Notification extends Component<
   componentDidMount() {
     const { liveTimeMs } = this.state;
     const { onClose } = this.props;
-    const animationDurationMs = 300;
+    const animationDurationMs = 280;
     const delayBeforeUnmounting = liveTimeMs - animationDurationMs;
 
     setTimeout(() => {

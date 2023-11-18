@@ -1,4 +1,10 @@
-import React, { ChangeEvent, createRef, PureComponent, RefObject } from 'react';
+import React, {
+  ChangeEvent,
+  createRef,
+  KeyboardEvent,
+  PureComponent,
+  RefObject,
+} from 'react';
 
 import SearchIcon from '@/assets/icons/search.svg';
 import SearchInputList from '@/components/ui/searchInput/searchInputList/SearchInputList';
@@ -10,6 +16,7 @@ interface SearchInputProps {
   currencies: CurrencyRated[];
   onSelectCurrency: (currency: CurrencyRated | null) => void;
   className?: string;
+  setNotFound: (isNotFound: boolean) => void;
 }
 
 interface SearchInputState {
@@ -21,10 +28,13 @@ export class SearchInput extends PureComponent<
   SearchInputProps,
   SearchInputState
 > {
-  private readonly searchInput: RefObject<HTMLDivElement>;
+  private readonly searchInputWrapper: RefObject<HTMLDivElement>;
+
+  private readonly searchInput: RefObject<HTMLInputElement>;
 
   constructor(props: SearchInputProps) {
     super(props);
+    this.searchInputWrapper = createRef();
     this.searchInput = createRef();
     this.state = {
       selectedCurrency: '',
@@ -42,7 +52,12 @@ export class SearchInput extends PureComponent<
   }
 
   onClickOutside = (event: Event) => {
-    if (!this.searchInput.current?.contains(event.target as Node)) {
+    const isClickedOutsideInputWrapper =
+      !this.searchInputWrapper.current?.contains(event.target as Node);
+    const isInputLostFocus =
+      this.searchInput.current !== document.activeElement;
+
+    if (isClickedOutsideInputWrapper && isInputLostFocus) {
       this.setState({
         isOpenList: false,
       });
@@ -56,32 +71,49 @@ export class SearchInput extends PureComponent<
   };
 
   onCurrencyClick = (currency: CurrencyRated) => {
-    const { onSelectCurrency } = this.props;
+    const { onSelectCurrency, setNotFound } = this.props;
 
     this.setState({
       selectedCurrency: currency.currencyName,
     });
 
-    this.toggleList();
+    this.closeList();
+    setNotFound(false);
     onSelectCurrency(currency);
   };
 
   onSearchClick = () => {
-    const { currencies, onSelectCurrency } = this.props;
+    const { currencies, onSelectCurrency, setNotFound } = this.props;
     const { selectedCurrency } = this.state;
 
     const currency = currencies.find(
       (currencyItem) => currencyItem.currencyName === selectedCurrency,
     );
 
-    this.toggleList();
+    this.closeList();
+    setNotFound(selectedCurrency.length > 0 && !currency);
     onSelectCurrency(currency || null);
   };
 
-  toggleList = () => {
-    const { isOpenList } = this.state;
+  onEnterClick = (event: KeyboardEvent<HTMLInputElement>) => {
+    const enterKey = 'Enter';
+    const isInputOnFocus = this.searchInput.current === document.activeElement;
+
+    if (event.key === enterKey && isInputOnFocus) {
+      this.searchInput.current?.blur();
+      this.onSearchClick();
+    }
+  };
+
+  openList = () => {
     this.setState({
-      isOpenList: !isOpenList,
+      isOpenList: true,
+    });
+  };
+
+  closeList = () => {
+    this.setState({
+      isOpenList: false,
     });
   };
 
@@ -97,13 +129,15 @@ export class SearchInput extends PureComponent<
     return (
       <div
         className={`${styles.searchInput} ${className}`}
-        ref={this.searchInput}
+        ref={this.searchInputWrapper}
       >
         <div className={styles.inputWrapper}>
           <input
+            ref={this.searchInput}
             value={selectedCurrency}
             onChange={this.onInputCurrency}
-            onFocus={this.toggleList}
+            onFocus={this.openList}
+            onKeyDown={this.onEnterClick}
             placeholder='Currency search...'
           />
           <SearchIcon

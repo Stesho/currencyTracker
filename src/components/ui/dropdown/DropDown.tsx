@@ -10,7 +10,7 @@ import styles from './DropDown.module.scss';
 
 interface DropDownState {
   isOpen: boolean;
-  selectedOption: CurrencyRated | null;
+  selectedOption: CurrencyRated;
 }
 
 export class DropDown extends Component<DropDownProps, DropDownState> {
@@ -21,7 +21,7 @@ export class DropDown extends Component<DropDownProps, DropDownState> {
     this.dropDown = React.createRef();
     this.state = {
       isOpen: false,
-      selectedOption: props.initialOption ? null : props.options[0],
+      selectedOption: props.options[0],
     };
   }
 
@@ -64,7 +64,7 @@ export class DropDown extends Component<DropDownProps, DropDownState> {
 
   render() {
     const { selectedOption, isOpen } = this.state;
-    const { options, className, initialOption } = this.props;
+    const { options, className } = this.props;
 
     return (
       <div className={`${styles.dropDown} ${className}`} ref={this.dropDown}>
@@ -73,9 +73,7 @@ export class DropDown extends Component<DropDownProps, DropDownState> {
           onClick={this.toggleDropDown}
           type='button'
         >
-          <div className={styles.option}>
-            {selectedOption?.currencyName || initialOption}
-          </div>
+          <div className={styles.option}>{selectedOption?.currencyName}</div>
           <Arrow className={this.arrowAnimation()} />
         </button>
         {isOpen && (

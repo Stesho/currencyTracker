@@ -1,6 +1,6 @@
 @import './variables.scss';
 
-html[color-theme='light'] {
+html[color-theme='dark'] {
   --primary-color: #{$black};
   --secondary-color-100: #{$grey-500};
   --secondary-color-200: #{$grey-600};
@@ -12,7 +12,7 @@ html[color-theme='light'] {
   --text-color-grad-black: #{$gradient-black-transparent};
 }
 
-html[color-theme='dark'] {
+html[color-theme='light'] {
   --primary-color: #{$grey-100};
   --secondary-color-100: #{$grey-100};
   --secondary-color-200: #{$grey-200};

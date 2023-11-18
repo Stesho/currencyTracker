@@ -11,6 +11,7 @@ interface CurrencySearchProps {
 }
 interface CurrencySearchState {
   selectedCurrency: CurrencyRated | null;
+  isNotFound: boolean;
 }
 
 export class BankSearch extends PureComponent<
@@ -21,6 +22,7 @@ export class BankSearch extends PureComponent<
     super(props);
     this.state = {
       selectedCurrency: null,
+      isNotFound: false,
     };
   }
 
@@ -30,9 +32,15 @@ export class BankSearch extends PureComponent<
     });
   };
 
+  setNotFound = (isNotFound: boolean) => {
+    this.setState({
+      isNotFound,
+    });
+  };
+
   render() {
     const { currencies } = this.props;
-    const { selectedCurrency } = this.state;
+    const { selectedCurrency, isNotFound } = this.state;
 
     return (
       <section className={styles.bankSearch}>
@@ -41,10 +49,11 @@ export class BankSearch extends PureComponent<
           <SearchInput
             currencies={currencies}
             onSelectCurrency={this.onSelectCurrency}
+            setNotFound={this.setNotFound}
             className={styles.input}
           />
         </div>
-        <Map selectedCurrency={selectedCurrency} />
+        <Map selectedCurrency={selectedCurrency} isNotFound={isNotFound} />
       </section>
     );
   }

@@ -1,10 +1,9 @@
-import React, { ChangeEvent, FocusEvent, useEffect, useState } from 'react';
-
-import { removeLeadingZeros } from '@/utils/removeLeadingZeros';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 
 import styles from './NumberInput.module.scss';
 
 interface NumberInputProps {
+  initialValue?: number;
   value: number;
   setValue: (value: number) => void;
   isIntegersOnly?: boolean;
@@ -14,6 +13,7 @@ interface NumberInputProps {
 }
 
 export const NumberInput = ({
+  initialValue,
   value,
   setValue,
   min,
@@ -25,49 +25,40 @@ export const NumberInput = ({
   const positiveFloat = /^\d*\.?\d*$/;
   const pattern = isIntegersOnly ? positiveIntegers : positiveFloat;
 
-  const [displayedValue, setDisplayedValue] = useState(value.toString());
+  const [displayedValue, setDisplayedValues] = useState(value.toString());
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
-    let newDisplayedValue = pattern.test(event.target.value)
+    const newDisplayedValue = pattern.test(event.target.value)
       ? event.target.value
       : displayedValue;
+    let newValue = Number(newDisplayedValue);
 
-    if (Number(newDisplayedValue) >= 1) {
-      newDisplayedValue = removeLeadingZeros(newDisplayedValue);
-    }
-
-    if (newDisplayedValue.length === 0) {
-      newDisplayedValue = '0';
-    }
-
-    setDisplayedValue(newDisplayedValue);
-  };
-
-  const setMinOrMax = (event: FocusEvent<HTMLInputElement>) => {
-    let newValue = Number(event.target.value);
-
-    if (max && newValue > max) {
+    if (max && Number(newDisplayedValue) > max) {
       newValue = max;
     }
 
-    if (min && newValue < min) {
+    if (min && Number(newDisplayedValue) < min) {
       newValue = min;
     }
 
     setValue(newValue);
-    setDisplayedValue(newValue.toString());
+    setDisplayedValues(newDisplayedValue);
+  };
+
+  const onBlur = () => {
+    setDisplayedValues(value.toString());
   };
 
   useEffect(() => {
-    setDisplayedValue(value.toString());
-  }, [value]);
+    setDisplayedValues(initialValue?.toString() || value.toString());
+  }, [initialValue]);
 
   return (
     <input
       value={displayedValue}
-      type='text'
+      type='string'
       onChange={onChange}
-      onBlur={setMinOrMax}
+      onBlur={onBlur}
       className={`${styles.input} ${className}`}
     />
   );

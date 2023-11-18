@@ -1,4 +1,4 @@
-import { ChartData } from '@/constants/chart/chartData';
+import { ChartData } from '@/types/chartData';
 
 export const cutFirstRowFirstColumn = (table: ChartData) => {
   const noFirstRowData = table.slice(1, table.length);

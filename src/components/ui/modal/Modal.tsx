@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
+import { Portal } from '@/components/ui/portal/Portal';
 import { useOutsideClick } from '@/hooks/useOutsideClick';
-import { usePortal } from '@/hooks/usePortal';
 
 import styles from './Modal.module.scss';
 
@@ -12,7 +12,6 @@ interface ModalProps {
 }
 
 export const Modal = ({ id, onClose, children }: ModalProps) => {
-  const Portal = usePortal(id);
   const content = useOutsideClick(() => onClose());
 
   useEffect(() => {
@@ -23,7 +22,7 @@ export const Modal = ({ id, onClose, children }: ModalProps) => {
   }, []);
 
   return (
-    <Portal>
+    <Portal id={id}>
       <div className={styles.overlay}>
         <div className={styles.content} ref={content}>
           <button

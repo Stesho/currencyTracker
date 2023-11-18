@@ -1,6 +1,6 @@
 import { fetchAllCurrentRates } from '@/api/coinApi/fetchAllCurrentRates';
-import { CurrencyResponse } from '@/constants/api/coinApi/response';
 import { currencies } from '@/constants/currencies/currencies';
+import { CurrencyResponse } from '@/types/response';
 
 export const getCurrencies = async () => {
   const response = await fetchAllCurrentRates();

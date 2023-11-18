@@ -1,13 +1,62 @@
 import { getRandomIntegerInRange } from '@/utils/getRandomIntegerInRange';
 
-export const randomizeChartData = (rowsCount: number) => {
-  const minValue = 10;
-  const maxValue = 100;
-  const valuesSpread = 10;
+const getNextOpening = (
+  lastOpening: number,
+  preLastOpening: number,
+  minValue: number,
+  maxValue: number,
+  minCandlestickSize: number,
+) =>
+  lastOpening > preLastOpening
+    ? getRandomIntegerInRange(lastOpening + minCandlestickSize, maxValue)
+    : getRandomIntegerInRange(minValue, lastOpening - minCandlestickSize);
 
-  const openings = [...new Array(rowsCount)].map(() =>
-    getRandomIntegerInRange(minValue, maxValue),
-  );
+const randomizeOpenings = (
+  rowsCount: number,
+  minValue: number,
+  maxValue: number,
+) => {
+  const openings: number[] = [];
+  const minCandlestickSize = 5;
+  const minOpeningSeries = 2;
+  let currentOpeningSeries = 1;
+
+  for (let i = 0; i < rowsCount; i++) {
+    let newOpening;
+
+    if (i < 2) {
+      newOpening = getRandomIntegerInRange(minValue, maxValue);
+      openings.push(newOpening);
+      continue;
+    }
+
+    if (currentOpeningSeries < minOpeningSeries) {
+      newOpening = getNextOpening(
+        openings[i - 1],
+        openings[i - 2],
+        minValue,
+        maxValue,
+        minCandlestickSize,
+      );
+    } else {
+      newOpening = getRandomIntegerInRange(minValue, maxValue);
+      currentOpeningSeries = 0;
+    }
+
+    currentOpeningSeries++;
+    openings.push(newOpening);
+  }
+
+  return openings;
+};
+
+export const randomizeChartData = (rowsCount: number) => {
+  const minValue = 50;
+  const maxValue = 100;
+  const lowHighValuesSpread = 10;
+  const minLowHighValuesSpread = 1;
+
+  const openings = randomizeOpenings(rowsCount, minValue, maxValue);
 
   const closings = openings.map((opening, index) =>
     index === openings.length - 1
@@ -18,24 +67,24 @@ export const randomizeChartData = (rowsCount: number) => {
   const lows = openings.map((opening, index) =>
     openings[index] < closings[index]
       ? getRandomIntegerInRange(
-          openings[index] - valuesSpread,
-          openings[index] - 1,
+          openings[index] - lowHighValuesSpread,
+          openings[index] - minLowHighValuesSpread,
         )
       : getRandomIntegerInRange(
-          openings[index] + 1,
-          openings[index] + valuesSpread,
+          openings[index] + minLowHighValuesSpread,
+          openings[index] + lowHighValuesSpread,
         ),
   );
 
   const highs = openings.map((opening, index) =>
     openings[index] < closings[index]
       ? getRandomIntegerInRange(
-          closings[index] + 1,
-          closings[index] + valuesSpread,
+          closings[index] + minLowHighValuesSpread,
+          closings[index] + lowHighValuesSpread,
         )
       : getRandomIntegerInRange(
-          closings[index] - valuesSpread,
-          closings[index] - 1,
+          closings[index] - lowHighValuesSpread,
+          closings[index] - minLowHighValuesSpread,
         ),
   );
 

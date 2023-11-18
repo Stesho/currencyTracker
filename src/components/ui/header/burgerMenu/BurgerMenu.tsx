@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 
 import { NavigationBar } from '@/components/ui/header/navigationBar/NavigationBar';
 import { Switch } from '@/components/ui/switch/Switch';
+import { colorThemes } from '@/constants/colorTheme/colorTheme';
 import { useOutsideClick } from '@/hooks/useOutsideClick';
 import { usePreventScroll } from '@/hooks/usePreventScroll';
 
@@ -47,7 +48,7 @@ export const BurgerMenu = ({ toggleTheme, theme }: BurgerMenuProps) => {
           <div className={styles.navigation} ref={navigation}>
             <Switch
               onToggle={toggleTheme}
-              isChecked={theme === 'dark'}
+              isChecked={theme === colorThemes.light}
               className={styles.switch}
             />
             <NavigationBar onLinkClick={toggleMenu} />

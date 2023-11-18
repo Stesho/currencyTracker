@@ -2,7 +2,7 @@ import React from 'react';
 
 import { ChartForm } from '@/components/ui/chartForm/ChartForm';
 import { Modal } from '@/components/ui/modal/Modal';
-import { ChartData } from '@/constants/chart/chartData';
+import { ChartData } from '@/types/chartData';
 
 import styles from './ChartFormModal.module.scss';
 

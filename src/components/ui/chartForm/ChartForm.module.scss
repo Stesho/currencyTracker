@@ -25,6 +25,19 @@
   width: 10%;
 }
 
+.daysInput {
+  display: flex;
+  align-items: center;
+}
+
+.limits {
+  display: inline-flex;
+  flex-direction: column;
+  span {
+    font-size: 12px;
+  }
+}
+
 .buttons {
   display: flex;
   justify-content: center;

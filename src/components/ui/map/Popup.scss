@@ -1,0 +1,20 @@
+@import '@/styles/variables.scss';
+
+.mapboxgl-popup {
+  max-width: 200px;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+  background-color: $white;
+  color: $black;
+}
+
+.mapboxgl-popup-close-button {
+  width: 10px;
+  height: 10px;
+  font-size: 15px;
+  right: 2px;
+  top: -2px;
+  outline: none;
+}

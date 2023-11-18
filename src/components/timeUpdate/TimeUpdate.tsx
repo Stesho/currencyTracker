@@ -1,12 +1,21 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+
+import { RootState } from '@/store/store';
 
 import styles from './TimeUpdate.module.scss';
 
-export const TimeUpdate = () => (
-  <section className={`${styles.timeUpdate} container`}>
-    <div className={styles.marker}>
-      <div />
-    </div>
-    <div className={styles.text}>Last updated at 11:59pm</div>
-  </section>
-);
+export const TimeUpdate = () => {
+  const currencyState = useSelector((state: RootState) => state.currency);
+
+  return (
+    <section className={`${styles.timeUpdate} container`}>
+      <div className={styles.marker}>
+        <div />
+      </div>
+      <div className={styles.text}>
+        Last updated at {currencyState.lastUpdate}
+      </div>
+    </section>
+  );
+};

@@ -3,11 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button/Button';
 import { ChartFormRow } from '@/components/ui/chartForm/chartFormRow/ChartFormRow';
 import { NumberInput } from '@/components/ui/numberInput/NumberInput';
-import { ChartData } from '@/constants/chart/chartData';
-import { addDayColumnToChartData } from '@/utils/addDayColumnToChartData';
+import { chartFormOptions } from '@/constants/chart/chartFormOptions';
+import { ChartData } from '@/types/chartData';
+import { addDayDataToChartData } from '@/utils/addDayDataToChartData';
 import { calculateInitialChartData } from '@/utils/calculateInitialChartData';
 import { cutFirstRowFirstColumn } from '@/utils/cutFirstRowFirstColumn';
-import { generateTableHead } from '@/utils/generateTableHead';
 import { randomizeChartData } from '@/utils/randomizeChartData';
 import { recalculateChartData } from '@/utils/recalculateChartData';
 
@@ -19,17 +19,17 @@ interface ChartFormProps {
 }
 
 export const ChartForm = ({ onSubmit, initialChartData }: ChartFormProps) => {
-  const cellsCountInRow = 4;
-  const initialDaysCount = 5;
-  const tableHead = generateTableHead(cellsCountInRow + 1);
-
+  const minDaysCount = 1;
+  const maxDaysCount = 31;
   const [rowsCount, setRowsCount] = useState(() =>
-    initialChartData ? initialChartData.length - 1 : initialDaysCount,
+    initialChartData
+      ? initialChartData.length - 1
+      : chartFormOptions.initialDaysCount,
   );
   const [values, setValues] = useState<number[][]>(() =>
     initialChartData
       ? cutFirstRowFirstColumn(initialChartData)
-      : calculateInitialChartData(rowsCount, cellsCountInRow),
+      : calculateInitialChartData(rowsCount, chartFormOptions.columnsCount),
   );
 
   const onChangeValue = (value: number, row: number, column: number) => {
@@ -43,7 +43,7 @@ export const ChartForm = ({ onSubmit, initialChartData }: ChartFormProps) => {
   };
 
   const onSubmitForm = () => {
-    const chartData = addDayColumnToChartData(values, tableHead);
+    const chartData = addDayDataToChartData(values);
     onSubmit(chartData);
   };
 
@@ -52,21 +52,29 @@ export const ChartForm = ({ onSubmit, initialChartData }: ChartFormProps) => {
   };
 
   useEffect(() => {
-    const newValues = recalculateChartData(values, rowsCount, cellsCountInRow);
+    const newValues = recalculateChartData(
+      values,
+      rowsCount,
+      chartFormOptions.columnsCount,
+    );
     setValues(newValues);
   }, [rowsCount]);
 
   return (
     <div className={styles.chartForm}>
-      <div>
+      <div className={styles.daysInput}>
         <span>Days count:</span>
         <NumberInput
           value={rowsCount}
           setValue={onChangeRowsCount}
-          min={1}
-          max={31}
+          min={minDaysCount}
+          max={maxDaysCount}
           isIntegersOnly
         />
+        <div className={styles.limits}>
+          <span>max: {maxDaysCount}</span>
+          <span>min: {minDaysCount}</span>
+        </div>
       </div>
       <table className={styles.table}>
         <thead>

@@ -4,7 +4,7 @@
       "type": "Feature",
       "properties": {
         "title": "Prior bank",
-        "description": "bank"
+        "description": "st. Pritytskogo 156, Minsk"
       },
       "currencies": ["ARS", "AUD", "CNY", "EUR", "JPY"],
       "geometry": {
@@ -16,7 +16,7 @@
       "type": "Feature",
       "properties": {
         "title": "Alpha bank",
-        "description": "bank"
+        "description": "st. Pritytskogo 30A, Minsk"
       },
       "currencies": ["AUD", "BTC", "CAD", "GBP", "USDT"],
       "geometry": {
@@ -28,7 +28,7 @@
       "type": "Feature",
       "properties": {
         "title": "Belinvest bank",
-        "description": "bank"
+        "description": "st. Golubeva 24A, Minsk"
       },
       "currencies": ["ARS", "BTC", "CNY", "JPY", "USDT"],
       "geometry": {
@@ -40,7 +40,7 @@
       "type": "Feature",
       "properties": {
         "title": "Belarus bank",
-        "description": "bank"
+        "description": "Nezavisimosti Ave. 54, Minsk"
       },
       "currencies": ["BTC", "CNY", "EUR", "GBP", "USDT"],
       "geometry": {
@@ -52,7 +52,7 @@
       "type": "Feature",
       "properties": {
         "title": "Alfa bank",
-        "description": "bank"
+        "description": "st. Petra Mstislavtsa 11, Minsk"
       },
       "currencies": ["ARS", "AUD", "CNY", "EUR", "JPY", "USDT"],
       "geometry": {
@@ -64,7 +64,7 @@
       "type": "Feature",
       "properties": {
         "title": "Alfa bank",
-        "description": "bank"
+        "description": "st. Surganova 57A, Minsk"
       },
       "currencies": ["ARS", "AUD", "BTC"],
       "geometry": {
@@ -76,7 +76,7 @@
       "type": "Feature",
       "properties": {
         "title": "Prior bank",
-        "description": "bank"
+        "description": "Vaneeva street 38, Minsk"
       },
       "currencies": ["ARS", "AUD", "BTC", "JPY", "GBP", "USDT"],
       "geometry": {
@@ -88,7 +88,7 @@
       "type": "Feature",
       "properties": {
         "title": "Belarus bank",
-        "description": "bank"
+        "description": "Lenina street 5, Minsk"
       },
       "currencies": ["AUD", "CNY", "EUR", "USDT"],
       "geometry": {
@@ -100,7 +100,7 @@
       "type": "Feature",
       "properties": {
         "title": "Prior bank",
-        "description": "bank"
+        "description": "st. Nemiga 5, Minsk"
       },
       "currencies": ["BTC", "GBP", "USDT"],
       "geometry": {
@@ -112,7 +112,7 @@
       "type": "Feature",
       "properties": {
         "title": "MTB bank",
-        "description": "bank"
+        "description": "st. V. Khoruzhey 25k3, Minsk"
       },
       "currencies": ["BTC", "CAD", "CNY", "EUR", "JPY", "GBP"],
       "geometry": {

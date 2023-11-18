@@ -7,6 +7,7 @@ import { CurrencyRated } from '@/types/currency';
 import banksData from '../../../constants/map/banksData.json';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
+import './Popup.scss';
 import styles from './Map.module.scss';
 
 mapboxgl.accessToken = MAPBOX_API_KEY;
@@ -101,7 +102,15 @@ export class Map extends PureComponent<MapProps, MapState> {
 
     const newMarkers = banks.map((feature) => {
       const [longitude, latitude] = feature.geometry.coordinates;
-      return new mapboxgl.Marker().setLngLat([longitude, latitude]).addTo(map);
+
+      return new mapboxgl.Marker()
+        .setLngLat([longitude, latitude])
+        .setPopup(
+          new mapboxgl.Popup({ offset: 25 }).setHTML(
+            `<h3>${feature.properties.title}</h3><p>${feature.properties.description}</p>`,
+          ),
+        )
+        .addTo(map);
     });
 
     this.markers = [...newMarkers];

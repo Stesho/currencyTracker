@@ -23,7 +23,11 @@ export const ChartFormCell = ({
 
   return (
     <td className={styles.cell}>
-      <NumberInput value={value} setValue={onChangeValue} />
+      <NumberInput
+        initialValue={value}
+        value={value}
+        setValue={onChangeValue}
+      />
     </td>
   );
 };

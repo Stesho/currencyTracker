@@ -17,6 +17,10 @@
   font-size: 25px;
 }
 
+.equal {
+  margin: 0 5px;
+}
+
 @media (max-width: 768px) {
   .currencyModal {
     width: calc(100vw - 132px);

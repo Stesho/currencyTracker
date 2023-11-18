@@ -19,6 +19,8 @@ interface ChartFormProps {
 }
 
 export const ChartForm = ({ onSubmit, initialChartData }: ChartFormProps) => {
+  const minDaysCount = 1;
+  const maxDaysCount = 31;
   const [rowsCount, setRowsCount] = useState(() =>
     initialChartData
       ? initialChartData.length - 1
@@ -60,15 +62,19 @@ export const ChartForm = ({ onSubmit, initialChartData }: ChartFormProps) => {
 
   return (
     <div className={styles.chartForm}>
-      <div>
+      <div className={styles.daysInput}>
         <span>Days count:</span>
         <NumberInput
           value={rowsCount}
           setValue={onChangeRowsCount}
-          min={1}
-          max={31}
+          min={minDaysCount}
+          max={maxDaysCount}
           isIntegersOnly
         />
+        <div className={styles.limits}>
+          <span>max: {maxDaysCount}</span>
+          <span>min: {minDaysCount}</span>
+        </div>
       </div>
       <table className={styles.table}>
         <thead>

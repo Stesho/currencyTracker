@@ -1,5 +1,0 @@
-export interface CurrencyResponse {
-  time: string;
-  asset_id_quote: string;
-  rate: number;
-}

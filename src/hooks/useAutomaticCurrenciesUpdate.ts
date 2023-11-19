@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 
 import { getCurrencies } from '@/services/currency/getCurrencies';
 import { updateCurrencies } from '@/store/slices/currencySlice';
-import { CurrencyRated } from '@/types/currency';
 
 export const useAutomaticCurrenciesUpdate = (intervalMs: number) => {
   const dispatch = useDispatch();
@@ -11,14 +10,14 @@ export const useAutomaticCurrenciesUpdate = (intervalMs: number) => {
   useEffect(() => {
     const currencies = localStorage.getItem('persist:root');
     if (!currencies) {
-      getCurrencies().then((data: CurrencyRated[]) => {
-        dispatch(updateCurrencies(data || []));
+      getCurrencies().then((data) => {
+        dispatch(updateCurrencies(data));
       });
     }
 
     const intervalId = setInterval(() => {
-      getCurrencies().then((data: CurrencyRated[]) => {
-        dispatch(updateCurrencies(data || []));
+      getCurrencies().then((data) => {
+        dispatch(updateCurrencies(data));
       });
     }, intervalMs);
 

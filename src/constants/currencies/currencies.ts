@@ -1,12 +1,12 @@
-import AustralianDollarIcon from '@/assets/img/Australian Dollar Icon.png';
-import BitcoinIcon from '@/assets/img/Bitcoin Icon.png';
-import CanadianDollarIcon from '@/assets/img/Canadian Dollar Icon.png';
-import DollarIcon from '@/assets/img/Dollar Icon.png';
-import EuroIcon from '@/assets/img/Euro Icon.png';
-import ArgentinePesoIcon from '@/assets/img/Peso Argentino Icon.png';
-import PoundIcon from '@/assets/img/Pound Icon.png';
-import YuanIcon from '@/assets/img/Won Icon.png';
-import YenIcon from '@/assets/img/Yen Icon.png';
+import AustralianDollarIcon from '@/assets/img/australian-dollar-icon.png';
+import BitcoinIcon from '@/assets/img/bitcoin-icon.png';
+import CanadianDollarIcon from '@/assets/img/canadian-dollar-icon.png';
+import DollarIcon from '@/assets/img/dollar-icon.png';
+import EuroIcon from '@/assets/img/euro-icon.png';
+import ArgentinePesoIcon from '@/assets/img/peso-argentino-icon.png';
+import PoundIcon from '@/assets/img/pound-icon.png';
+import YuanIcon from '@/assets/img/won-icon.png';
+import YenIcon from '@/assets/img/yen-icon.png';
 import { Currency } from '@/types/currency';
 
 export const currencies: Currency[] = [

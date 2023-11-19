@@ -1,5 +1,5 @@
-import BovespaIcon from '@/assets/img/Bovespa Icon.png';
-import IfixIcon from '@/assets/img/IFIX.png';
+import BovespaIcon from '@/assets/img/bovespa-icon.png';
+import IfixIcon from '@/assets/img/ifix-icon.png';
 import { CurrencyRated } from '@/types/currency';
 
 export const stocks: CurrencyRated[] = [

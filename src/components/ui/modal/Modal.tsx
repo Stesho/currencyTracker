@@ -26,6 +26,7 @@ export const Modal = ({ id, onClose, children }: ModalProps) => {
       <div className={styles.overlay}>
         <div className={styles.content} ref={content}>
           <button
+            data-testid='modalCloseButton'
             className={styles.closeButton}
             onClick={onClose}
             type='button'

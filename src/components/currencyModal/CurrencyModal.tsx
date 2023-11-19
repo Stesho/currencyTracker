@@ -58,7 +58,7 @@ export const CurrencyModal = ({
               <span className={styles.equal}> = </span>
               <span className={styles.convertArrows}>⬇⬆</span>
             </div>
-            <div>
+            <div data-testid='currencyModalRate'>
               {cutLargeNumber(quantity * rate)} {selectedCurrency?.id || 'USD'}
             </div>
           </div>

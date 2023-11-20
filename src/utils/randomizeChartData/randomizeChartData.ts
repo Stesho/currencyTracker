@@ -1,4 +1,4 @@
-import { getRandomIntegerInRange } from '@/utils/getRandomIntegerInRange';
+import { getRandomIntegerInRange } from '@/utils/getRandomIntegerInRange/getRandomIntegerInRange';
 
 const getNextOpening = (
   lastOpening: number,

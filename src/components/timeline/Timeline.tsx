@@ -10,9 +10,9 @@ import { chartFormOptions } from '@/constants/chart/chartFormOptions';
 import { observer } from '@/services/observer/observer';
 import { ChartData } from '@/types/chartData';
 import { CurrencyRated } from '@/types/currency';
-import { addDayDataToChartData } from '@/utils/addDayDataToChartData';
-import { calculateInitialChartData } from '@/utils/calculateInitialChartData';
-import { randomizeChartData } from '@/utils/randomizeChartData';
+import { addDayDataToChartData } from '@/utils/addDayDataToChartData/addDayDataToChartData';
+import { calculateInitialChartData } from '@/utils/calculateInitialChartData/calculateInitialChartData';
+import { randomizeChartData } from '@/utils/randomizeChartData/randomizeChartData';
 
 import styles from './Timeline.module.scss';
 

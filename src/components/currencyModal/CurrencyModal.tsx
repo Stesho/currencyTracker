@@ -7,7 +7,7 @@ import { Modal } from '@/components/ui/modal/Modal';
 import { NumberInput } from '@/components/ui/numberInput/NumberInput';
 import { RootState } from '@/store/store';
 import { CurrencyRated } from '@/types/currency';
-import { cutLargeNumber } from '@/utils/cutLargeNumber';
+import { cutLargeNumber } from '@/utils/cutLargeNumber/cutLargeNumber';
 
 import styles from './CurrencyModal.module.scss';
 

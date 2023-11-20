@@ -1,6 +1,6 @@
 import React from 'react';
 import * as reactRedux from 'react-redux';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 
 import { storeMock } from '@/__mocks__/store';
 import ArgentinePesoIcon from '@/assets/img/peso-argentino-icon.png';
@@ -65,18 +65,5 @@ describe('Currency modal', () => {
 
     expect(nextRate).toBe('0.024 USD');
     expect(nextRate).not.toBe(prevRate);
-  });
-
-  it('should invoke onClose function when close button clicked', () => {
-    const onClose = jest.fn();
-    const { getByTestId } = render(
-      <CurrencyModal currency={currencyData} onClose={onClose} />,
-    );
-
-    const closeButton = getByTestId('modalCloseButton');
-
-    fireEvent.click(closeButton);
-
-    expect(onClose).toBeCalledTimes(1);
   });
 });

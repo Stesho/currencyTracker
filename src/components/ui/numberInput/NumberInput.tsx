@@ -55,6 +55,7 @@ export const NumberInput = ({
 
   return (
     <input
+      data-testid="numberInput"
       value={displayedValue}
       type='string'
       onChange={onChange}

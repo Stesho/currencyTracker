@@ -1,8 +1,12 @@
 export const recalculateChartData = (
   values: number[][],
   rowsCount: number,
-  cellsCountInRow: number,
+  cellsCountInRow: number = 4,
 ) => {
+  if (rowsCount < 0) {
+    return [];
+  }
+
   const rows = values.slice(0, rowsCount);
 
   for (let i = 0; rows.length < rowsCount; i++) {

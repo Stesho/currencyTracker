@@ -141,6 +141,7 @@ export class SearchInput extends PureComponent<
             placeholder='Currency search...'
           />
           <SearchIcon
+            data-testid='currencySearchInput'
             className={styles.searchIcon}
             onClick={this.onSearchClick}
           />

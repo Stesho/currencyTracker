@@ -2,7 +2,7 @@ import React from 'react';
 
 import { CurrencyCard } from '@/components/ui/currencyCard/CurrencyCard';
 import { CurrencyRated } from '@/types/currency';
-import { replaceDotToComma } from '@/utils/replaceDotToComma';
+import { replaceDotToComma } from '@/utils/replaceDotToComma/replaceDotToComma';
 
 import styles from './CurrencyRatedCard.module.scss';
 

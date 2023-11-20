@@ -10,6 +10,7 @@ interface ButtonProps {
 
 export const Button = ({ children, onClick, className }: ButtonProps) => (
   <button
+    data-testid='button'
     className={`${styles.button} ${className}`}
     type='button'
     onClick={onClick}

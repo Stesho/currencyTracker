@@ -7,7 +7,7 @@ import { Modal } from '@/components/ui/modal/Modal';
 import { NumberInput } from '@/components/ui/numberInput/NumberInput';
 import { RootState } from '@/store/store';
 import { CurrencyRated } from '@/types/currency';
-import { cutLargeNumber } from '@/utils/cutLargeNumber';
+import { cutLargeNumber } from '@/utils/cutLargeNumber/cutLargeNumber';
 
 import styles from './CurrencyModal.module.scss';
 
@@ -58,7 +58,7 @@ export const CurrencyModal = ({
               <span className={styles.equal}> = </span>
               <span className={styles.convertArrows}>⬇⬆</span>
             </div>
-            <div>
+            <div data-testid='currencyModalRate'>
               {cutLargeNumber(quantity * rate)} {selectedCurrency?.id || 'USD'}
             </div>
           </div>

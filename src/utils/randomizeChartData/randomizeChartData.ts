@@ -1,4 +1,4 @@
-import { getRandomIntegerInRange } from '@/utils/getRandomIntegerInRange';
+import { getRandomIntegerInRange } from '@/utils/getRandomIntegerInRange/getRandomIntegerInRange';
 
 const getNextOpening = (
   lastOpening: number,
@@ -51,6 +51,10 @@ const randomizeOpenings = (
 };
 
 export const randomizeChartData = (rowsCount: number) => {
+  if (rowsCount < 1 || !Number.isInteger(rowsCount)) {
+    return [];
+  }
+
   const minValue = 50;
   const maxValue = 100;
   const lowHighValuesSpread = 10;

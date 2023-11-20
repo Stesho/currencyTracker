@@ -5,11 +5,11 @@ import { ChartFormRow } from '@/components/ui/chartForm/chartFormRow/ChartFormRo
 import { NumberInput } from '@/components/ui/numberInput/NumberInput';
 import { chartFormOptions } from '@/constants/chart/chartFormOptions';
 import { ChartData } from '@/types/chartData';
-import { addDayDataToChartData } from '@/utils/addDayDataToChartData';
-import { calculateInitialChartData } from '@/utils/calculateInitialChartData';
-import { cutFirstRowFirstColumn } from '@/utils/cutFirstRowFirstColumn';
-import { randomizeChartData } from '@/utils/randomizeChartData';
-import { recalculateChartData } from '@/utils/recalculateChartData';
+import { addDayDataToChartData } from '@/utils/addDayDataToChartData/addDayDataToChartData';
+import { calculateInitialChartData } from '@/utils/calculateInitialChartData/calculateInitialChartData';
+import { cutFirstRowFirstColumn } from '@/utils/cutFirstRowFirstColumn/cutFirstRowFirstColumn';
+import { randomizeChartData } from '@/utils/randomizeChartData/randomizeChartData';
+import { recalculateChartData } from '@/utils/recalculateChartData/recalculateChartData';
 
 import styles from './ChartForm.module.scss';
 

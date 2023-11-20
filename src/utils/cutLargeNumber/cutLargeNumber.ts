@@ -18,11 +18,9 @@ export const cutLargeNumber = (
   );
 
   if (eIndex !== -1) {
-    const additionalDegrees =
-      eIndex - (firstNumAfterZeroesIndex + numbersAfterZerosCount);
     const degrees = Number(stringNum.slice(eIndex + 2, stringNum.length));
     const sign = stringNum[eIndex + 1];
-    trimmedNumber += `e${sign}${degrees + additionalDegrees}`;
+    trimmedNumber += `e${sign}${degrees}`;
   }
 
   return trimmedNumber;

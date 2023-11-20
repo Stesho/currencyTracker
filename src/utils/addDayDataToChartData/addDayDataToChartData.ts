@@ -11,6 +11,10 @@ const generateTableHead = (
 };
 
 export const addDayDataToChartData = (values: number[][]) => {
+  if (values.length === 0) {
+    return [];
+  }
+
   const chartData: ChartData = values.map((row, index) => {
     const day = (index + 1).toString();
     return [day, ...row];

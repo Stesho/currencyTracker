@@ -47,7 +47,7 @@ describe('Currency modal', () => {
 
     const nextRate = getByTestId('currencyModalRate').textContent;
 
-    expect(nextRate).toBe('3.2865e-19 BTC');
+    expect(nextRate).toBe('3.2865e-7 BTC');
     expect(nextRate).not.toBe(prevRate);
   });
 

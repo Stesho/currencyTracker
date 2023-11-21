@@ -1,0 +1,27 @@
+// colors
+$black: #030304;
+$black-transparent: rgba(3, 3, 4, 0.4);
+$white: #fff;
+$grey-100: #d9d9d9;
+$grey-200: #a7b2c3;
+$grey-300: #898989;
+$grey-400: #474747;
+$grey-500: #1b2028;
+$grey-600: #202025;
+$grey-700: #121212;
+$green-transparent-100: #24794099;
+$green-transparent-200: #24794052;
+$green: #00ce2c;
+$green-yellow: #aedf23;
+$yellow: #a3dc00;
+$gradient-green-yellow: linear-gradient(
+  90deg,
+  $green 0.18%,
+  $green-yellow 49.3%,
+  $yellow 99.88%
+);
+$gradient-black-transparent: linear-gradient(
+  253deg,
+  $grey-700 11.77%,
+  $green-transparent-100 91.12%
+);

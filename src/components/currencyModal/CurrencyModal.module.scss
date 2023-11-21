@@ -1,0 +1,46 @@
+@import '@/styles/variables.scss';
+@import '@/styles/global.scss';
+
+.currencyModal {
+  width: 600px;
+}
+
+.convert {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+  @include adaptive-font($pcSize: 22, $mobSize: 16);
+}
+
+.convertArrows {
+  display: none;
+  font-size: 25px;
+}
+
+.equal {
+  margin: 0 5px;
+}
+
+@media (max-width: 768px) {
+  .currencyModal {
+    width: calc(100vw - 132px);
+  }
+}
+
+@media (max-width: 425px) {
+  .currencyModal {
+    width: calc(100vw - 82px);
+  }
+  .convert {
+    flex-direction: column;
+  }
+  .equal {
+    display: none;
+  }
+  .convertArrows {
+    display: inline;
+  }
+  .input {
+    width: 80px;
+  }
+}

@@ -1,0 +1,44 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background-color: var(--primary-color);
+}
+
+.headerContainer {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 30px;
+  padding-bottom: 23px;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.logo {
+  width: 41px;
+  height: 41px;
+}
+
+.navigation {
+  max-width: 727px;
+  width: 100%;
+  display: block;
+}
+
+.burgerMenu {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .navigation {
+    display: none;
+  }
+  .switch {
+    display: none;
+  }
+  .burgerMenu {
+    display: block;
+  }
+}

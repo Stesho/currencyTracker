@@ -1,0 +1,31 @@
+@import '@/styles/variables.scss';
+@import '@/styles/global.scss';
+
+.currencyCard {
+  max-width: 520px;
+  width: 100%;
+  padding: 34px 32px;
+  border: 1px solid $grey-400;
+  border-radius: 8px;
+  background: var(--secondary-color-200);
+  transition: all 100ms linear;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px var(--text-color-200);
+  }
+}
+
+.rate {
+  color: var(--text-color-300);
+  @include adaptive-font($pcSize: 32, $mobSize: 18);
+  font-weight: 300;
+  line-height: 1;
+}
+
+@media (max-width: 1024px) {
+  .currencyCard {
+    max-width: 100%;
+    padding: 17px 16px;
+  }
+}

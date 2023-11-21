@@ -1,0 +1,27 @@
+@import '@/styles/global.scss';
+
+.dropDownList {
+  position: absolute;
+  max-height: 168px;
+  width: 100%;
+  overflow: auto;
+  background: var(--secondary-color-100);
+  border-radius: 8px;
+  border: 1px solid #474747;
+}
+
+.option {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding: 5px;
+  color: var(--text-color-100);
+  @include adaptive-font($pcSize: 30, $mobSize: 22);
+  font-weight: 500;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--text-color-400);
+    background: var(--secondary-color-200);
+  }
+}

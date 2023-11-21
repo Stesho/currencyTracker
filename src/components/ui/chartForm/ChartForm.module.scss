@@ -1,0 +1,48 @@
+@import '@/styles/global.scss';
+
+.table {
+  width: 100%;
+  margin: 10px 0 30px 0;
+  @include adaptive-font($pcSize: 16, $mobSize: 12);
+}
+
+.row {
+  display: flex;
+}
+
+.cell {
+  display: flex;
+  align-items: center;
+  width: 30%;
+  input {
+    width: 100%;
+    height: 100%;
+    outline: none;
+  }
+}
+
+.dayCell {
+  width: 10%;
+}
+
+.daysInput {
+  display: flex;
+  align-items: center;
+}
+
+.limits {
+  display: inline-flex;
+  flex-direction: column;
+  span {
+    font-size: 12px;
+  }
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  margin-right: 10px;
+}

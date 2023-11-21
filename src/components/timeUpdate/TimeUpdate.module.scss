@@ -1,0 +1,44 @@
+@import '@/styles/variables.scss';
+@import '@/styles/global.scss';
+
+.timeUpdate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 65px;
+  padding-bottom: 30px;
+}
+
+.marker {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 25px 0 0;
+  width: 34px;
+  height: 34px;
+  background-color: $green-transparent-100;
+  border-radius: 50%;
+  div {
+    width: 16px;
+    height: 16px;
+    background-color: $green;
+    border-radius: 50%;
+  }
+}
+
+.text {
+  color: var(--text-color-200);
+  @include adaptive-font($pcSize: 33, $mobSize: 20);
+  font-weight: 300;
+}
+
+@media (max-width: 425px) {
+  .marker {
+    width: 24px;
+    height: 24px;
+    div {
+      width: 12px;
+      height: 12px;
+    }
+  }
+}

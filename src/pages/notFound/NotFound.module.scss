@@ -1,0 +1,21 @@
+@import '@/styles/global.scss';
+
+.notFound {
+  padding-top: 200px;
+  padding-bottom: 200px;
+}
+
+.header {
+  @include adaptive-font($pcSize: 60, $mobSize: 26);
+}
+
+.text {
+  margin: 0 0 40px 0;
+  @include adaptive-font($pcSize: 30, $mobSize: 18);
+}
+
+@media (max-width: 425px) {
+  .text {
+    text-align: justify;
+  }
+}

@@ -1,0 +1,75 @@
+@import '@/styles/global.scss';
+
+.searchInput {
+  position: relative;
+  max-width: 450px;
+  width: 100%;
+}
+
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  input {
+    width: 100%;
+    padding: 20px 64px 20px 20px;
+    background-color: var(--secondary-color-200);
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    color: var(--text-color-200);
+    font-size: 16px;
+    &::placeholder {
+      color: var(--text-color-400);
+      font-size: 18px;
+      font-weight: 400;
+    }
+  }
+}
+
+.searchIcon {
+  position: absolute;
+  left: calc(100% - 44px);
+  stroke: var(--text-color-400);
+  cursor: pointer;
+}
+
+.searchList {
+  position: absolute;
+  max-height: 168px;
+  width: 100%;
+  top: 100%;
+  left: 0;
+  z-index: 2;
+  overflow: auto;
+  border-radius: 8px;
+  border: 1px solid #474747;
+  background-color: var(--secondary-color-100);
+}
+
+.listItem {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding: 5px;
+  color: var(--text-color-100);
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--text-color-400);
+    background: var(--secondary-color-200);
+  }
+}
+
+@media (max-width: 425px) {
+  .inputWrapper {
+    input {
+      padding: 15px 40px 15px 15px;
+    }
+  }
+  .searchIcon {
+    left: calc(100% - 40px);
+  }
+}

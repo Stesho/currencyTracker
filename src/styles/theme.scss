@@ -1,0 +1,25 @@
+@import './variables.scss';
+
+html[color-theme='dark'] {
+  --primary-color: #{$black};
+  --secondary-color-100: #{$grey-500};
+  --secondary-color-200: #{$grey-600};
+  --text-color-100: #{$white};
+  --text-color-200: #{$grey-100};
+  --text-color-300: #{$grey-200};
+  --text-color-400: #{$grey-300};
+  --text-color-grad-green: #{$gradient-green-yellow};
+  --text-color-grad-black: #{$gradient-black-transparent};
+}
+
+html[color-theme='light'] {
+  --primary-color: #{$grey-100};
+  --secondary-color-100: #{$grey-100};
+  --secondary-color-200: #{$grey-200};
+  --text-color-100: #{$black};
+  --text-color-200: #{$grey-700};
+  --text-color-300: #{$grey-600};
+  --text-color-400: #{$grey-500};
+  --text-color-grad-green: #{$gradient-green-yellow};
+  --text-color-grad-black: #{$gradient-black-transparent};
+}

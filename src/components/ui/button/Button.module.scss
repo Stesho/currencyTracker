@@ -1,0 +1,15 @@
+@import '@/styles/global.scss';
+
+.button {
+  padding: 15px;
+  border-radius: 8px;
+  @include adaptive-font($pcSize: 16, $mobSize: 12);
+  font-weight: 600;
+  color: var(--secondary-color-100);
+  background-color: var(--text-color-300);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--text-color-200);
+  }
+}

@@ -1,0 +1,44 @@
+@import './variables.scss';
+
+body {
+  background-color: var(--primary-color);
+  color: var(--text-color-100);
+  font-family: Poppins, sans-serif;
+  font-weight: 400;
+}
+
+.container {
+  max-width: 1316px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.scrollBar {
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background: $white;
+    border-radius: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $grey-300;
+    border-radius: 4px;
+  }
+}
+
+$maxWidth: 1920;
+@mixin adaptive-font($pcSize, $mobSize) {
+  $addSize: $pcSize - $mobSize;
+  $maxWidth: $maxWidth - 320;
+  font-size: calc(
+    #{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth})
+  );
+}
+
+@media (max-width: 425px) {
+  .container {
+    padding: 0 15px;
+  }
+}

@@ -1,0 +1,25 @@
+@import '@/styles/variables.scss';
+
+.mapContainer {
+  width: 100%;
+  position: relative;
+}
+
+.map {
+  height: 500px;
+}
+
+.notFound {
+  position: absolute;
+  padding: 6px 12px;
+  z-index: 1;
+  top: 12px;
+  left: 50%;
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: capitalize;
+  background-color: #960000;
+  color: $white;
+  transform: translateX(-50%);
+}

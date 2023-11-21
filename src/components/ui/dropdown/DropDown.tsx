@@ -67,7 +67,11 @@ export class DropDown extends Component<DropDownProps, DropDownState> {
     const { options, className } = this.props;
 
     return (
-      <div className={`${styles.dropDown} ${className}`} ref={this.dropDown}>
+      <div
+        data-cy='dropDown'
+        className={`${styles.dropDown} ${className}`}
+        ref={this.dropDown}
+      >
         <button
           className={styles.button}
           onClick={this.toggleDropDown}

@@ -38,7 +38,7 @@ export const CurrencyModal = ({
 
   return (
     <Modal id={id} onClose={onClose}>
-      <div className={styles.currencyModal}>
+      <div data-cy='currencyModal' className={styles.currencyModal}>
         <div className={styles.content}>
           <CurrencyCodeCard
             id={currency.id}
@@ -58,7 +58,7 @@ export const CurrencyModal = ({
               <span className={styles.equal}> = </span>
               <span className={styles.convertArrows}>⬇⬆</span>
             </div>
-            <div data-testid='currencyModalRate'>
+            <div data-cy='currencyModalRate' data-testid='currencyModalRate'>
               {cutLargeNumber(quantity * rate)} {selectedCurrency?.id || 'USD'}
             </div>
           </div>

@@ -28,7 +28,10 @@ export const Header = () => {
           />
         </div>
         <div className={styles.burgerMenu}>
-          <BurgerMenu toggleTheme={toggleTheme} theme={theme} />
+          <BurgerMenu
+            toggleTheme={toggleTheme}
+            theme={theme || colorThemes.dark}
+          />
         </div>
       </div>
     </header>

@@ -13,7 +13,7 @@ export const Header = () => {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <header className={styles.header}>
+    <header data-cy='header' className={styles.header}>
       <div className={`${styles.headerContainer} container`}>
         <div>
           <img className={styles.logo} src={Logo} alt='logo' />

@@ -18,7 +18,7 @@ export const ChartFormModal = ({
   initialChartData,
 }: ChartFormModalProps) => (
   <Modal id='chartForm-modal' onClose={onClose}>
-    <div className={`${styles.content} scrollBar`}>
+    <div data-cy='chartFormModal' className={`${styles.content} scrollBar`}>
       <ChartForm onSubmit={onSubmitForm} initialChartData={initialChartData} />
     </div>
   </Modal>

@@ -24,6 +24,7 @@ export class DropDownList extends PureComponent<DropDownListProps> {
           (option) =>
             option.id !== (selectedOption && selectedOption.id) && (
               <li
+                data-cy='dropDownOption'
                 key={option.id}
                 onClick={this.onSelectOption(option)}
                 className={styles.option}

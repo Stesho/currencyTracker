@@ -52,7 +52,10 @@ export class Notification extends Component<
 
     return (
       <Portal id='notification'>
-        <div className={`${styles.notification} ${animation}`}>
+        <div
+          data-cy='notification'
+          className={`${styles.notification} ${animation}`}
+        >
           <SuccessIcon className={styles.img} alt='success' />
           <div className={styles.text}>
             <span className={styles.title}>Success</span>

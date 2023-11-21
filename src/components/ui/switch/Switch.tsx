@@ -18,7 +18,11 @@ export const Switch = ({
   };
 
   return (
-    <button type='button' className={`${styles.button} ${className}`}>
+    <button
+      data-cy='switch'
+      type='button'
+      className={`${styles.button} ${className}`}
+    >
       <label className={styles.switch}>
         <input type='checkbox' onChange={onCheck} checked={isChecked} />
         <span className={`${styles.slider} ${styles.round}`} />

@@ -95,7 +95,7 @@ export class Timeline extends PureComponent<TimelineProps, TimelineState> {
       this.state;
 
     return (
-      <section className={`${styles.timeline} container`}>
+      <section data-cy='timeline' className={`${styles.timeline} container`}>
         <DropDown
           options={currencies}
           onSelectOption={this.onSelectCurrency}

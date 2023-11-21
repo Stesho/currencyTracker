@@ -29,7 +29,11 @@ export const CurrencyRatedCard = ({
   };
 
   return (
-    <div className={styles.currencyCard} onClick={onCardClick}>
+    <div
+      data-cy='currencyRatedCard'
+      className={styles.currencyCard}
+      onClick={onCardClick}
+    >
       <CurrencyCard id={id} iconUrl={iconUrl} currencyName={currencyName}>
         <span className={styles.rate}>R$ {formattedRate}</span>
       </CurrencyCard>

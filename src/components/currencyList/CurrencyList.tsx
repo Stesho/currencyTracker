@@ -28,7 +28,10 @@ export const CurrencyList = ({ title, currencies }: CurrencyListProps) => {
   };
 
   return (
-    <section className={`${styles.currencyListWrapper} container`}>
+    <section
+      data-cy='currencyList'
+      className={`${styles.currencyListWrapper} container`}
+    >
       <h2 className={styles.title}>{title}</h2>
       <div className={styles.currencyList}>
         {currencies.map((currencyItem) => (

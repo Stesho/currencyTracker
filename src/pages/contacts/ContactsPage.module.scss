@@ -21,11 +21,17 @@
 }
 
 .contact {
-  display: block;
+  width: fit-content;
   color: var(--text-color-400);
   @include adaptive-font($pcSize: 24, $mobSize: 14);
   &:hover {
     color: var(--text-color-200);
+  }
+}
+
+.address {
+  span {
+    display: block;
   }
 }
 

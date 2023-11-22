@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import { CurrencyRated } from '@/types/currency';
-import { getCurrentTimeIn12HoursFormat } from '@/utils/getCurrentTimeIn12HoursFormat/getCurrentTimeIn12HoursFormat';
+import { getCurrentTimeIn12HoursFormat } from '@/utils/getCurrentTimeIn12HoursFormat';
 
 interface InitialState {
   currencies: CurrencyRated[];

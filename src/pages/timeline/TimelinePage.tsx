@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 
-import { Main } from '@/components/main/Main';
-import { Timeline } from '@/components/timeline/Timeline';
-import { NoData } from '@/components/ui/noData/NoData';
+import { Main } from '@/components/Main/Main';
+import { Timeline } from '@/components/Timeline/Timeline';
+import { NoData } from '@/components/ui/NoData/NoData';
 import { RootState } from '@/store/store';
 
 class TimelinePageConnected extends PureComponent<PropsFromRedux> {

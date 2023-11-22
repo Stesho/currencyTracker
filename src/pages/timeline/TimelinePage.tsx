@@ -3,6 +3,7 @@ import { connect, ConnectedProps } from 'react-redux';
 
 import { Main } from '@/components/Main/Main';
 import { Timeline } from '@/components/Timeline/Timeline';
+import { Loader } from '@/components/ui/Loader/Loader';
 import { NoData } from '@/components/ui/NoData/NoData';
 import { RootState } from '@/store/store';
 
@@ -13,11 +14,13 @@ class TimelinePageConnected extends PureComponent<PropsFromRedux> {
 
     return (
       <Main>
-        {currencies.length > 0 ? (
-          <Timeline currencies={currencies} />
-        ) : (
-          <NoData />
-        )}
+        <Loader isLoading={currencyState.isFetching}>
+          {currencies.length > 0 ? (
+            <Timeline currencies={currencies} />
+          ) : (
+            <NoData />
+          )}
+        </Loader>
       </Main>
     );
   }

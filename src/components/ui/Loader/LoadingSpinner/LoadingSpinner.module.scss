@@ -1,0 +1,28 @@
+@import '@/styles/variables.scss';
+
+.spinnerWrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border: 7px solid var(--text-color-100);
+  border-top: 7px solid transparent;
+  border-radius: 50%;
+  animation: spinner 0.9s linear infinite;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

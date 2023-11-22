@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 import { coinApiInstance } from '@/api/coinApi/config';
 import { getCurrencies } from '@/services/currency/getCurrencies';
 import { CurrencyRated } from '@/types/currency';

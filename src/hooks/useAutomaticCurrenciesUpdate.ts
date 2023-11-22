@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { getCurrencies } from '@/services/currency/getCurrencies';
+import { updateCurrencyStore } from '@/services/currency/updateCurrenciesStore';
 import { updateCurrencies } from '@/store/slices/currencySlice';
 
 export const useAutomaticCurrenciesUpdate = (intervalMs: number) => {
@@ -10,9 +11,7 @@ export const useAutomaticCurrenciesUpdate = (intervalMs: number) => {
   useEffect(() => {
     const currencies = localStorage.getItem('persist:root');
     if (!currencies) {
-      getCurrencies().then((data) => {
-        dispatch(updateCurrencies(data));
-      });
+      updateCurrencyStore();
     }
 
     const intervalId = setInterval(() => {

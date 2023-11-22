@@ -3,6 +3,7 @@ import { connect, ConnectedProps } from 'react-redux';
 
 import { BankSearch } from '@/components/BankSearch/BankSearch';
 import { Main } from '@/components/Main/Main';
+import { Loader } from '@/components/ui/Loader/Loader';
 import { NoData } from '@/components/ui/NoData/NoData';
 import { RootState } from '@/store/store';
 
@@ -13,11 +14,13 @@ export class BankCardPageConnected extends PureComponent<PropsFromRedux> {
 
     return (
       <Main>
-        {currencies.length > 0 ? (
-          <BankSearch currencies={currencies} />
-        ) : (
-          <NoData />
-        )}
+        <Loader isLoading={currencyState.isFetching}>
+          {currencies.length > 0 ? (
+            <BankSearch currencies={currencies} />
+          ) : (
+            <NoData />
+          )}
+        </Loader>
       </Main>
     );
   }

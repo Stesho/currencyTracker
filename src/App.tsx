@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 
+import { CURRENCIES_UPDATE_INTERVAL_MINUTES } from '@/constants/environment/environment';
 import { useAutomaticCurrenciesUpdate } from '@/hooks/useAutomaticCurrenciesUpdate';
 
 import '@/styles/index.scss';
@@ -8,10 +9,9 @@ interface AppProps {
   children: ReactNode;
 }
 
-export const App = ({ children }: AppProps) => {
-  const intervalTimeMinutes = 20;
-  const intervalTimeMs = intervalTimeMinutes * 60 * 1000;
+const intervalTimeMs = CURRENCIES_UPDATE_INTERVAL_MINUTES * 60 * 1000;
 
+export const App = ({ children }: AppProps) => {
   useAutomaticCurrenciesUpdate(intervalTimeMs);
 
   return <div className='app'>{children}</div>;

@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 
-import { BankSearch } from '@/components/bankSearch/BankSearch';
-import { Main } from '@/components/main/Main';
-import { NoData } from '@/components/ui/noData/NoData';
+import { BankSearch } from '@/components/BankSearch/BankSearch';
+import { Main } from '@/components/Main/Main';
+import { NoData } from '@/components/ui/NoData/NoData';
 import { RootState } from '@/store/store';
 
 export class BankCardPageConnected extends PureComponent<PropsFromRedux> {

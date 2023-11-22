@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 
-import { Info } from '@/components/ui/info/Info';
+import { Info } from '@/components/ui/Info/Info';
 import { contacts } from '@/constants/contacts/contacts';
 
 import styles from './ContactsPage.module.scss';
@@ -12,7 +12,7 @@ class ContactsPage extends PureComponent {
         <Info />
         <section className={`${styles.contacts} container`}>
           <h2 className={styles.title}>Contacts</h2>
-          <div className={styles.section}>
+          <div className={`${styles.section} ${styles.address}`}>
             <h3 className={styles.header}>Address</h3>
             <span className={styles.contact}>Stefana Okrzei 1a/10</span>
             <span className={styles.contact}>Warsaw, Poland</span>
@@ -37,7 +37,7 @@ class ContactsPage extends PureComponent {
             <ul>
               {contacts.map((contact) => (
                 <li className={`${styles.contact} ${styles.socialLink}`}>
-                  <a href={contact.link} target='_blank' rel="noreferrer">
+                  <a href={contact.link} target='_blank' rel='noreferrer'>
                     <contact.icon className={styles.icon} />
                     <span>{contact.social}</span>
                   </a>

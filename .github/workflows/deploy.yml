@@ -6,7 +6,8 @@ on:
       - published
   push:
     branches:
-      - main
+      - master
+      - develop
   workflow_dispatch:
 
 jobs:

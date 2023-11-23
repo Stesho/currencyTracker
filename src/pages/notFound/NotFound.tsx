@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Button } from '@/components/ui/button/Button';
+import { Button } from '@/components/ui/Button/Button';
 
 import styles from './NotFound.module.scss';
 

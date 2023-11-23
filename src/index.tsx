@@ -4,9 +4,9 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import { App } from '@/App';
-import { Layout } from '@/components/layout/Layout';
-import { ErrorBoundary } from '@/components/ui/errorBoundary/ErrorBoundary';
-import { persistor,store } from '@/store/store';
+import { Layout } from '@/components/Layout/Layout';
+import { ErrorBoundary } from '@/components/ui/ErrorBoundary/ErrorBoundary';
+import { persistor, store } from '@/store/store';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,

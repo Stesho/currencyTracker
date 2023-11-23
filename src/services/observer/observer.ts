@@ -6,7 +6,7 @@ interface IObserver {
   notify: () => IObserver;
 }
 
-class Observer implements Observer {
+class Observer implements IObserver {
   subscribers: Subscriber[] = [];
 
   subscribe(subscriber: Subscriber) {
